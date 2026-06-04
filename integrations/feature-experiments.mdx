@@ -1,0 +1,69 @@
+---
+title: "Feature experiment setup"
+description: "Set up a server-side feature experiment in Amplitude and connect it to a subs.ft.com page route."
+sidebarTitle: "Feature experiments"
+---
+
+This guide covers creating a server-side Feature Experiment in Amplitude and wiring it to a page route on subs.ft.com through the Framewurk CMS.
+
+## Amplitude setup
+
+<Steps>
+  <Step title="Create the experiment">
+    Create a new experiment and set the experiment type to **Feature** for server-side testing.
+  </Step>
+  <Step title="Name and choose test type">
+    Enter the experiment name and select the experiment type. Use **A/B test** rather than **Multi-Armed Bandit** unless there is a specific reason not to.
+  </Step>
+  <Step title="Configure metrics and targeting">
+    Configure metrics, targeting, and the traffic split between variants.
+  </Step>
+  <Step title="Define variants">
+    Keep exactly two variants: **control** and **treatment**.
+  </Step>
+  <Step title="Copy the feature flag name">
+    Open the **Delivery** section and copy the feature flag name. You will paste it into the Framewurk CMS later.
+  </Step>
+  <Step title="Set deployment">
+    Set deployment to **subs-ft-com**.
+  </Step>
+  <Step title="Start the experiment">
+    Start the experiment in Amplitude.
+  </Step>
+</Steps>
+
+## subs.ft.com setup
+
+<Steps>
+  <Step title="Open Feature experiments">
+    In the admin panel, open the **Feature experiments** section.
+  </Step>
+  <Step title="Create a new feature experiment">
+    Click to create a new feature experiment.
+  </Step>
+  <Step title="Enter a title">
+    Add a **Title** for internal identification.
+  </Step>
+  <Step title="Set enabled state">
+    Tick **Enabled** if the experiment should be active. Untick it to disable the experiment without deleting it.
+  </Step>
+  <Step title="Set the entry point">
+    The **Entry point** defines the experiment URL on subs.ft.com. For example, `second-experiment` creates `https://subs.ft.com/second-experiment`.
+
+    <Warning>
+      Avoid using the same entry point as either the control or treatment page URL, so CMS administrators can still edit the source page content easily.
+    </Warning>
+  </Step>
+  <Step title="Paste the feature flag">
+    Paste the **Experiment Feature Flag** you copied from Amplitude.
+  </Step>
+  <Step title="Select the control page">
+    Select the **Control page**. This is also the fallback page if the experiment is stopped or the user is not targeted.
+  </Step>
+  <Step title="Select the treatment page">
+    Select the **Treatment page**.
+  </Step>
+  <Step title="Save the experiment">
+    Save the experiment. Allow up to five minutes for changes to propagate.
+  </Step>
+</Steps>
