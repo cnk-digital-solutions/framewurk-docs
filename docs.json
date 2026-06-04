@@ -71,8 +71,24 @@
           "integrations/quickstart",
           "integrations/authentication",
           "integrations/connectors/crm",
-          "integrations/webhooks/configure",
-          "integrations/feature-experiments.mdx"
+          "integrations/webhooks/configure"
+        ]
+      },
+      {
+        "group": "Level 1",
+        "pages": [
+          {
+            "group": "Level 2",
+            "pages": [
+              "integrations/feature-experiments.mdx",
+              {
+                "group": "Level 3",
+                "pages": [
+                  "platform/virtual-campaigns.mdx"
+                ]
+              }
+            ]
+          }
         ]
       }
     ]
