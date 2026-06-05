@@ -80,11 +80,11 @@
           {
             "group": "Level 2",
             "pages": [
-              "integrations/feature-experiments.mdx",
+              "integrations/feature-experiments",
               {
                 "group": "Level 3",
                 "pages": [
-                  "platform/virtual-campaigns.mdx"
+                  "platform/virtual-campaigns"
                 ]
               }
             ]
