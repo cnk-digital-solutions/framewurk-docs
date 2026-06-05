@@ -80,7 +80,7 @@
           {
             "group": "Level 2",
             "pages": [
-              "integrations/feature-experiments",
+              "hello-world/feature-experiments",
               {
                 "group": "Level 3",
                 "pages": [
