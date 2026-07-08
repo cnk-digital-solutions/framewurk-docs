@@ -1,7 +1,7 @@
 ---
 title: "Amplitude Feature Experiments"
 description: "Feature Experiments is a server-side functionality that allows showing content from different pages on the same URL. This can be used for A/B tests"
-icon: "arrow-right-left"
+icon: "activity"
 ---
 
 This guide covers creating a server-side Feature Experiment in Amplitude and wiring it to a page route on subs.ft.com through the Framewürk CMS.
@@ -10,18 +10,18 @@ This guide covers creating a server-side Feature Experiment in Amplitude and wir
 
 ### Amplitude setup
 
-The first piece of the puzzle is obtaining a Feature Flag from Amplitude. 
+The first piece of the puzzle is obtaining a Feature Flag from Amplitude.
 
 <Steps>
   <Step title="Create the experiment">
-    Create a new experiment and select the  **Feature** type.\
+    Create a new experiment and select the  **Feature** type.\\
 
     <Frame>
       ![Image 1](/images/image-1.png)
     </Frame>
   </Step>
   <Step title="Name and choose test type">
-    Enter the experiment name and select the experiment type. We use **A/B test** type but as this setting is on the Amplitude side, it does not influence subsequent setup steps.\
+    Enter the experiment name and select the experiment type. We use **A/B test** type but as this setting is on the Amplitude side, it does not influence subsequent setup steps.\\
 
     <Frame>
       ![Image 2](/images/image-2.png)
@@ -34,7 +34,7 @@ The first piece of the puzzle is obtaining a Feature Flag from Amplitude.
     - You can find the feature flag name under "Delivery" in the RHS column. Please make a note of it to use later in the Framewürk CMS:
   </Step>
   <Step title="Copy the feature flag name">
-    You can find the feature flag name under **Delivery** in the RHS column. Please make a note of it to use later in the Framewürk CMS:\
+    You can find the feature flag name under **Delivery** in the RHS column. Please make a note of it to use later in the Framewürk CMS:\\
 
     <Frame>
       ![Image 3](/images/image-3.png)
@@ -50,9 +50,11 @@ The first piece of the puzzle is obtaining a Feature Flag from Amplitude.
 
 ## Framewürk CMS setup
 
+Second part of the puzzle is setting up the corresponding functionality in the Framewürk CMS.
+
 <Steps>
   <Step title="Open Feature experiments">
-    In the admin panel, open the **Feature experiments** section.
+    In the admin panel, open the [**Feature experiments**](https://subs.ft.com/en-gb/admin/cnk_amplitude/featureexperiment/) section.
   </Step>
   <Step title="Create a new feature experiment">
     Click to create a new feature experiment.
@@ -67,7 +69,7 @@ The first piece of the puzzle is obtaining a Feature Flag from Amplitude.
     The **Entry point** defines the experiment URL on subs.ft.com. For example, `second-experiment` creates `https://subs.ft.com/second-experiment`.
 
     <Warning>
-      Avoid using the same entry point as either the control or treatment page URL, so CMS administrators can still edit the source page content easily.
+      Please avoid using the same entry point as either the control or treatment page URL, so CMS administrators can still edit the source page content easily.
     </Warning>
   </Step>
   <Step title="Paste the feature flag">
@@ -85,3 +87,28 @@ The first piece of the puzzle is obtaining a Feature Flag from Amplitude.
 </Steps>
 
 ## Special cases and behaviours
+
+- Changes made in the Framewürk CMS propagate to the edge, and the test can be used in 5 minutes or less (the mean propagation time is around 2m).
+- Due to the need to delay serving content until we get a response from Amplitide, and the fact that Amplitude servers are hosted in Europe, it was decided to enable the feature experiments only in the countries in North America and Europe. Visitors from any other countries simply see the **control** and are not assigned a variant (we do not query Amplitude at all for them)
+- Feature Experiments on the Framewürk side run until they are disabled manually. Even if the feature flag is deleted, they simply keep serving the **control**.
+- The Feature Experiment functionality comes _before_ any other Framewurk CMS content is served. For example, if there is content
+
+```mermaid
+flowchart TD
+    visitor([Visitor requests /path-a]) --> edge{Edge worker on CDN:<br/>Any Feature Experiment set up on /path-a?}
+    edge -- No --> reqA[Request /path-a<br/>from CMS]
+
+    edge -- Yes --> exp[Feature Experiment<br/>determines URL to call]
+    exp -- "Control or fallback" --> reqB[Request /path-b<br/>from CMS]
+    exp -- "Treatment" --> reqC[Request /path-c<br/>from CMS]
+
+ 
+
+    reqB --> cms{Framework CMS<br/>evaluates path}
+    reqA --> cms
+    reqC --> cms
+
+    cms --> camp[Serve campaign page]
+    cms --> virt[Serve Virtual Campaign<br/>]
+    cms --> other[...]
+```
