@@ -91,7 +91,7 @@ Second part of the puzzle is setting up the corresponding functionality in the F
 - Changes made in the Framewürk CMS propagate to the edge, and the test can be used in 5 minutes or less (the mean propagation time is around 2m).
 - Due to the need to delay serving content until we get a response from Amplitide, and the fact that Amplitude servers are hosted in Europe, it was decided to enable the feature experiments only in the countries in North America and Europe. Visitors from any other countries simply see the **control** and are not assigned a variant (we do not query Amplitude at all for them)
 - Feature Experiments on the Framewürk side run until they are disabled manually. Even if the feature flag is deleted, they simply keep serving the **control**.
-- The Feature Experiment functionality comes _before_ any other Framewurk CMS content is served. For example, if there is content
+- The Feature Experiment functionality comes _before_ any other Framewurk CMS content is served. As long as a Feature Experiment is enabled, it will come first and remains active.
 
 ```mermaid
 flowchart TD
