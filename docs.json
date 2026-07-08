@@ -35,14 +35,13 @@
         "pages": [
           "hello-world",
           "hello-world/feature-experiments",
+          "platform/virtual-campaigns",
           {
             "group": "Level 2",
             "pages": [
               {
                 "group": "Level 3",
-                "pages": [
-                  "platform/virtual-campaigns"
-                ]
+                "pages": []
               }
             ]
           }
