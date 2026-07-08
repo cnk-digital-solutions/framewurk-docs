@@ -34,10 +34,10 @@
         "group": "Level 1",
         "pages": [
           "hello-world",
+          "hello-world/feature-experiments",
           {
             "group": "Level 2",
             "pages": [
-              "hello-world/feature-experiments",
               {
                 "group": "Level 3",
                 "pages": [

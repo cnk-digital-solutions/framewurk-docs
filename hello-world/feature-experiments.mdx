@@ -1,35 +1,47 @@
 ---
-title: "Feature experiments"
-description: "Set up a server-side feature experiment in Amplitude and connect it to a subs.ft.com page route."
+title: "Amplitude Feature Experiments"
+description: "Feature Experiments is a server-side functionality that allows showing content from different pages on the same URL. This can be used for A/B tests"
 icon: "arrow-right-left"
 ---
 
-This guide covers creating a server-side Feature Experiment in Amplitude and wiring it to a page route on subs.ft.com through the Framewürk CMS. 
+This guide covers creating a server-side Feature Experiment in Amplitude and wiring it to a page route on subs.ft.com through the Framewürk CMS.
 
-<Frame>
-  ![Vcelar](/images/vcelar.jpg)
-</Frame>
+## Setup and usage instructions
 
-## Amplitude setup
+### Amplitude setup
+
+The first piece of the puzzle is obtaining a Feature Flag from Amplitude. 
 
 <Steps>
   <Step title="Create the experiment">
-    Create a new experiment and set the experiment type to **Feature** for server-side testing.
+    Create a new experiment and select the  **Feature** type.\
+
+    <Frame>
+      ![Image 1](/images/image-1.png)
+    </Frame>
   </Step>
   <Step title="Name and choose test type">
-    Enter the experiment name and select the experiment type. Use **A/B test** rather than **Multi-Armed Bandit** unless there is a specific reason not to.
+    Enter the experiment name and select the experiment type. We use **A/B test** type but as this setting is on the Amplitude side, it does not influence subsequent setup steps.\
+
+    <Frame>
+      ![Image 2](/images/image-2.png)
+    </Frame>
   </Step>
   <Step title="Configure metrics and targeting">
-    Configure metrics, targeting, and the traffic split between variants.
-  </Step>
-  <Step title="Define variants">
-    Keep exactly two variants: **control** and **treatment**.
+    Once an experiment is created, you can configure the metrics, targeting and the split between control and treatment. Please note that:
+
+    - There can only be two variants: one called "control" and one called "treatment" to work with our setup. These are the defaults as well.
+    - You can find the feature flag name under "Delivery" in the RHS column. Please make a note of it to use later in the Framewürk CMS:
   </Step>
   <Step title="Copy the feature flag name">
-    Open the **Delivery** section and copy the feature flag name. You will paste it into the Framewurk CMS later.
+    You can find the feature flag name under **Delivery** in the RHS column. Please make a note of it to use later in the Framewürk CMS:\
+
+    <Frame>
+      ![Image 3](/images/image-3.png)
+    </Frame>
   </Step>
   <Step title="Set deployment">
-    Set deployment to **subs-ft-com**.
+    Set deployment to **subs-ft-com** in the **Deployment** section below the feature flag
   </Step>
   <Step title="Start the experiment">
     Start the experiment in Amplitude.
@@ -71,3 +83,5 @@ This guide covers creating a server-side Feature Experiment in Amplitude and wir
     Save the experiment. Allow up to five minutes for changes to propagate.
   </Step>
 </Steps>
+
+## Special cases and behaviours
