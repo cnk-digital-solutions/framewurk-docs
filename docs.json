@@ -41,7 +41,18 @@
           {
             "anchor": "Test section",
             "pages": [
-              "test"
+              "test",
+              {
+                "group": "test group1",
+                "pages": [
+                  {
+                    "group": "test subgroup",
+                    "pages": [
+                      "test-nested-page"
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
