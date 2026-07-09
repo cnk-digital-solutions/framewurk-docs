@@ -36,16 +36,8 @@
         ]
       },
       {
-        "anchor": "Useful links",
-        "pages": [
-          {
-            "group": "CMS",
-            "pages": [
-              "admin"
-            ]
-          },
-          "test"
-        ]
+        "anchor": "Framewürk CMS admin",
+        "href": "https://subs.ft.com/admin"
       }
     ]
   },
