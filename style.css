@@ -147,3 +147,7 @@ img.nav-logo {
   max-width: 220px;
   height: auto;
 }
+
+html[data-current-path="/login"] img.max-w-28 {
+  max-width: 230px;
+} 
