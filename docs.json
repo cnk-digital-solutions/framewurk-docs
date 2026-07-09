@@ -23,10 +23,6 @@
     "directory": "card",
     "anchors": [
       {
-        "anchor": "Introduction",
-        "href": "https://cmsdocs.framewurk.io/"
-      },
-      {
         "anchor": "Documentation",
         "pages": [
           {
