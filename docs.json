@@ -41,6 +41,12 @@
           {
             "anchor": "Framewürk CMS admin",
             "href": "https://subs.ft.com/admin"
+          },
+          {
+            "anchor": "Test",
+            "pages": [
+              "test"
+            ]
           }
         ]
       }
