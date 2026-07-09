@@ -29,8 +29,7 @@
             "group": "Features",
             "pages": [
               "features/feature-experiments",
-              "features/virtual-campaigns",
-              "features/test"
+              "features/virtual-campaigns"
             ]
           }
         ]
