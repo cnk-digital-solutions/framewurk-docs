@@ -36,8 +36,13 @@
       },
       {
         "anchor": "Useful links",
-        "pages": [
-          "admin"
+        "groups": [
+          {
+            "group": "CMS",
+            "pages": [
+              "admin"
+            ]
+          }
         ]
       }
     ]
