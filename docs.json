@@ -31,11 +31,11 @@
     "directory": "card",
     "groups": [
       {
-        "group": "Level 1",
+        "group": "Features",
         "pages": [
           "hello-world",
-          "hello-world/feature-experiments",
-          "platform/virtual-campaigns",
+          "features/feature-experiments",
+          "features/virtual-campaigns",
           {
             "group": "Level 2",
             "pages": [
