@@ -23,30 +23,21 @@
     "directory": "card",
     "anchors": [
       {
+        "anchor": "Introduction",
+        "href": "https://cmsdocs.framewurk.io/"
+      },
+      {
         "anchor": "Documentation",
         "pages": [
           {
             "group": "Features",
             "pages": [
               "features/feature-experiments",
-              "features/virtual-campaigns",
-              {
-                "group": "Level 2",
-                "pages": [
-                  {
-                    "group": "Level 3",
-                    "pages": []
-                  }
-                ]
-              }
+              "features/virtual-campaigns"
             ]
           },
           "untitled-page"
         ]
-      },
-      {
-        "anchor": "Introduction",
-        "href": "https://cmsdocs.framewurk.io/"
       }
     ]
   },
