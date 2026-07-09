@@ -21,23 +21,28 @@
   "navigation": {
     "global": {},
     "directory": "card",
-    "anchors": [
+    "products": [
       {
-        "anchor": "Documentation",
-        "pages": [
+        "product": "Framewurk",
+        "anchors": [
           {
-            "group": "Features",
+            "anchor": "Documentation",
             "pages": [
-              "features/feature-experiments",
-              "features/virtual-campaigns",
-              "features/us-state-targeting"
+              {
+                "group": "Features",
+                "pages": [
+                  "features/feature-experiments",
+                  "features/virtual-campaigns",
+                  "features/us-state-targeting"
+                ]
+              }
             ]
+          },
+          {
+            "anchor": "Framewürk CMS admin",
+            "href": "https://subs.ft.com/admin"
           }
         ]
-      },
-      {
-        "anchor": "Framewürk CMS admin",
-        "href": "https://subs.ft.com/admin"
       }
     ]
   },
