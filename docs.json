@@ -21,23 +21,32 @@
   "navigation": {
     "global": {},
     "directory": "card",
-    "groups": [
+    "anchors": [
       {
-        "group": "Features",
+        "anchor": "Documentation",
         "pages": [
-          "hello-world",
-          "features/feature-experiments",
-          "features/virtual-campaigns",
           {
-            "group": "Level 2",
+            "group": "Features",
             "pages": [
+              "features/feature-experiments",
+              "features/virtual-campaigns",
               {
-                "group": "Level 3",
-                "pages": []
+                "group": "Level 2",
+                "pages": [
+                  {
+                    "group": "Level 3",
+                    "pages": []
+                  }
+                ]
               }
             ]
-          }
+          },
+          "untitled-page"
         ]
+      },
+      {
+        "anchor": "Introduction",
+        "href": "https://cmsdocs.framewurk.io/"
       }
     ]
   },
