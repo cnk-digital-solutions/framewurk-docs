@@ -33,6 +33,12 @@
             ]
           }
         ]
+      },
+      {
+        "anchor": "Useful links",
+        "pages": [
+          "admin"
+        ]
       }
     ]
   },
