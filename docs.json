@@ -32,7 +32,7 @@
                 "group": "Features",
                 "pages": [
                   "features/feature-experiments",
-                  "features/us-state-targeting",
+                  "features/content-targeting",
                   "features/virtual-campaigns"
                 ]
               }
