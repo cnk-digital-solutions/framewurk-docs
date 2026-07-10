@@ -5,7 +5,7 @@ icon: "activity"
 mode: "default"
 ---
 
-This guide covers creating a server-side Feature Experiment in Amplitude and wiring it to a page route on subs.ft.com through the Framewürk CMS.
+This guide covers creating a server-side Feature Experiment in Amplitude and wiring it to a page route in Framewürk.
 
 ## Setup and usage instructions
 
@@ -32,7 +32,7 @@ The first piece of the puzzle is obtaining a Feature Flag from Amplitude.
     Once an experiment is created, you can configure the metrics, targeting and the split between control and treatment. Please note that there can only be two variants: one called "control" and one called "treatment" to work with our setup. These are the defaults as well.
   </Step>
   <Step title="Copy the feature flag name">
-    You can find the feature flag name under **Delivery** in the RHS column. Please make a note of it to use later in the Framewürk CMS:
+    You can find the feature flag name under **Delivery** in the RHS column. Please make a note of it to use later in the Framewürk:
 
     <Frame>
       ![Image 3](/images/image-3.png)
@@ -46,9 +46,9 @@ The first piece of the puzzle is obtaining a Feature Flag from Amplitude.
   </Step>
 </Steps>
 
-### Framewürk CMS setup
+### Framewürk setup
 
-Second part of the puzzle is setting up the corresponding functionality in the Framewürk CMS.
+Second part of the puzzle is setting up the corresponding functionality in Framewürk.
 
 <Steps>
   <Step title="Open Feature experiments">
@@ -86,10 +86,10 @@ Second part of the puzzle is setting up the corresponding functionality in the F
 
 ## Special cases and behaviours
 
-- Changes made in the Framewürk CMS propagate to the edge, and the test can be used in 5 minutes or less (the mean propagation time is around 2m).
+- Changes made in Framewürk propagate to the edge, and the test can be used in 5 minutes or less (the mean propagation time is around 2m).
 - Due to the need to delay serving content until we get a variant assigned from Amplitude and the fact that Amplitude servers are hosted in Europe, it was decided to enable the feature experiments only in the countries in North America and Europe. Visitors from any other countries simply see the **control** and are not assigned a variant (we do not query Amplitude at all for them)
 - Feature Experiments on the Framewürk side run until they are disabled manually. Even if the feature flag is deleted, they simply keep serving the **control**.
-- The Feature Experiment functionality comes _before_ any other Framewurk CMS content is served. As long as a Feature Experiment is enabled, it will come first and remains active:
+- The Feature Experiment functionality comes _before_ any other Framewürk content is served. As long as a Feature Experiment is enabled, it will come first and remains active:
 
 ```mermaid
 flowchart TD
