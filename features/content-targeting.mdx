@@ -62,7 +62,7 @@ When a page renders, the Segmentation Container evaluates its children **in orde
 3. If it does **not** match, the container moves on to the next child and repeats the check.
 4. A **Fallback** child always matches, so evaluation always stops when it reaches one.
 
-As an example, please see below an evaluation flowchart for a **Segmentation Container** with two children plus a **Fallback**.
+As an example, please see below an evaluation flowchart for a **Segmentation Container** with two children plus an optional **Fallback** plugin.
 
 ```mermaid
 flowchart TD
@@ -70,7 +70,7 @@ flowchart TD
     B -- Yes --> R1[Render its content<br/>and stop]
     B -- No --> C{Next child<br/>matches visitor?}
     C -- Yes --> R2[Render its content<br/>and stop]
-    C -- No --> D{Fallback child<br/>reached?}
+    C -- No --> D{Fallback<br/>present?}
     D -- Yes --> R3[Render fallback content]
     D -- No --> E[No content rendered]
 ```
