@@ -41,23 +41,6 @@
                 ]
               }
             ]
-          },
-          {
-            "anchor": "Test section",
-            "pages": [
-              "test",
-              {
-                "group": "test group1",
-                "pages": [
-                  {
-                    "group": "test subgroup",
-                    "pages": [
-                      "test-nested-page"
-                    ]
-                  }
-                ]
-              }
-            ]
           }
         ]
       }
