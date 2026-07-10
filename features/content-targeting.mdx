@@ -43,7 +43,7 @@ Targeting is applied in the CMS through a parent plugin, the **Segmentation Cont
 
 | Plugin | Role | Targets |
 | --- | --- | --- |
-| **Segmentation Container** | Parent | Holds the ordered list of segment children |
+| **Segmentation Container** | Root-level plugin | Holds the ordered list of segment children |
 | **By Region (Country)** | Child | A country-based region defined in the backend |
 | **By Region (US state)** | Child | A US state region defined in the backend |
 | **By Country** | Child | One or more individual countries — no region needed |
@@ -106,5 +106,5 @@ First-match-wins evaluation has two practical consequences:
 | Fallback | ✅ | ✅ |
 
 <Info>
-  In V3, the region plugin is currently available as a single **By Region** plugin that links to country-based regions only. Support for US state regions and individual-country targeting is planned; once added, v3 will have full parity with v2.
+  In **V3**, the region targeting is currently available as a single **By Region** plugin that links to country-based regions only. Support for US state regions and individual-country targeting is planned; once added, **V3** will have full parity with **V2**.
 </Info>
