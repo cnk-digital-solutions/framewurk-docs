@@ -32,8 +32,8 @@
                 "group": "Features",
                 "pages": [
                   "features/feature-experiments",
-                  "features/virtual-campaigns",
-                  "features/us-state-targeting"
+                  "features/us-state-targeting",
+                  "features/virtual-campaigns"
                 ]
               }
             ]
