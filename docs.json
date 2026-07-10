@@ -36,8 +36,7 @@
                 "group": "Features",
                 "pages": [
                   "features/feature-experiments",
-                  "features/content-targeting",
-                  "features/virtual-campaigns"
+                  "features/content-targeting"
                 ]
               }
             ]
