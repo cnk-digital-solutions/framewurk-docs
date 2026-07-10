@@ -95,6 +95,24 @@ First-match-wins evaluation has two practical consequences:
   </Step>
 </Steps>
 
+## Previewing and editing other segments
+
+Segmentation applies to the CMS editor's content preview as well, so it is worth knowing how to see — and edit — content that is targeted at a region other than your own.
+
+### Default preview behavior
+
+When you load the CMS editor, the content preview shows the page as it renders for **your own region**: segmentation is evaluated against your location exactly as it would be for a regular visitor, so segments that don't match you are not shown in the preview.
+
+<Note>
+  In **structure mode**, segmentation is not applied. You always see the full Segmentation Container with all of its children, so you can reach and edit any segment's content regardless of your own location.
+</Note>
+
+### Previewing as a different country or US state
+
+To preview how the page looks for a different audience, use the country picker in the top left of the on-page header. Switching to a different country and US state re-evaluates the page for that selection, and you can see which plugins are visited by that country or state.
+
+This makes it easy to verify your targeting before publishing — for example, switching through each country you've segmented for to confirm the right segment wins, or to a country matching no segment to confirm the Fallback content appears.
+
 ## Version availability
 
 | Plugin | V2 | V3 |
