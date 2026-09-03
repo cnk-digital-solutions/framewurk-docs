@@ -46,6 +46,7 @@
                     "icon": "gallery-horizontal",
                     "root": "plugins/hero-banner",
                     "pages": [
+                      "plugins/hero-banner/slide",
                       "plugins/hero-banner/slide-video"
                     ]
                   }

@@ -1,0 +1,46 @@
+---
+title: "Slide"
+description: "The standard Hero Banner slide: two lines of heading text, a CTA button and a graphic on the slate background."
+icon: "image"
+---
+
+**Slide** is the standard child of the [Hero Banner](/plugins/hero-banner). It has a fixed layout and a fixed height per breakpoint, so a Hero Banner made only of these slides never changes size between slides.
+
+## Fields
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| **Text line 1** | Yes | Main heading line, rendered in white. Default "The world." |
+| **Text line 2** | No | Second heading line, rendered in pink on its own line. Default "Without the spin." |
+| **Raster image** | Yes | The graphic shown on the right at L and XL. 1240 x 728 px PNG expected, see [The graphic](#the-graphic) |
+| **CTA label** | Yes | Button text. Supports line breaks. Default "Explore plans" |
+| **Action** | Yes | Where the CTA goes: campaign page, external destination, email, phone, activate overlay, scroll to anchor, or scroll to one of the first Product section's tabs |
+| Link fields | Depends on the action | Target page or URL, page suffix, action behaviour (same, new or parent window) |
+
+## Layout per breakpoint
+
+The slide adapts to the viewport in three steps. Heading text is always a single line per text line: text that does not fit is cut off with an ellipsis rather than wrapped, so keep both lines short.
+
+| Breakpoint | Slide height | What is shown |
+| --- | --- | --- |
+| L and XL (1024 px and up) | 364 px | Heading left-aligned in the left half, CTA button below it, graphic in the right half |
+| M (740 to 1023 px) | 240 px | Heading only, centred, at the larger size. No CTA, no graphic |
+| S and XS (below 740 px) | 136 px | Heading only, centred, at the smaller size. No CTA, no graphic |
+
+Below L the Hero Banner shows its first slide only, so on tablets and phones a Slide is effectively a heading on a slate background. Put the message that must land in **Text line 1** and **Text line 2**, and do not rely on the CTA being visible there.
+
+## The graphic
+
+The **Raster image** is placed in the right half of the slide at L and XL, anchored to the bottom-left corner of that half and displayed 364 px tall, which is the full slide height.
+
+- Upload a **1240 x 728 px PNG**. It is served at 620 x 364 px on standard screens and at full size on high-density screens.
+- PNG is expected because transparent areas show the slate background of the slide, which lets the graphic sit on the banner without a visible box.
+- The image is cropped to the 1240 x 728 frame if its proportions differ, using the subject location set on the file in the media library.
+
+## The CTA
+
+The CTA is an o3 primary button on the inverse theme. It is always rendered at L and XL and always needs an **Action**: the slide cannot be saved without one. The **CTA label** doubles as the button's analytics label.
+
+## Next to video slides
+
+A Slide has the fixed heights above, so when it shares a Hero Banner with a [Slide (video)](/plugins/hero-banner/slide-video) whose sizing method produces a taller slide, the Hero Banner grows to the video slide's height and the Slide stretches with it: the heading and CTA stay top-left in the taller box and the graphic stays anchored to the bottom-left of its half. See [mixing video slides with other slides](/plugins/hero-banner/slide-video#mixing-video-slides-with-other-slides) for the other direction.

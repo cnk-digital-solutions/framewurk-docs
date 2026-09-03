@@ -8,7 +8,7 @@ The **Hero Banner** is a root-level widget for V3 pages. It shows one slide at a
 
 | Child plugin | What it shows | Details |
 | --- | --- | --- |
-| **Slide** | Two lines of heading text, a CTA button and a graphic on a slate background | Below |
+| **Slide** | Two lines of heading text, a CTA button and a graphic on a slate background | [Slide](/plugins/hero-banner/slide) |
 | **Slide (video)** | A looping, muted Vimeo background video, optionally linked | [Slide (video)](/plugins/hero-banner/slide-video) |
 
 Both kinds can sit under the same Hero Banner in any order.
@@ -27,25 +27,10 @@ Both kinds can sit under the same Hero Banner in any order.
   </Step>
 </Steps>
 
-## The image slide
+## The two kinds of slide
 
-The **Slide** plugin has a fixed layout: the text and CTA on the left, the graphic on the right.
-
-| Field | Notes |
-| --- | --- |
-| **Text line 1** | Main heading line, white |
-| **Text line 2** | Optional second line, rendered in pink |
-| **Raster image** | Graphic shown on the right at L and XL. 1240 x 728 px PNG expected |
-| **CTA label** | Button text. Supports line breaks |
-| **Action** and link fields | Where the CTA goes. Same options as other V3 plugins |
-
-The image slide has a fixed height per breakpoint:
-
-| Breakpoint | Slide height |
-| --- | --- |
-| L and XL (1024 px and up) | 364 px |
-| M (740 to 1023 px) | 240 px |
-| S and XS (below 740 px) | 136 px |
+- [**Slide**](/plugins/hero-banner/slide) is the standard slide: heading text, a CTA and a graphic, with a fixed height per breakpoint (364 px at L and XL, 240 px at M, 136 px at S and XS).
+- [**Slide (video)**](/plugins/hero-banner/slide-video) plays a Vimeo background video and derives its height from one of three sizing methods.
 
 ## Behaviour
 
@@ -68,7 +53,7 @@ Slides are stacked on top of each other, so the Hero Banner takes the height of 
 - On desktop, all slides count.
 - Below desktop, only the first slide counts, because it is the only one shown.
 
-Image slides contribute their fixed height from the table above. Video slides contribute a height that depends on their sizing method, which can be taller or shorter than an image slide. See [how video slides behave next to other slides](/plugins/hero-banner/slide-video#mixing-video-slides-with-other-slides) for what happens to a video slide that is shorter than its tallest sibling.
+Image slides contribute their [fixed height](/plugins/hero-banner/slide#layout-per-breakpoint). Video slides contribute a height that depends on their sizing method, which can be taller or shorter than an image slide. See [how video slides behave next to other slides](/plugins/hero-banner/slide-video#mixing-video-slides-with-other-slides) for what happens to a video slide that is shorter than its tallest sibling.
 
 <Tip>
   If a Hero Banner mixes image and video slides, the height is recalculated on every resize from each slide's configuration, never from what is currently on screen, so a slide that was stretched to match a taller sibling never influences the next calculation.
