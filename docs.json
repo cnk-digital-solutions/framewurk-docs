@@ -37,6 +37,19 @@
                   "features/feature-experiments",
                   "features/content-targeting"
                 ]
+              },
+              {
+                "group": "Plugins",
+                "pages": [
+                  {
+                    "group": "Hero Banner",
+                    "icon": "gallery-horizontal",
+                    "root": "plugins/hero-banner",
+                    "pages": [
+                      "plugins/hero-banner/slide-video"
+                    ]
+                  }
+                ]
               }
             ]
           }

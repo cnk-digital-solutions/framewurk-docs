@@ -1,0 +1,75 @@
+---
+title: "Hero Banner"
+description: "Full-width slide carousel for the top of a V3 campaign page. Holds image slides and video slides that can be mixed freely."
+icon: "gallery-horizontal"
+---
+
+The **Hero Banner** is a root-level widget for V3 pages. It shows one slide at a time across the full width of the page and, on desktop, rotates through its slides automatically. Each slide is a child plugin, and two kinds of slide are available:
+
+| Child plugin | What it shows | Details |
+| --- | --- | --- |
+| **Slide** | Two lines of heading text, a CTA button and a graphic on a slate background | Below |
+| **Slide (video)** | A looping, muted Vimeo background video, optionally linked | [Slide (video)](/plugins/hero-banner/slide-video) |
+
+Both kinds can sit under the same Hero Banner in any order.
+
+## Adding a Hero Banner
+
+<Steps>
+  <Step title="Add the parent">
+    In structure mode, add **Hero Banner** (module **Custom Widgets**) at the root of the page content.
+  </Step>
+  <Step title="Set the dwell time">
+    **Slide dwell time** is how long each slide stays on screen before the carousel moves on, in seconds (5 to 1800, default 10). It applies to every slide, including video slides.
+  </Step>
+  <Step title="Add slides">
+    Add one or more **Slide** or **Slide (video)** children. The first child is the one visitors see first, and on small screens it is the only one they see.
+  </Step>
+</Steps>
+
+## The image slide
+
+The **Slide** plugin has a fixed layout: the text and CTA on the left, the graphic on the right.
+
+| Field | Notes |
+| --- | --- |
+| **Text line 1** | Main heading line, white |
+| **Text line 2** | Optional second line, rendered in pink |
+| **Raster image** | Graphic shown on the right at L and XL. 1240 x 728 px PNG expected |
+| **CTA label** | Button text. Supports line breaks |
+| **Action** and link fields | Where the CTA goes. Same options as other V3 plugins |
+
+The image slide has a fixed height per breakpoint:
+
+| Breakpoint | Slide height |
+| --- | --- |
+| L and XL (1024 px and up) | 364 px |
+| M (740 to 1023 px) | 240 px |
+| S and XS (below 740 px) | 136 px |
+
+## Behaviour
+
+### Desktop: a carousel
+
+At L and XL (1024 px and wider) the Hero Banner is a carousel:
+
+- Slides fade from one to the next after the dwell time.
+- When there is more than one slide, a row of dots and a play/pause button appear in the bottom-left corner. Clicking a dot activates that slide and restarts the timer. Pause stops the rotation until play is pressed again.
+- Only the active slide is clickable.
+
+### Below desktop: the first slide only
+
+At M, S and XS (below 1024 px) there is no carousel. The **first slide is shown on its own** and the other slides and the controls are not displayed. Put the slide you care about most first.
+
+### Height: the tallest slide wins
+
+Slides are stacked on top of each other, so the Hero Banner takes the height of its tallest slide and every slide stretches to fill it:
+
+- On desktop, all slides count.
+- Below desktop, only the first slide counts, because it is the only one shown.
+
+Image slides contribute their fixed height from the table above. Video slides contribute a height that depends on their sizing method, which can be taller or shorter than an image slide. See [how video slides behave next to other slides](/plugins/hero-banner/slide-video#mixing-video-slides-with-other-slides) for what happens to a video slide that is shorter than its tallest sibling.
+
+<Tip>
+  If a Hero Banner mixes image and video slides, the height is recalculated on every resize from each slide's configuration, never from what is currently on screen, so a slide that was stretched to match a taller sibling never influences the next calculation.
+</Tip>

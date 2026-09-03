@@ -1,0 +1,208 @@
+---
+title: "Slide (video)"
+description: "A Hero Banner slide that plays a muted, looping Vimeo video as its background, sized by one of three methods, with an optional link over the whole slide."
+icon: "video"
+---
+
+**Slide (video)** is a child of the [Hero Banner](/plugins/hero-banner). Instead of text and a graphic it shows a Vimeo video that starts automatically, plays muted and loops, with no player controls. The whole slide can act as a link.
+
+All video settings are **per breakpoint**, using the same responsive construct as the Section plugin, so a slide can play a landscape video on desktop and a portrait one on phones, or use a different height rule on each.
+
+## Before you start: the Vimeo side
+
+- The video must allow **embedding** on subs.ft.com in its Vimeo privacy settings.
+- Hiding the player controls (background playback) requires a Vimeo **Plus, Pro or Premium** account.
+- Note the **video ID** from the Vimeo URL: in `https://vimeo.com/111534130` the ID is `111534130`.
+- Export a **poster image** from the video with exactly the same framing as the video itself. It is shown until playback starts, so any offset between the two is visible as a jump.
+
+## Adding a video slide
+
+<Steps>
+  <Step title="Add the child plugin">
+    In structure mode, add **Slide (video)** (module **Custom Widgets**) under a **Hero Banner**.
+  </Step>
+  <Step title="Fill in the XL settings">
+    The **XL** breakpoint is always defined and acts as the default for every other breakpoint. Enter the Vimeo ID, poster, video aspect ratio, background colour and sizing method.
+  </Step>
+  <Step title="Override smaller breakpoints where needed">
+    Tick a breakpoint's checkbox (**L**, **M**, **S**, **XS**) to give it its own values. Unticked breakpoints inherit from the next larger one that is defined.
+  </Step>
+  <Step title="Optionally link the slide">
+    Choose an **Action** and fill in its target. Enter a **Link label**, which is required as soon as an action is selected.
+  </Step>
+</Steps>
+
+## Settings reference
+
+### Global settings
+
+| Field | Notes |
+| --- | --- |
+| **Link label** | Accessible name of the link and the label used in analytics. Required when an action is selected, otherwise leave empty |
+| **Action** | Optional. Link to campaign page, external destination, email, phone, activate overlay, scroll to anchor, or scroll to one of the first Product section's tabs |
+| Link fields | Shown depending on the action: target page or URL, page suffix, action behaviour (same, new or parent window) |
+
+### Responsive settings
+
+Each of these exists once per breakpoint.
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| **Vimeo ID** | Yes | ID of the background video |
+| **Video poster image** | Yes | Shown until the video starts playing. Same framing and aspect ratio as the video |
+| **Video aspect ratio** | Yes | Width divided by height of the video file, for example 1920 / 1080 = `1.7777777778`. Use at least six decimals |
+| **Background colour** | Yes | Black, Slate, White, Paper or Pink, the same palette as Section backgrounds. See [Background colour](#background-colour) |
+| **Sizing method** | Yes | How the slide's height is derived. See [Sizing methods](#sizing-methods) |
+| **Content area aspect ratio** | With Content area based dynamic height | Width divided by height of the video's central content area, excluding the coloured side borders |
+| **Static height** | With Static height | Height of the slide in pixels (1 to 2000) |
+| **Video sizing** | With Static height | **Cover** (default) or **Contain** |
+
+Fields that do not apply to the selected sizing method are hidden in the editor and cleared on save, so switching methods never leaves stale values behind.
+
+### Breakpoints
+
+| Breakpoint | Viewport width |
+| --- | --- |
+| XL | 1440 px and wider |
+| L | 1024 to 1439 px |
+| M | 740 to 1023 px |
+| S | 490 to 739 px |
+| XS | below 490 px |
+
+Values cascade upwards: a breakpoint without its own values uses the next larger breakpoint that has them, ending at XL. A breakpoint with its own Vimeo ID gets its own player, and only the player for the current breakpoint is displayed.
+
+## Sizing methods
+
+The sizing method decides how tall the slide is and how the video is fitted into it. The Hero Banner then takes the height of its tallest slide, see [mixing slides](#mixing-video-slides-with-other-slides).
+
+Two rules apply to every method:
+
+- The video is never wider than **1800 px**. On wider viewports, the part of the slide outside the central 1800 px is faded to the slide's background colour on both sides, so the video does not appear to stretch indefinitely.
+- The video is always horizontally and vertically **centred** in the slide.
+
+<Frame caption="The three sizing methods side by side. Grey is the slide, blue is the video. Dashed outlines are the parts of the video that are cropped away.">
+  <img src="/images/hero-video-sizing-methods.svg" alt="Three panels comparing content area based, full-width based and static sizing" />
+</Frame>
+
+### Content area based dynamic height
+
+This is the default and the recommended method for full-bleed hero videos.
+
+**The problem it solves.** A video's own background colour almost never matches a CSS colour exactly, so any part of the slide that is not covered by the video shows a visible seam. This method avoids CSS filler entirely: the video is produced with **wide single-colour borders on both sides** of the actual content, and the borders, not the CSS, fill whatever width the slide has.
+
+<Frame caption="Anatomy of a content area video. The content area sits in the centre; the borders on either side are part of the video file.">
+  <img src="/images/hero-video-content-area.svg" alt="A wide video frame with a narrower content area in the centre and single-colour borders left and right" />
+</Frame>
+
+**How the height is calculated.**
+
+1. Take the width of a full row of the page grid at the current viewport: the viewport width minus the grid's side paddings (16 px each side on S and XS, 24 px from M up), capped at the grid's maximum content width of 1320 px, which is reached at a 1368 px viewport.
+2. Divide it by the **Content area aspect ratio**. The result is the slide height.
+3. Scale the video so that its height equals the slide height. Its width follows from the **Video aspect ratio**, so the video ends up wider than the slide and the surplus, which is border, is cropped on both sides.
+
+Because the video's content area has the same aspect ratio as the slide's height was derived from, the content area lands exactly on the page grid: as wide as a full-width row, aligned with the columns of the content below it, at every viewport width.
+
+<Frame caption="The same video at three viewport widths. The green content area always matches the grid column (blue dashed); the orange borders fill the rest of the slide and are cropped outside it.">
+  <img src="/images/hero-video-content-sizing.svg" alt="Three viewports of increasing width showing the content area matching the grid column while the borders are cropped" />
+</Frame>
+
+**Worked example.** The content is produced at 1920 x 1080 and placed on a 3840 x 1080 canvas with borders of 960 px on either side.
+
+| Setting | Value |
+| --- | --- |
+| Video aspect ratio | 3840 / 1080 = `3.5555555556` |
+| Content area aspect ratio | 1920 / 1080 = `1.7777777778` |
+
+| Viewport | Grid row width | Slide height | Video width | Cropped per side |
+| --- | --- | --- | --- | --- |
+| 390 px phone | 358 px | 201 px | 716 px | 163 px |
+| 1024 px laptop | 976 px | 549 px | 1952 px | 464 px |
+| 1440 px and wider | 1320 px | 743 px | 2640 px | 600 px or more |
+
+**Producing the video.** The borders must be wide enough to cover the slide at every viewport you care about. The video is wide enough when
+
+`Video aspect ratio / Content area aspect ratio` is at least `viewport width / grid row width`.
+
+The two extremes are small phones, where the paddings are a large share of the viewport (about 1.1 at 360 px), and ultra-wide screens, where the grid stops growing at 1320 px (1.94 at 2560 px). A video twice as wide as its content area, as in the example above, covers viewports up to 2640 px. Beyond that the slide's background colour shows at the far edges, softened by the 1800 px side fades. Keep the borders a flat, single colour, and export the poster from the same canvas so it includes the borders.
+
+<Warning>
+  The content area is only guaranteed to line up with the grid while the slide's height is its own. If a taller sibling slide forces the Hero Banner higher, the video scales up with it and the content area becomes wider than the grid. See [mixing slides](#mixing-video-slides-with-other-slides).
+</Warning>
+
+### Full-width based dynamic height
+
+The slide is exactly as tall as the **whole video rendered across the full slide width**: slide height equals the slide width (at most 1800 px) divided by the **Video aspect ratio**. Nothing is cropped and nothing is letterboxed, so the video is shown edge to edge with every pixel visible.
+
+Use it for videos that are designed to be seen in full, or where the video's edges are meant to be visible.
+
+Things to be aware of:
+
+- The height varies continuously with the viewport width. A 16:9 video is 810 px tall on a 1440 px viewport and 219 px on a 390 px phone, so consider a portrait video with its own aspect ratio on the S and XS breakpoints.
+- On viewports wider than 1800 px the video stops growing and the background colour shows on both sides, under the fades.
+- If another slide is taller, the video keeps its own height and is centred, with the background colour above and below it.
+
+### Static height
+
+You set the **Static height** in pixels for the breakpoint and choose how the video is fitted into that box with **Video sizing**:
+
+| Video sizing | Behaviour |
+| --- | --- |
+| **Cover** (default) | The video is scaled up until it fills the slide in both directions, so parts of it are cropped, either top and bottom or left and right depending on the aspect ratios. On viewports wider than 1800 px the video is first limited to 1800 px wide and only grows beyond that if the height demands it |
+| **Contain** | The video is scaled down until it fits entirely inside the slide. The remaining space shows the background colour |
+
+Use Static height when the Hero Banner must have a predictable height, for example to match an image slide exactly (364 px at L and XL, 240 px at M, 136 px at S and XS) so that mixed carousels do not resize between slides.
+
+### Choosing a method
+
+| | Content area based | Full-width based | Static |
+| --- | --- | --- | --- |
+| Slide height | From the grid width and the content area aspect ratio | From the slide width and the video aspect ratio | Fixed per breakpoint |
+| Cropping | Side borders only, by design | None | Cover: yes. Contain: none |
+| CSS background visible | Only if the borders are too narrow | Beyond 1800 px, and when a sibling is taller | Contain: yes. Cover: no |
+| Content lines up with the grid | Yes | No | No |
+| Best for | Full-bleed hero videos produced for this slide | Videos that must be seen in full | Matching a fixed layout or an image slide |
+
+## Background colour
+
+The background colour is the colour of the slide itself. It shows wherever the video does not cover the slide:
+
+- around a **contained** video and above and below a full-width video that is shorter than the Hero Banner,
+- at the far edges of viewports wider than 1800 px, where the video is faded into it,
+- briefly before the poster image has loaded.
+
+Pick the colour closest to the video's own background. With the content area based method the video's borders do the filling, so the colour is only visible in the fades and at the extreme edges.
+
+## Poster and playback
+
+- The **poster** covers the video area until Vimeo reports that playback has started, then fades out over one second. It is sized exactly like the video, so a poster with a different framing or aspect ratio will not line up.
+- The video plays **muted**, **loops**, and has **no controls**. It starts automatically.
+- Only the **active slide's** video plays. Videos on inactive slides are paused and resume, not restart, when their slide becomes active. Below L only the first slide is shown, so only its video plays.
+- The Hero Banner's **dwell time** is independent of the video length. Use a video that loops seamlessly, or set the dwell time to the video's duration.
+
+## Linking the whole slide
+
+When an **Action** is selected, the entire slide becomes the link and the **Link label** is used as its accessible name and analytics label. Clicks anywhere on the video follow the link; the player itself does not react to clicks. Below L this applies to the first slide only, as the others are not shown.
+
+## Mixing video slides with other slides
+
+A Hero Banner always takes the height of its tallest slide (on desktop all slides count, below L only the first). A video slide that is shorter than that height stretches to fill it, and what happens to the video depends on the sizing method:
+
+| Sizing method | When a sibling is taller |
+| --- | --- |
+| Content area based | The video scales up to the Hero Banner height. The borders still cover the sides, but the content area becomes wider than the grid |
+| Full-width based | The video keeps its own height and is centred, with background colour above and below |
+| Static, Cover | Cover is re-applied against the Hero Banner height, so more of the video is cropped |
+| Static, Contain | The video keeps its size and is centred, with more background colour around it |
+
+To keep a mixed carousel stable, either give every video slide a Static height equal to the image slide height, or make sure the video slides are the tallest slides so that they define the height.
+
+## Troubleshooting
+
+| Symptom | Likely cause |
+| --- | --- |
+| Poster shows but the video never starts | Embedding is not allowed for the video on Vimeo, or the ID is wrong |
+| Player controls or title are visible | The Vimeo account does not support background playback (Plus, Pro or Premium needed) |
+| Visible jump when the video starts | Poster framing or aspect ratio differs from the video |
+| Strips of background colour at the sides of a content area video | The borders are too narrow for that viewport, see [Producing the video](#content-area-based-dynamic-height) |
+| Content area wider than the page grid | Another slide is taller than this one, see [Mixing slides](#mixing-video-slides-with-other-slides) |
+| Save fails on a breakpoint | A required field for the chosen sizing method is empty on a ticked breakpoint |

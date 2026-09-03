@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 330" width="820" height="330" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" fill="#374151">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs>
+<rect x="40.0" y="70.0" width="680.0" height="180.0" fill="#fde3bd" stroke="#f59e0b" stroke-width="2"/>
+<rect x="220.0" y="70.0" width="320.0" height="180.0" fill="#c3dfb0" stroke="#5ba42b" stroke-width="2"/>
+<text x="380.0" y="40.0" text-anchor="middle" font-size="14" fill="#374151" font-weight="600">Video file as exported</text>
+<text x="380.0" y="150.0" text-anchor="middle" font-size="14" fill="#2f6b12" font-weight="600">Content area</text>
+<text x="380.0" y="170.0" text-anchor="middle" font-size="12" fill="#2f6b12">what the visitor should see</text>
+<text x="380.0" y="190.0" text-anchor="middle" font-size="12" fill="#2f6b12">lines up with the page grid</text>
+<text x="130.0" y="150.0" text-anchor="middle" font-size="12" fill="#b45309">single-colour</text>
+<text x="130.0" y="168.0" text-anchor="middle" font-size="12" fill="#b45309">border</text>
+<text x="130.0" y="186.0" text-anchor="middle" font-size="12" fill="#b45309">cropped as needed</text>
+<text x="630.0" y="150.0" text-anchor="middle" font-size="12" fill="#b45309">single-colour</text>
+<text x="630.0" y="168.0" text-anchor="middle" font-size="12" fill="#b45309">border</text>
+<text x="630.0" y="186.0" text-anchor="middle" font-size="12" fill="#b45309">cropped as needed</text>
+<line x1="220.0" y1="258.0" x2="540.0" y2="258.0" stroke="#5ba42b" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<text x="380.0" y="276.0" text-anchor="middle" font-size="12" fill="#2f6b12">Content width w  &#8594;  Content area aspect ratio = w / H</text>
+<line x1="40.0" y1="296.0" x2="720.0" y2="296.0" stroke="#6b7280" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<text x="380.0" y="316.0" text-anchor="middle" font-size="12" fill="#6b7280">Video width W  &#8594;  Video aspect ratio = W / H</text>
+<line x1="742.0" y1="70.0" x2="742.0" y2="250.0" stroke="#6b7280" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<text x="752.0" y="156.0" text-anchor="start" font-size="12" fill="#6b7280">Height</text>
+<text x="752.0" y="172.0" text-anchor="start" font-size="12" fill="#6b7280">H</text>
+</svg>

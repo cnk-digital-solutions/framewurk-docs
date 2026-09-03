@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 275" width="1000" height="275" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" fill="#374151">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs>
+<text x="180.0" y="40.0" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Content area based</text>
+<rect x="14.0" y="60.0" width="26.0" height="150.0" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="320.0" y="60.0" width="26.0" height="150.0" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="40.0" y="60.0" width="36.0" height="150.0" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="284.0" y="60.0" width="36.0" height="150.0" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="76.0" y="60.0" width="208.0" height="150.0" fill="#c3dfb0" stroke="#5ba42b" stroke-width="1.5"/>
+<rect x="40.0" y="60.0" width="280.0" height="150.0" fill="none" stroke="#6b7280" stroke-width="2"/>
+<rect x="76.0" y="60.0" width="208.0" height="150.0" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="180.0" y="139.0" text-anchor="middle" font-size="12" fill="#2f6b12" font-weight="600">content area = grid row</text>
+<text x="180.0" y="238.0" text-anchor="middle" font-size="12" fill="#6b7280">height = grid row width &#247; content area aspect ratio</text>
+<text x="180.0" y="256.0" text-anchor="middle" font-size="12" fill="#6b7280">video scaled to that height, side borders cropped</text>
+<text x="515.0" y="40.0" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Full-width based</text>
+<rect x="375.0" y="60.0" width="280.0" height="157.3" fill="#d3e3fd" stroke="#3b82f6" stroke-width="1.5"/>
+<rect x="375.0" y="60.0" width="280.0" height="157.3" fill="none" stroke="#6b7280" stroke-width="2"/>
+<text x="515.0" y="142.7" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">whole video visible</text>
+<text x="515.0" y="238.0" text-anchor="middle" font-size="12" fill="#6b7280">height = slide width (max 1800 px) &#247; video aspect ratio</text>
+<text x="515.0" y="256.0" text-anchor="middle" font-size="12" fill="#6b7280">no crop, no letterbox</text>
+<text x="835.0" y="40.0" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Static height</text>
+<rect x="674.0" y="60.0" width="26.0" height="86.0" fill="#d3e3fd" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="970.0" y="60.0" width="26.0" height="86.0" fill="#d3e3fd" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="700.0" y="60.0" width="270.0" height="86.0" fill="#d3e3fd" stroke="none" stroke-width="1.5"/>
+<rect x="700.0" y="60.0" width="270.0" height="86.0" fill="none" stroke="#6b7280" stroke-width="2"/>
+<text x="835.0" y="107.0" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Cover: fills the slide, crops</text>
+<rect x="700.0" y="162.0" width="270.0" height="60.0" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+<rect x="781.6" y="162.0" width="106.8" height="60.0" fill="#d3e3fd" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="740.8" y="196.0" text-anchor="middle" font-size="11" fill="#6b7280">background</text>
+<text x="929.2" y="196.0" text-anchor="middle" font-size="11" fill="#6b7280">background</text>
+<text x="835.0" y="196.0" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Contain</text>
+<text x="835.0" y="238.0" text-anchor="middle" font-size="12" fill="#6b7280">height = fixed pixels per breakpoint</text>
+<text x="835.0" y="256.0" text-anchor="middle" font-size="12" fill="#6b7280">video fitted with Cover or Contain</text>
+</svg>

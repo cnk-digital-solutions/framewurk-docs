@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 475" width="1000" height="475" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" fill="#374151">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs>
+<text x="500.0" y="28.0" text-anchor="middle" font-size="14" fill="#374151" font-weight="600">Content area based dynamic height at three viewport widths</text>
+<text x="500.0" y="48.0" text-anchor="middle" font-size="12" fill="#6b7280">Slide height = grid row width &#247; content area aspect ratio. The video is scaled to that height, so its borders overflow the slide and are cropped.</text>
+<text x="135.0" y="84.0" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Phone</text>
+<rect x="34.0" y="100.0" width="26.0" height="70.8" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="210.0" y="100.0" width="26.0" height="70.8" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="60.0" y="100.0" width="12.0" height="70.8" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="198.0" y="100.0" width="12.0" height="70.8" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="72.0" y="100.0" width="126.0" height="70.8" fill="#c3dfb0" stroke="#5ba42b" stroke-width="1.5"/>
+<rect x="60.0" y="100.0" width="150.0" height="70.8" fill="none" stroke="#6b7280" stroke-width="2"/>
+<rect x="72.0" y="100.0" width="126.0" height="70.8" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="135.0" y="192.8" text-anchor="middle" font-size="12" fill="#6b7280">column = viewport &#8722; 2 &#215; 16 px</text>
+<text x="420.0" y="84.0" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Fluid, below 1368 px</text>
+<rect x="244.0" y="100.0" width="26.0" height="148.3" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="570.0" y="100.0" width="26.0" height="148.3" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="270.0" y="100.0" width="18.0" height="148.3" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="552.0" y="100.0" width="18.0" height="148.3" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="288.0" y="100.0" width="264.0" height="148.3" fill="#c3dfb0" stroke="#5ba42b" stroke-width="1.5"/>
+<rect x="270.0" y="100.0" width="300.0" height="148.3" fill="none" stroke="#6b7280" stroke-width="2"/>
+<rect x="288.0" y="100.0" width="264.0" height="148.3" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="420.0" y="270.3" text-anchor="middle" font-size="12" fill="#6b7280">column = viewport &#8722; 2 &#215; 24 px</text>
+<text x="800.0" y="84.0" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Wide, grid at its 1320 px maximum</text>
+<rect x="604.0" y="100.0" width="26.0" height="146.1" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="970.0" y="100.0" width="26.0" height="146.1" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="630.0" y="100.0" width="40.0" height="146.1" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="930.0" y="100.0" width="40.0" height="146.1" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<rect x="670.0" y="100.0" width="260.0" height="146.1" fill="#c3dfb0" stroke="#5ba42b" stroke-width="1.5"/>
+<rect x="630.0" y="100.0" width="340.0" height="146.1" fill="none" stroke="#6b7280" stroke-width="2"/>
+<rect x="670.0" y="100.0" width="260.0" height="146.1" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="800.0" y="268.1" text-anchor="middle" font-size="12" fill="#6b7280">column fixed at 1320 px, height stops growing</text>
+<g transform="translate(60 320)"><rect x="0.0" y="0.0" width="22.0" height="14.0" fill="none" stroke="#6b7280" stroke-width="2"/>
+<text x="30.0" y="12.0" text-anchor="start" font-size="12" fill="#374151">Slide: as wide as the viewport, height h computed from the grid row</text>
+</g>
+<g transform="translate(60 346)"><rect x="0.0" y="0.0" width="22.0" height="14.0" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="30.0" y="12.0" text-anchor="start" font-size="12" fill="#374151">Full-width row of the page grid</text>
+</g>
+<g transform="translate(60 372)"><rect x="0.0" y="0.0" width="22.0" height="14.0" fill="#c3dfb0" stroke="#5ba42b" stroke-width="1.5"/>
+<text x="30.0" y="12.0" text-anchor="start" font-size="12" fill="#374151">Content area of the video: always exactly as wide as the grid row</text>
+</g>
+<g transform="translate(60 398)"><rect x="0.0" y="0.0" width="22.0" height="14.0" fill="#fde3bd" stroke="none" stroke-width="1.5"/>
+<text x="30.0" y="12.0" text-anchor="start" font-size="12" fill="#374151">Single-colour borders of the video, filling the rest of the slide</text>
+</g>
+<g transform="translate(60 424)"><rect x="0.0" y="0.0" width="22.0" height="14.0" fill="#fde3bd" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="30.0" y="12.0" text-anchor="start" font-size="12" fill="#374151">Rest of the borders: outside the slide, cropped</text>
+</g>
+<text x="980.0" y="462.0" text-anchor="end" font-size="11" fill="#6b7280">Not to scale. Content area aspect ratio 1.78, video aspect ratio about 3.6.</text>
+</svg>
