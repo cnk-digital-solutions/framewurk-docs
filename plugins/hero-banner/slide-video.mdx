@@ -44,7 +44,7 @@ All video settings are **per breakpoint**, using the same responsive construct a
 
 ### Responsive settings
 
-Each of these exists once per breakpoint.
+Each of these exists once per breakpoint. A breakpoint with its own Vimeo ID gets its own player, and only the player for the current breakpoint is displayed.
 
 | Field | Required | Notes |
 | --- | --- | --- |
@@ -58,18 +58,6 @@ Each of these exists once per breakpoint.
 | **Video sizing** | With Static height | **Cover** (default) or **Contain** |
 
 Fields that do not apply to the selected sizing method are hidden in the editor and cleared on save, so switching methods never leaves stale values behind.
-
-### Breakpoints
-
-| Breakpoint | Viewport width |
-| --- | --- |
-| XL | 1440 px and wider |
-| L | 1024 to 1439 px |
-| M | 740 to 1023 px |
-| S | 490 to 739 px |
-| XS | below 490 px |
-
-Values cascade upwards: a breakpoint without its own values uses the next larger breakpoint that has them, ending at XL. A breakpoint with its own Vimeo ID gets its own player, and only the player for the current breakpoint is displayed.
 
 ## Sizing methods
 
