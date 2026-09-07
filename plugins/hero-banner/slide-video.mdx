@@ -41,15 +41,11 @@ Two rules apply to every method:
 - The video is never wider than **1800 px**. On wider viewports, the part of the slide outside the central 1800 px is faded to the slide's background colour on both sides, so the video does not appear to stretch indefinitely.
 - The video is always horizontally and vertically **centred** in the slide.
 
-<Frame caption="The three sizing methods side by side. Grey is the slide, blue is the video. Dashed outlines are the parts of the video that are cropped away.">
-  <img src="/images/hero-video-sizing-methods.svg" alt="Three panels comparing content area based, full-width based and static sizing" />
-</Frame>
-
 ### Content area based dynamic height
 
 This is the default and the recommended method for full-bleed hero videos.
 
-**The problem it solves.** A video's own background colour almost never matches a CSS colour exactly, so any part of the slide that is not covered by the video shows a visible seam. This method avoids CSS filler entirely: the video is produced with **wide single-colour borders on both sides** of the actual content, and the borders, not the CSS, fill whatever width the slide has.
+**The problem it solves.** A video's own background colour cannot match CSS colour exactly, so any part of the slide that is not covered by the video shows a visible seam. This method avoids CSS filler entirely: the video is produced with **wide single-colour borders on both sides** of the actual content, and the borders, not the CSS, fill whatever width the slide has.
 
 <Frame caption="Anatomy of a content area video. The content area sits in the centre; the borders on either side are part of the video file.">
   <img src="/images/hero-video-content-area.svg" alt="A wide video frame with a narrower content area in the centre and single-colour borders left and right" />
@@ -67,24 +63,18 @@ Because the video's content area has the same aspect ratio as the slide's height
   <img src="/images/hero-video-content-sizing.svg" alt="Three viewports of increasing width showing the content area matching the grid column while the borders are cropped" />
 </Frame>
 
-**Worked example.** The content is produced at 1920 x 1080 and placed on a 3840 x 1080 canvas with borders of 960 px on either side.
+**Worked example.** The content is produced at 2360 x 900 and placed on a 3600 x 900 canvas with borders on either side.
 
 | Setting | Value |
 | --- | --- |
-| Video aspect ratio | 3840 / 1080 = `3.5555555556` |
-| Content area aspect ratio | 1920 / 1080 = `1.7777777778` |
-
-| Viewport | Grid row width | Slide height | Video width | Cropped per side |
-| --- | --- | --- | --- | --- |
-| 390 px phone | 358 px | 201 px | 716 px | 163 px |
-| 1024 px laptop | 976 px | 549 px | 1952 px | 464 px |
-| 1440 px and wider | 1320 px | 743 px | 2640 px | 600 px or more |
+| Video aspect ratio | 3600 / 900 = `4.0` |
+| Content area aspect ratio | 2360 / 900   = `2.6222222222` |
 
 **Producing the video.** The borders must be wide enough to cover the slide at every viewport you care about. The video is wide enough when
 
 `Video aspect ratio / Content area aspect ratio` is at least `viewport width / grid row width`.
 
-The two extremes are small phones, where the paddings are a large share of the viewport (about 1.1 at 360 px), and ultra-wide screens, where the grid stops growing at 1320 px (1.94 at 2560 px). A video twice as wide as its content area, as in the example above, covers viewports up to 2640 px. Beyond that the slide's background colour shows at the far edges, softened by the 1800 px side fades. Keep the borders a flat, single colour, and export the poster from the same canvas so it includes the borders.
+The two extremes are small phones, where the paddings are a large share of the viewport (about 1.1 at 360 px), and ultra-wide screens, where the grid stops growing at 1320 px (1.94 at 2560 px). In the example above, the video is rendered at height of 450px. This translates to 1800px wide, which matches the point when the side borders come in. Keep the borders a flat, single colour, and export the poster from the same canvas so it includes the borders.
 
 <Warning>
   The content area is only guaranteed to line up with the grid while the slide's height is its own. If a taller sibling slide forces the Hero Banner higher, the video scales up with it and the content area becomes wider than the grid. See [mixing slides](#mixing-video-slides-with-other-slides).
@@ -98,7 +88,7 @@ Use it for videos that are designed to be seen in full, or where the video's edg
 
 Things to be aware of:
 
-- The height varies continuously with the viewport width. A 16:9 video is 810 px tall on a 1440 px viewport and 219 px on a 390 px phone, so consider a portrait video with its own aspect ratio on the S and XS breakpoints.
+- The height varies continuously with the viewport width. A 16:9 video is 810 px tall on a 1440 px viewport and 219 px on a 390 px phone, so consider a square/portrait video with its own aspect ratio on the S and XS breakpoints.
 - On viewports wider than 1800 px the video stops growing and the background colour shows on both sides, under the fades.
 - If another slide is taller, the video keeps its own height and is centred, with the background colour above and below it.
 
@@ -111,14 +101,14 @@ You set the **Static height** in pixels for the breakpoint and choose how the vi
 | **Cover** (default) | The video is scaled up until it fills the slide in both directions, so parts of it are cropped, either top and bottom or left and right depending on the aspect ratios. On viewports wider than 1800 px the video is first limited to 1800 px wide and only grows beyond that if the height demands it |
 | **Contain** | The video is scaled down until it fits entirely inside the slide. The remaining space shows the background colour |
 
-Use Static height when the Hero Banner must have a predictable height, for example to match an image slide exactly (364 px at L and XL, 240 px at M, 136 px at S and XS) so that mixed carousels do not resize between slides.
+Use Static height when the Hero Banner must have a predictable height, for example to match an image slide exactly (364 px at L and XL, 240 px at M, 136 px at S and XS).
 
 ### Choosing a method
 
 | | Content area based | Full-width based | Static |
 | --- | --- | --- | --- |
 | Slide height | From the grid width and the content area aspect ratio | From the slide width and the video aspect ratio | Fixed per breakpoint |
-| Cropping | Side borders only, by design | None | Cover: yes. Contain: none |
+| Cropping | Side borders only | None | Cover: yes. Contain: none |
 | CSS background visible | Only if the borders are too narrow | Beyond 1800 px, and when a sibling is taller | Contain: yes. Cover: no |
 | Content lines up with the grid | Yes | No | No |
 | Best for | Full-bleed hero videos produced for this slide | Videos that must be seen in full | Matching a fixed layout or an image slide |
