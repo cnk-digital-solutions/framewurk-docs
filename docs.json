@@ -16,10 +16,7 @@
     "eyebrows": "breadcrumbs"
   },
   "contextual": {
-    "options": [
-      "copy",
-      "assistant"
-    ]
+    "options": ["copy", "assistant"]
   },
   "navigation": {
     "global": {},
@@ -42,12 +39,17 @@
                 "group": "Plugins (WIP/UNRELEASED)",
                 "pages": [
                   {
-                    "group": "Hero Banner",
-                    "icon": "gallery-horizontal",
-                    "root": "plugins/hero-banner",
+                    "group": "Custom Widgets",
                     "pages": [
-                      "plugins/hero-banner/slide",
-                      "plugins/hero-banner/slide-video"
+                      {
+                        "group": "Hero Banner",
+                        "icon": "gallery-horizontal",
+                        "root": "plugins/hero-banner",
+                        "pages": [
+                          "plugins/hero-banner/slide",
+                          "plugins/hero-banner/slide-video"
+                        ]
+                      }
                     ]
                   }
                 ]
