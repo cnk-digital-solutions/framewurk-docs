@@ -70,15 +70,7 @@ Because the video's content area has the same aspect ratio as the slide's height
 | Video aspect ratio | 3600 / 900 = `4.0` |
 | Content area aspect ratio | 2360 / 900   = `2.6222222222` |
 
-**Producing the video.** The borders must be wide enough to cover the slide at every viewport you care about. The video is wide enough when
-
-`Video aspect ratio / Content area aspect ratio` is at least `viewport width / grid row width`.
-
-The two extremes are small phones, where the paddings are a large share of the viewport (about 1.1 at 360 px), and ultra-wide screens, where the grid stops growing at 1320 px (1.94 at 2560 px). In the example above, the video is rendered at height of 450px. This translates to 1800px wide, which matches the point when the side borders come in. Keep the borders a flat, single colour, and export the poster from the same canvas so it includes the borders.
-
-<Warning>
-  The content area is only guaranteed to line up with the grid while the slide's height is its own. If a taller sibling slide forces the Hero Banner higher, the video scales up with it and the content area becomes wider than the grid. See [mixing slides](#mixing-video-slides-with-other-slides).
-</Warning>
+**Producing the video.** The borders must be wide enough to cover the slide at every breakpoint. In practise, this means that we need to aim for the video to fill the viewport at 1800px wide.
 
 ### Full-width based dynamic height
 
