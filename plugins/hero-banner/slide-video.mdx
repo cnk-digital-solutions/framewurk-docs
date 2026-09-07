@@ -124,7 +124,7 @@ Pick the colour closest to the video's own background. With the content area bas
 
 ## Linking the whole slide
 
-When an **Action** is selected, the entire slide becomes the link and the **Link label** is used as its accessible name and analytics label. Clicks anywhere on the video follow the link; the player itself does not react to clicks. Below L this applies to the first slide only, as the others are not shown.
+When an **Action** is selected, the entire slide becomes the link and the **Link label** is used as its accessible name and analytics label. Clicks anywhere on the video follow the link. Below L this applies to the first slide only, as the others are not shown.
 
 ## Mixing video slides with other slides
 
@@ -137,7 +137,7 @@ A Hero Banner always takes the height of its tallest slide (on desktop all slide
 | Static, Cover | Cover is re-applied against the Hero Banner height, so more of the video is cropped |
 | Static, Contain | The video keeps its size and is centred, with more background colour around it |
 
-To keep a mixed carousel stable, either give every video slide a Static height equal to the image slide height, or make sure the video slides are the tallest slides so that they define the height.
+To keep a mixed carousel looking good, give every video slide a Static height equal to the image slide height at that specific breakpoint.
 
 ## Troubleshooting
 
@@ -148,4 +148,3 @@ To keep a mixed carousel stable, either give every video slide a Static height e
 | Visible jump when the video starts | Poster framing or aspect ratio differs from the video |
 | Strips of background colour at the sides of a content area video | The borders are too narrow for that viewport, see [Producing the video](#content-area-based-dynamic-height) |
 | Content area wider than the page grid | Another slide is taller than this one, see [Mixing slides](#mixing-video-slides-with-other-slides) |
-| Save fails on a breakpoint | A required field for the chosen sizing method is empty on a ticked breakpoint |
