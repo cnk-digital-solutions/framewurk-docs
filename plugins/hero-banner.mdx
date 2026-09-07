@@ -44,7 +44,7 @@ At L and XL (1024 px and wider) the Hero Banner is a carousel:
 
 ### Below desktop: the first slide only
 
-At M, S and XS (below 1024 px) there is no carousel. The **first slide is shown on its own** and the other slides and the controls are not displayed. Put the slide you care about most first.
+At M, S and XS (below 1024 px) there is no carousel. The **first slide is shown on its own** and the other slides and the controls are not displayed.
 
 ### Height: the tallest slide wins
 
@@ -54,7 +54,3 @@ Slides are stacked on top of each other, so the Hero Banner takes the height of 
 - Below desktop, only the first slide counts, because it is the only one shown.
 
 Image slides contribute their [fixed height](/plugins/hero-banner/slide#layout-per-breakpoint). Video slides contribute a height that depends on their sizing method, which can be taller or shorter than an image slide. See [how video slides behave next to other slides](/plugins/hero-banner/slide-video#mixing-video-slides-with-other-slides) for what happens to a video slide that is shorter than its tallest sibling.
-
-<Tip>
-  If a Hero Banner mixes image and video slides, the height is recalculated on every resize from each slide's configuration, never from what is currently on screen, so a slide that was stretched to match a taller sibling never influences the next calculation.
-</Tip>
