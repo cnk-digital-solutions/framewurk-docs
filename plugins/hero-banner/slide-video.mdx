@@ -51,13 +51,7 @@ This is the default and the recommended method for full-bleed hero videos.
   <img src="/images/hero-video-content-area.svg" alt="A wide video frame with a narrower content area in the centre and single-colour borders left and right" />
 </Frame>
 
-**How the height is calculated.**
-
-1. Take the width of a full row of the page grid at the current viewport: the viewport width minus the grid's side paddings (16 px each side on S and XS, 24 px from M up), capped at the grid's maximum content width of 1320 px, which is reached at a 1368 px viewport.
-2. Divide it by the **Content area aspect ratio**. The result is the slide height.
-3. Scale the video so that its height equals the slide height. Its width follows from the **Video aspect ratio**, so the video ends up wider than the slide and the surplus, which is border, is cropped on both sides.
-
-Because the video's content area has the same aspect ratio as the slide's height was derived from, the content area lands exactly on the page grid: as wide as a full-width row, aligned with the columns of the content below it, at every viewport width.
+The content area lands exactly on the page grid: as wide as a full-width row, aligned with the columns of the content below it, at every viewport width.
 
 <Frame caption="The same video at three viewport widths. The green content area always matches the grid column (blue dashed); the orange borders fill the rest of the slide and are cropped outside it.">
   <img src="/images/hero-video-content-sizing.svg" alt="Three viewports of increasing width showing the content area matching the grid column while the borders are cropped" />
@@ -70,7 +64,7 @@ Because the video's content area has the same aspect ratio as the slide's height
 | Video aspect ratio | 3600 / 900 = `4.0` |
 | Content area aspect ratio | 2360 / 900   = `2.6222222222` |
 
-**Producing the video.** The borders must be wide enough to cover the slide at every breakpoint. In practise, this means that we need to aim for the video to fill the viewport at 1800px wide.
+**Producing the video.** The borders must be wide enough to cover the slide at every breakpoint. In practise, this means that we need to aim for the video to fill the viewport at 1800px wide. The video then should be double the resolution for retina screens (in the example above 1800 \* 2 = 3600).
 
 ### Full-width based dynamic height
 
