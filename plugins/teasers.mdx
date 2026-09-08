@@ -1,0 +1,61 @@
+---
+title: "Teasers"
+description: "A row of FT article teaser cards. The cards can be authored by hand, pulled live from an FT news stream, or a mix of both."
+icon: "layout-grid"
+---
+
+The **Teasers** widget shows a set of article teaser cards: an image, a topic label and a heading that links to the article. On desktop the cards sit in a grid of four per row; on smaller screens the same cards become a scrolling carousel.
+
+Unlike the Hero Banner it is not a root-level widget: it is a content plugin that sits **inside a Column or a Container**.
+
+Cards come from child plugins, and two kinds are available:
+
+| Child plugin | What it adds | Details |
+| --- | --- | --- |
+| **Teaser Item** | One hand-authored card, optionally pre-filled from an FT.com article URL | [Teaser Item](/plugins/teasers/item) |
+| **API-driven Teaser Item** | The latest articles from an FT news stream, injected in place | [API-driven Teaser Item](/plugins/teasers/item-api) |
+
+Both kinds can sit under the same Teasers widget in any order.
+
+## Adding a Teasers widget
+
+<Steps>
+  <Step title="Add the parent">
+    In structure mode, add **Teasers** (module **Custom Widgets**) inside a Column or a Container.
+  </Step>
+  <Step title="Choose how it is filled">
+    Leave **API driven** unticked to compose the cards yourself with child plugins, or tick it to fill the whole widget from a single news stream (see below).
+  </Step>
+  <Step title="Add cards">
+    Add **Teaser Item** and **API-driven Teaser Item** children in the order the cards should appear.
+  </Step>
+</Steps>
+
+## Fully API-driven mode
+
+Ticking **API driven** on the parent turns the whole widget into a live view of one news stream. **Child plugins are ignored** in this mode.
+
+- Paste a **News Stream URL** (an ft.com stream page, for example `https://www.ft.com/global-economy`). The **Concept ID** is looked up automatically when you leave the field; it can be entered by hand if the lookup fails.
+- **Number of articles to show** caps the cards at 1 to 8, default 4.
+
+Use this mode when the widget should simply track a stream. To mix live articles with hand-picked ones, leave the box unticked and use an [API-driven Teaser Item](/plugins/teasers/item-api) among the manual cards instead.
+
+## Article freshness
+
+Stream articles are fetched and cached on the server, and refreshed in the background roughly every **8 hours**. A newly published FT article can therefore take up to that long to appear on the page.
+
+## Behaviour
+
+### Desktop: a grid
+
+At L and XL (1024 px and up) the cards form a grid, **four per row**, aligned with the page grid and separated by thin divider lines between columns and between rows. More than four cards wrap onto further rows.
+
+### Tablet: a marquee
+
+At S and M (490 to 1023 px) the grid is replaced by an auto-scrolling marquee of 272 px wide cards. It drifts sideways continuously, loops, pauses while it is off screen or being dragged, and can be dragged with mouse or touch to move through the cards.
+
+### Phone: a carousel
+
+Below 490 px the cards become a swipeable carousel showing one centred card at a time, looping endlessly.
+
+All cards are shown at every breakpoint — the carousel and marquee contain the same cards as the grid.

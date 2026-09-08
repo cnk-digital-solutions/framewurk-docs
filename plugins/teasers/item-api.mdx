@@ -1,0 +1,20 @@
+---
+title: "API-driven Teaser Item"
+description: "Injects the latest articles from an FT news stream as teaser cards, in place, among the hand-authored cards."
+icon: "rss"
+---
+
+**API-driven Teaser Item** is a child of the [Teasers](/plugins/teasers) widget. Where a [Teaser Item](/plugins/teasers/item) is one fixed card, this plugin expands into the **latest articles from an FT news stream** — up to 4 of them — at its position among the other cards.
+
+Use it to mix live content with hand-picked cards: for example two manual teasers followed by the two newest articles from a stream. If the whole widget should track a single stream, tick **API driven** on the [parent](/plugins/teasers#fully-api-driven-mode) instead.
+
+## Setting it up
+
+- Paste a **News Stream URL** (an ft.com stream page, for example `https://www.ft.com/global-economy`). The **Concept ID** is looked up automatically when you leave the field; enter it by hand if the lookup fails.
+- **Number of articles to show** caps the injected cards at 1 to 4.
+
+## What the cards look like
+
+Each injected article renders exactly like a manual card: the article's image, topic and title, with the heading linking to the article on FT.com in a new window.
+
+The articles are refreshed in the background roughly every 8 hours — see [article freshness](/plugins/teasers#article-freshness).

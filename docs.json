@@ -49,6 +49,15 @@
                           "plugins/hero-banner/slide",
                           "plugins/hero-banner/slide-video"
                         ]
+                      },
+                      {
+                        "group": "Teasers",
+                        "icon": "layout-grid",
+                        "root": "plugins/teasers",
+                        "pages": [
+                          "plugins/teasers/item",
+                          "plugins/teasers/item-api"
+                        ]
                       }
                     ]
                   }
