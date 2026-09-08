@@ -4,11 +4,11 @@ description: "A row of FT article teaser cards. The cards can be authored by han
 icon: "layout-grid"
 ---
 
-The **Teasers** widget shows a set of article teaser cards: an image, a topic label and a heading that links to the article. On desktop the cards sit in a grid of four per row; on smaller screens the same cards become a scrolling carousel.
+The **Teasers** widget shows a set of article teaser cards: an image, a topic label and a heading that links to the article. On desktop the cards sit in a grid of four per row; on smaller screens the same cards become a carousel/marquee.
 
-Unlike the Hero Banner it is not a root-level widget: it is a content plugin that sits **inside a Column or a Container**.
+It is a content plugin that sits **inside a Column or a Container**.
 
-Cards come from child plugins, and two kinds are available:
+Teaser cards come from child plugins, and two kinds are available:
 
 | Child plugin | What it adds | Details |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ Use this mode when the widget should simply track a stream. To mix live articles
 
 ## Article freshness
 
-Stream articles are fetched and cached on the server, and refreshed in the background roughly every **8 hours**. A newly published FT article can therefore take up to that long to appear on the page.
+Stream articles are fetched and cached on the server, and refreshed in the background roughly every **1 hour**. A newly published FT article can therefore take up to that long to appear on the page.
 
 ## Behaviour
 
@@ -52,10 +52,10 @@ At L and XL (1024 px and up) the cards form a grid, **four per row**, aligned wi
 
 ### Tablet: a marquee
 
-At S and M (490 to 1023 px) the grid is replaced by an auto-scrolling marquee of 272 px wide cards. It drifts sideways continuously, loops, pauses while it is off screen or being dragged, and can be dragged with mouse or touch to move through the cards.
+At S and M (490 to 1023 px) the grid is replaced by an auto-scrolling marquee of cards. It drifts sideways continuously, loops, pauses while it is off screen or being dragged, and can be dragged with mouse or touch to move through the cards.
 
 ### Phone: a carousel
 
 Below 490 px the cards become a swipeable carousel showing one centred card at a time, looping endlessly.
 
-All cards are shown at every breakpoint — the carousel and marquee contain the same cards as the grid.
+All cards are shown at every breakpoint - the carousel and marquee contain the same cards as the grid.
