@@ -26,6 +26,7 @@
 - Use sentence case for headings
 - Bold for UI elements: Click **Settings**
 - Code formatting for file names, commands, paths, and code references
+- Pixel values are written with no space before the unit: `1800px`, never `1800 px`. This applies to prose, tables and text inside SVG diagrams
 
 ## Content boundaries
 

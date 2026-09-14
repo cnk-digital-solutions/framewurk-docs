@@ -16,7 +16,7 @@
 <rect x="375.0" y="60.0" width="280.0" height="157.3" fill="#d3e3fd" stroke="#3b82f6" stroke-width="1.5"/>
 <rect x="375.0" y="60.0" width="280.0" height="157.3" fill="none" stroke="#6b7280" stroke-width="2"/>
 <text x="515.0" y="142.7" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">whole video visible</text>
-<text x="515.0" y="238.0" text-anchor="middle" font-size="12" fill="#6b7280">height = slide width (max 1800 px) &#247; video aspect ratio</text>
+<text x="515.0" y="238.0" text-anchor="middle" font-size="12" fill="#6b7280">height = slide width (max 1800px) &#247; video aspect ratio</text>
 <text x="515.0" y="256.0" text-anchor="middle" font-size="12" fill="#6b7280">no crop, no letterbox</text>
 <text x="835.0" y="40.0" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Static height</text>
 <rect x="674.0" y="60.0" width="26.0" height="86.0" fill="#d3e3fd" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="4 3"/>

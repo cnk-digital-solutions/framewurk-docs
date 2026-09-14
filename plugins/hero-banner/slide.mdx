@@ -12,17 +12,17 @@ The slide adapts to the viewport in three steps. Heading text is always a single
 
 | Breakpoint | Slide height | What is shown |
 | --- | --- | --- |
-| L and XL (1024 px and up) | 364 px | Heading left-aligned in the left half, CTA button below it, graphic in the right half |
-| M (740 to 1023 px) | 240 px | Heading only, centred, at the larger size. No CTA, no graphic |
-| S and XS (below 740 px) | 136 px | Heading only, centred, at the smaller size. No CTA, no graphic |
+| L and XL (1024px and up) | 364px | Heading left-aligned in the left half, CTA button below it, graphic in the right half |
+| M (740 to 1023px) | 240px | Heading only, centred, at the larger size. No CTA, no graphic |
+| S and XS (below 740px) | 136px | Heading only, centred, at the smaller size. No CTA, no graphic |
 
 Below L the Hero Banner shows its first slide only, so on tablets and phones a Slide is effectively a heading on a slate background. The CTA is now shown.
 
 ## The graphic
 
-The **Raster image** is placed in the right half of the slide at L and XL, anchored to the bottom-left corner of that half and displayed 364 px tall, which is the full slide height.
+The **Raster image** is placed in the right half of the slide at L and XL, anchored to the bottom-left corner of that half and displayed 364px tall, which is the full slide height.
 
-- Upload a **1240 x 728 px PNG**.
+- Upload a **1240 x 728px PNG**.
 - PNG is expected because transparent areas show the slate background of the slide, which lets the graphic sit on the banner without a visible box.
 - The image is cropped to the 1240 x 728 frame if its proportions differ, using the subject location set on the file in the media library.
 
@@ -32,4 +32,4 @@ The CTA is always rendered at L and XL. The **CTA label** doubles as the button'
 
 ## Next to video slides
 
-A Slide has the fixed heights above, so when it shares a Hero Banner with a [Slide (video)](/plugins/hero-banner/slide-video) whose sizing method produces a taller slide, the Hero Banner grows to the video slide's height and the Slide stretches with it: the heading and CTA stay top-left in the taller box and the graphic stays anchored to the bottom-left of its half. See [mixing video slides with other slides](/plugins/hero-banner/slide-video#mixing-video-slides-with-other-slides) for the other direction.
+A Slide has the fixed heights above, so when it shares a Hero Banner with a [Slide (Video)](/plugins/hero-banner/slide-video) whose sizing method produces a taller slide, the Hero Banner grows to the video slide's height and the Slide stretches with it: the heading and CTA stay top-left in the taller box and the graphic stays anchored to the bottom-left of its half. See [mixing video slides with other slides](/plugins/hero-banner/slide-video#mixing-video-slides-with-other-slides) for the other direction.
