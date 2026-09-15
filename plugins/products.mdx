@@ -4,9 +4,9 @@ description: "The products section of a V3 page: product cards fed live from the
 icon: "shopping-bag"
 ---
 
-The **Products** widget is the offers section of a V3 page. It shows a row of product cards, each with a packshot, name, price, intro text, a **Select** button and a **View details** button that opens a full-screen overlay. Above the cards sits a sticky navigation bar with **Subscribe**, **Compare** and **Why the FT** tabs.
+The **Products** widget is the offers section of a V3 page. It shows a row of product cards, each with a packshot, name, price, intro text, a **Select** button and a **View details** button that opens a full-screen overlay. Above the cards sits a sticky navigation bar with **Subscribe**, **Compare** and **Why the FT** tabs, which can be switched off to show the cards alone.
 
-It is a root-level widget for V3 pages and comes in two variants that share exactly the same settings:
+It is a root-level widget for V3 pages and comes in two variants that share the same settings:
 
 | Variant | Children | Use it when |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Products are not authored on the page. Each **Product** child points at a **prod
 
 ## Settings
 
-Both variants have the same form, arranged in the following groups.
+Both variants have the same form, arranged in the following groups, with one exception: the **FT Professional mobile link** fieldset exists only on **Products (Grouped)**, the only variant that renders that link.
 
 ### General
 
@@ -42,7 +42,8 @@ Both variants have the same form, arranged in the following groups.
 
 ### Navigation configuration
 
-**Subscription check text** and **Subscription check link** define the "Check if your organisation subscribes" link at the right-hand end of the navigation bar. Both must be set for the link to appear, and it is only shown when there is enough width for it. In the grouped variant it moves to the group dropdown row, see [where the links appear](#where-the-links-appear).
+- **Show navigation** (on by default) controls the sticky bar with the **Subscribe**, **Compare** and **Why the FT** tabs. Untick it to show the product cards alone: the bar is not rendered, and the **Compare section** and **Why the FT** settings disappear from the form and are reset to their defaults when you save. On **Products (No groups)** the two subscription check fields disappear and reset as well, because that link lives in the bar. On **Products (Grouped)** they stay, because the link lives in the group dropdown row.
+- **Subscription check text** and **Subscription check link** define the "Check if your organisation subscribes" link at the right-hand end of the navigation bar. Both must be set for the link to appear, and it is only shown when there is enough width for it. In the grouped variant it moves to the group dropdown row, see [where the links appear](#where-the-links-appear).
 
 ### Compare section
 
@@ -54,7 +55,7 @@ See [the comparison table](#the-comparison-table) for how the table behaves.
 
 ### FT Professional mobile link configuration
 
-The three fields define the "Two or more readers? Explore Professional" link: a preamble, the link text and the link itself. All three must be filled in for the link to show. It is only shown on mobile, and only in the grouped variant, see [where the links appear](#where-the-links-appear).
+Only on **Products (Grouped)**. The three fields define the "Two or more readers? Explore Professional" link: a preamble, the link text and the link itself. All three must be filled in for the link to show. It is only shown on mobile, in the group dropdown row, see [where the links appear](#where-the-links-appear).
 
 ### Why the FT
 
@@ -96,6 +97,8 @@ The navigation bar is sticky and holds up to three tabs:
 
 If the visitor has scrolled past the top of the section, switching tabs scrolls back up to it.
 
+With **Show navigation** off there is no bar and no tabs: the section shows the product cards only. In the grouped variant the group dropdown row then sticks to the top of the viewport instead of below the bar.
+
 ### Where the links appear
 
 | Link | No groups | Grouped |
@@ -104,6 +107,8 @@ If the visitor has scrolled past the top of the section, switching tabs scrolls 
 | FT Professional (mobile) | Not shown | Right-hand end of the group dropdown row, mobile only |
 
 The group dropdown row is only rendered when at least two groups have available products, so a grouped section with a single visible group shows neither link.
+
+Switching **Show navigation** off removes the subscription check link from **Products (No groups)**, whose fields are hidden and reset, but leaves it in the group dropdown row of **Products (Grouped)**.
 
 ### The product overlay
 
