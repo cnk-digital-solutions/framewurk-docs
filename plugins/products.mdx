@@ -1,0 +1,131 @@
+---
+title: "Products"
+description: "The offers section of a V3 page: product cards fed live from the Product Manager, an optional comparison table and a Why the FT tab. Available with or without groups."
+icon: "shopping-bag"
+---
+
+The **Products** widget is the offers section of a V3 page. It shows a row of product cards, each with a packshot, name, price, intro text, a **Select** button and a **View details** button that opens a full-screen overlay. Above the cards sits a sticky navigation bar with **Subscribe**, **Compare** and **Why the FT** tabs.
+
+It is a root-level widget for V3 pages and comes in two variants that share exactly the same settings:
+
+| Variant | Children | Use it when |
+| --- | --- | --- |
+| **Products (No groups)** | [Product](/plugins/products/product) | All offers belong together in one row |
+| **Products (Grouped)** | [Product Group](/plugins/products/product-group), each holding Products | Offers fall into named families (for example digital, print, professional) and visitors should be able to filter by family |
+
+Products are not authored on the page. Each **Product** child points at a **product category** managed in the Product Manager admin, and the name, price, packshot, intro text and overlay content come from there when the page loads, for the visitor's country.
+
+## Adding a Products widget
+
+<Steps>
+  <Step title="Add the parent">
+    In structure mode, add **Products (No groups)** or **Products (Grouped)** (module **Custom Widgets**) at the root of the page content.
+  </Step>
+  <Step title="Add the children">
+    No groups: add one **Product** per offer, in the order the cards should appear.
+
+    Grouped: add a **Product Group** per family, then the **Product** children inside each group.
+  </Step>
+  <Step title="Review the settings">
+    Every setting has a default that works. The ones most often changed are the **Compare section** and the **Why the FT** tab, described below.
+  </Step>
+</Steps>
+
+## Settings
+
+Both variants have the same form, arranged in the following groups.
+
+### General
+
+- **Product overlay trigger CTA text** is the label of the secondary button on every card (default **View details**, up to 15 characters). It also serves as the analytics label of that button.
+- **Product tab bottom padding** is **Default** or **Reduced** and applies at M, L and XL. Use **Reduced** when a banner follows the Products section directly.
+
+### Navigation configuration
+
+**Subscription check text** and **Subscription check link** define the "Check if your organisation subscribes" link at the right-hand end of the navigation bar. Both must be set for the link to appear, and it is only shown when there is enough width for it. In the grouped variant it moves to the group dropdown row, see [where the links appear](#where-the-links-appear).
+
+### Compare section
+
+- **Show Compare section** turns the **Compare** tab on or off. Even when on, the tab only appears once there are at least two plans to compare.
+- **Comparison table heading** and **Comparison table subheading** are shown above the table.
+- **Product category group** widens the choice of plans in the comparison dropdowns. Without it, visitors can only compare the products present in this section. With a group selected, the product categories in that group (managed in the Product Manager admin under *Product category groups (for comparison page dropdowns)*) are offered as well.
+
+See [the comparison table](#the-comparison-table) for how the table behaves.
+
+### FT Professional mobile link configuration
+
+The three fields define the "Two or more readers? Explore Professional" link: a preamble, the link text and the link itself. All three must be filled in for the link to show. It is only shown on mobile, and only in the grouped variant, see [where the links appear](#where-the-links-appear).
+
+### Why the FT
+
+**Why the FT tab** has three modes:
+
+| Mode | What the tab does |
+| --- | --- |
+| **Do not show** | No tab |
+| **Link out** | The tab is a link to **Why the FT? link**, opened in a new window |
+| **Preset** | The tab reveals a preset inside the Products section, as a third panel next to Subscribe and Compare |
+
+In **Preset** mode, choose the preset with the preset picker. Its content is fetched when the page loads and shown in place when the tab is clicked; if it cannot be loaded, the tab is removed. A preset can be used only once per page: saving a second Products section (or a Dynamic Preset plugin) with the same preset fails with "This preset is already present on the page".
+
+## Behaviour
+
+### What visitors see
+
+The section fetches its products after the page has rendered and shows a skeleton placeholder in the meantime. Each product is fetched for the visitor's country:
+
+- A product that is not available in the visitor's country, or that has no price or product detail, is **hidden**. The remaining cards close up.
+- In the grouped variant, a group with no available products is hidden entirely, together with its heading and its entry in the group dropdown.
+- If no product in the section is available, the section shows **No offers found**.
+
+### Cards per row
+
+| Breakpoint | Layout |
+| --- | --- |
+| L and XL (1024px and up) | Four cards per row, with packshot and intro text |
+| M (740 to 1023px) | Two cards per row, with packshot and intro text |
+| S and XS (below 740px) | One card per row, no packshot, no intro text. Below 600px the **Select** button is hidden: tapping the card or its three-dot button opens the overlay, where the **Select** button lives |
+
+### The navigation bar
+
+The navigation bar is sticky and holds up to three tabs:
+
+- **Subscribe** shows the product cards and is always present.
+- **Compare** shows the comparison table, when **Show Compare section** is on and there are at least two plans to compare.
+- **Why the FT** follows the **Why the FT tab** setting.
+
+If the visitor has scrolled past the top of the section, switching tabs scrolls back up to it.
+
+### Where the links appear
+
+| Link | No groups | Grouped |
+| --- | --- | --- |
+| Subscription check | Right-hand end of the navigation bar | Right-hand end of the group dropdown row |
+| FT Professional (mobile) | Not shown | Right-hand end of the group dropdown row, mobile only |
+
+The group dropdown row is only rendered when at least two groups have available products, so a grouped section with a single visible group shows neither link.
+
+### The product overlay
+
+**View details** opens a full-screen overlay. It shows the product's packshot, name, price and intro text, a **Select** button, and the content configured for the product in the Product Manager (the *Product Detail Overlay* plugins). A scrollable menu across the top lists every available product in the section, across all groups, so visitors can move between plans without closing the overlay.
+
+### The comparison table
+
+The **Compare** tab shows up to three plans side by side (two below 600px), each chosen from a dropdown. The candidates are the available products in this section plus, optionally, those of the **Product category group**. In the grouped variant the dropdowns are organised by product type: digital, print, print + digital.
+
+The first columns are pre-filled. Use **Pre-select in comparison table** on a [Product](/plugins/products/product#pre-selecting-in-the-comparison-table) to control which plans they are; otherwise the first candidates are used, digital plans first.
+
+The rows of the table (features, ticks and values) come from the feature configuration of each product in the Product Manager, not from the page.
+
+## URL parameters
+
+The section reacts to these query parameters on the page URL:
+
+| Parameter | Effect |
+| --- | --- |
+| `show_comparison=true` | Opens the **Compare** tab on load |
+| `show_comparison=scroll` | Opens the **Compare** tab and scrolls to the section |
+| `show_wtft=true` | Opens the **Why the FT** tab on load (preset mode only; any value works) |
+| `show_product_overlay=<slug>` | Opens the overlay of the Product whose **Slug for activating overlay on page load** matches |
+
+Every other query parameter on the page URL (except `countryCode`) is appended to the **Select** links of the products, so campaign parameters reach the checkout.

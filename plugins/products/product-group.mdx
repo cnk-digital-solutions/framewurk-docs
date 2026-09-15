@@ -1,0 +1,31 @@
+---
+title: "Product Group"
+description: "A named family of Product cards inside Products (Grouped): a heading and description on the page, and an entry in the group dropdown."
+icon: "layers"
+---
+
+**Product Group** is the child of **Products (Grouped)**, and the only plugin that can sit directly under it. Each group is a heading with an optional description, followed by its own row of [Product](/plugins/products/product) cards. It is not available under **Products (No groups)**.
+
+Use groups when the offers on a page fall into families that visitors would want to browse separately, for example digital, print and professional plans. When all offers belong together, use **Products (No groups)** and skip this level.
+
+## Settings
+
+- **Heading** is shown on the page above the group's cards.
+- **Dropdown label** is optional. It is used for the group's entry in the group dropdown; when empty, the heading is used there as well. Set it when the on-page heading is too long for a dropdown.
+- **Description** is a short rich-text lead under the heading. Bold, italic, underline and links are available, along with the responsive line-break and non-breaking-space tags used elsewhere. The field is pre-filled with placeholder text, so replace or clear it.
+
+## Behaviour
+
+### The group dropdown
+
+When at least two groups have available products, a sticky dropdown row appears below the navigation bar with **All plans** and one entry per group. **All plans** shows every group in page order, each under its heading; choosing a group shows that group alone. The subscription check link and the FT Professional mobile link sit at the right-hand end of this row, see [where the links appear](/plugins/products#where-the-links-appear).
+
+With only one group visible there is no dropdown row, and the section looks like the ungrouped variant.
+
+### Headings on small screens
+
+Group headings and descriptions are shown from M (740px) upwards. On phones they are not displayed, and the dropdown is how visitors tell the groups apart.
+
+### Groups with no products
+
+A group is hidden, including its heading and its dropdown entry, when none of its products is available in the visitor's country. See [what visitors see](/plugins/products#what-visitors-see).

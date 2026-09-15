@@ -58,6 +58,15 @@
                           "plugins/teasers/item",
                           "plugins/teasers/item-api"
                         ]
+                      },
+                      {
+                        "group": "Products",
+                        "icon": "shopping-bag",
+                        "root": "plugins/products",
+                        "pages": [
+                          "plugins/products/product",
+                          "plugins/products/product-group"
+                        ]
                       }
                     ]
                   }

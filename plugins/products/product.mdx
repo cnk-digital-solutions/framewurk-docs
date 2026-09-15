@@ -1,0 +1,30 @@
+---
+title: "Product"
+description: "One offer card in a Products widget, linked to a product category in the Product Manager. Everything visible on the card comes from there."
+icon: "tag"
+---
+
+**Product** is the child that puts one offer into a [Products](/plugins/products) widget. It sits directly under **Products (No groups)**, or inside a [Product Group](/plugins/products/product-group) under **Products (Grouped)**. Either way the plugin itself holds no copy: it points at a **product category**, and the card is built from that category when the page loads.
+
+## Choosing the product category
+
+**Product category** is the only required field. The dropdown lists every product category defined in the Product Manager admin (there is a link to it under the field). The category determines, per country:
+
+- the product name, packshot, label and intro text (the product detail),
+- the price and any follow-up price (the price codes),
+- the link behind **Select** (the product URL and offer ID),
+- the content of the **View details** overlay and the rows of the comparison table.
+
+If the category has no valid price or product detail for the visitor's country, the card is not shown. One section can therefore list offers for several countries, and each visitor only sees the ones valid for them.
+
+## Pre-selecting in the comparison table
+
+**Pre-select in comparison table** puts this product into the **First slot** or **Second slot** of the comparison table when the **Compare** tab opens. If several products in the section claim the same slot, the first one in page order wins. Products without a slot fill the remaining pre-filled columns in the default order: digital plans first, then print, then print + digital.
+
+## Opening the overlay from a link
+
+**Slug for activating overlay on page load** lets a link open the page with this product's overlay already open: give the product a slug, then link to the page with `?show_product_overlay=<slug>`. If several products share a slug, the first available one on the page is shown.
+
+## Analytics
+
+**data-trackable override** replaces the offer ID in the `data-trackable` attribute of the **Select** button, on the card and in the overlay. Leave it blank to track by offer ID.
