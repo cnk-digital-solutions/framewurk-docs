@@ -60,7 +60,7 @@
                         ]
                       },
                       {
-                        "group": "Products",
+                        "group": "Products (WIP)",
                         "icon": "shopping-bag",
                         "root": "plugins/products",
                         "pages": [
