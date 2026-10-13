@@ -30,7 +30,7 @@ From M up the CTA is an outlined button; below it is a text link. The heading is
 
 ## How the image is sized
 
-The banner never shows the file you upload at its own size. The **width is fixed per layout and breakpoint**, and the height follows the proportions of your file. Upload with the shape you want, because that shape is kept.
+The banner never shows the file you upload at its own size. The **width is fixed per layout and breakpoint**, and the height follows the proportions of your file.
 
 | Banners in the row | Below 740px (S and XS) | M (740 to 1023px) | L and XL (1024px and up) |
 | --- | --- | --- | --- |
@@ -44,11 +44,9 @@ The banner never shows the file you upload at its own size. The **width is fixed
 
 What this means for your file:
 
-- **A copy is made for every width in the table**, resized on the server, and a second copy at twice that width for retina screens. A single banner therefore serves a 200px and a 260px copy, plus 400px and 520px copies for retina screens. The browser picks the one that matches the visitor's screen, so the graphic is shown pixel for pixel, never scaled up or down by the browser.
 - **The height is free.** A 600 x 378px upload becomes 260 x 164px in a single banner and 200 x 126px on a phone. Nothing is cropped.
 - **The image is never enlarged.** If your file is narrower than the width in the table, it is shown at its own size and the retina copy is smaller than intended. Upload at least **twice the largest width the image will be shown at**: 540px wide covers every layout.
-- **SVG files are not resized on the server.** The browser draws them at the width in the table, so make sure the SVG carries its own width and height.
-- In the side-by-side layout the image takes at most about half of the banner's width, so the content keeps its room. With the widths above this limit is not reached at any breakpoint.
+- In the side-by-side layout the image takes at most about half of the banner's width, so the text keeps its room. At the narrow end of L this makes the image narrower than the table says: with two banners in a row from 1024 to 1367px, with three from 1024 to 1085px.
 
 Use a **PNG with a transparent background** when the graphic should sit directly on the background colour, as the packshots in the designs do. A JPG shows its own rectangle.
 
