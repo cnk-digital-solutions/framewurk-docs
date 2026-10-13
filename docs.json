@@ -71,6 +71,32 @@
                     ]
                   }
                 ]
+              },
+              {
+                "group": "V3 Plugins - WIP",
+                "pages": [
+                  {
+                    "group": "Custom Widgets",
+                    "pages": [
+                      {
+                        "group": "Banner Section",
+                        "icon": "layout-panel-top",
+                        "root": "plugins/banner-section",
+                        "pages": [
+                          {
+                            "group": "Banner Row",
+                            "icon": "rows-3",
+                            "root": "plugins/banner-section/row",
+                            "pages": [
+                              "plugins/banner-section/variant-1",
+                              "plugins/banner-section/variant-2"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }

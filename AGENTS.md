@@ -9,7 +9,7 @@
 - This is a documentation site built on [Mintlify](https://mintlify.com)
 - Pages are MDX files with YAML frontmatter
 - Configuration lives in `docs.json`
-- Run `mint dev` to preview locally
+- Run `./preview.sh` to preview locally (Docker; merges the WIP navigation groups from `docs.wip.json`, which the deployed site does not show)
 - Run `mint broken-links` to check links
 
 ## Terminology

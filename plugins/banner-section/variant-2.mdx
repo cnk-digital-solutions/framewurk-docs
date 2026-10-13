@@ -1,0 +1,47 @@
+---
+title: "Banner (Variant 2)"
+description: "A banner whose message is a foreground graphic over a background colour or photo, with a CTA button. On phones the heading stands in for the graphic."
+icon: "wallpaper"
+---
+
+**Banner (Variant 2)** is a child of a [Banner Row](/plugins/banner-section/row). It shows a foreground graphic above a CTA button, over a background colour or a background photo: for example the "Why the FT" banner, where the text "Over one million readers pay to read the Financial Times" is artwork on a photo of a reader.
+
+Use it when the message is in the artwork. When the message is text next to a packshot, use [Banner (Variant 1)](/plugins/banner-section/variant-1).
+
+## What it shows
+
+- **Foreground image**: a JPG, PNG or SVG, typically a text graphic with a transparent background. It is shown from M up, at the width you set, see [the foreground image](#the-foreground-image).
+- **Heading / alternative text**: shown instead of the graphic on phones (below M), and used as the graphic's alt text from M up. The usual text tags for line breaks and non-breaking spaces work for the phone heading and are dropped from the alt text.
+- The **CTA**: its label and an **Action**, which can be a campaign page, an external destination, an email or phone trigger, an overlay, an anchor on the page, or a scroll to one of the tabs of the first Products section.
+- **Background**, per breakpoint: a **Colour** from the fixed palette or an **Image** with its position, its size (**Contain** or **Cover**) and a colour behind it, exactly as on the [Banner Section](/plugins/banner-section#background-and-padding).
+- **Vertical alignment** decides where the graphic and the CTA sit when a taller banner in the same row stretches this one, see [the tallest banner wins](/plugins/banner-section/row#height-the-tallest-banner-wins).
+
+## Layout per breakpoint
+
+| Breakpoint | Layout |
+| --- | --- |
+| Below 740px (S and XS) | A card: a 132px tall strip showing the banner's background (the photo or colour), below it a bordered white body with the **heading** and the CTA as a **text link**. The foreground graphic is not shown |
+| M, L and XL (M and up) | The background fills the banner. The graphic sits above the CTA, both aligned left, whatever the number of banners in the row |
+
+From M up the CTA is a solid button in the inverse colour scheme, which reads well on a photo or a dark colour. Below M it is a text link.
+
+On a phone, the strip at the top of the card shows the background only. If the banner has a background photo, choose a photo that works as a 132px tall band, or give the **S** or **XS** breakpoint a background of its own.
+
+## The foreground image
+
+The graphic is shown at the width of the **Foreground image width** setting, which is **per breakpoint** like the background: the XL value (270px when the banner is created) is the default for every other breakpoint, and a ticked breakpoint can set its own width, from 1 to 1400px. The height follows the proportions of your file.
+
+- A JPG or PNG is resized on the server to exactly that width, plus a copy at twice that width for retina screens. Upload at least **twice the largest width you set**: 540px wide for the default 270px.
+- An SVG is not resized on the server. The browser draws it at the set width, keeping the proportions of the file, so make sure the SVG carries its own width and height.
+- The graphic never grows beyond its banner: in a narrow column the banner's width is the limit.
+
+Set a different width for a banner that has its row to itself: a lone banner has room for a larger graphic (the design uses 300px there) than one that shares its row (270px).
+
+## Troubleshooting
+
+| Symptom | Likely cause |
+| --- | --- |
+| No graphic on a phone | By design: below M the heading stands in for it. Check **Heading / alternative text**. |
+| The graphic is smaller than the width you set | The file is narrower than that width. Images are never enlarged. |
+| The graphic looks soft on a retina screen | The file is narrower than twice the set width. Upload a larger file. |
+| The background photo is cropped oddly on a phone | The strip at the top of the card is 132px tall, and the photo is positioned with the banner's position settings. Give **S** or **XS** its own background, or use a background colour there. |

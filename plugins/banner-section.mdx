@@ -1,0 +1,58 @@
+---
+title: "Banner Section"
+description: "Promotional banners for a V3 page: rows of one to three banners, each a graphic with a call to action, on a shared background."
+icon: "layout-panel-top"
+---
+
+The **Banner Section** is a root-level widget for V3 pages. It holds one or more **Banner Rows**, and each row holds up to three banners that sit side by side on desktop and stack on phones. It is designed to follow the Products section: for example a full-width "all subscriptions" banner over a row of two or three product promotions.
+
+The structure is always **Banner Section** > **Banner Row** > banners. Two kinds of banner are available and can be mixed in one row:
+
+| Plugin | What it shows | Details |
+| --- | --- | --- |
+| **Banner Row** | Up to three banners, laid out per breakpoint | [Banner Row](/plugins/banner-section/row) |
+| **Banner (Variant 1)** | An image beside a heading, optional text and a CTA, on a background colour | [Banner (Variant 1)](/plugins/banner-section/variant-1) |
+| **Banner (Variant 2)** | A foreground graphic over a background colour or photo, with a CTA button | [Banner (Variant 2)](/plugins/banner-section/variant-2) |
+
+Use **Variant 1** when the message is text next to a packshot. Use **Variant 2** when the message is in the artwork itself, for example the "Why the FT" banner, where a text graphic sits on a photo.
+
+## Adding a Banner Section
+
+<Steps>
+  <Step title="Add the parent">
+    In structure mode, add **Banner Section** (module **Custom Widgets**) at the root of the page content, usually directly below the Products section. The **Name** is only a reminder for you; it is not shown on the page.
+  </Step>
+  <Step title="Set the background and padding">
+    The **XL** breakpoint is always defined and acts as the default for every other breakpoint. The background starts as the **Paper** colour, the padding as 96px above and below on M, L and XL and 16px on S and XS. See [Background and padding](#background-and-padding).
+  </Step>
+  <Step title="Add rows">
+    Add a **Banner Row** per row of banners. Rows stack top to bottom in the order of the structure board.
+  </Step>
+  <Step title="Add banners">
+    Inside each row, add up to three **Banner (Variant 1)** or **Banner (Variant 2)** plugins. Their order in the structure board is their order from left to right on desktop and from top to bottom on phones.
+  </Step>
+</Steps>
+
+## Background and padding
+
+Background and padding are **per breakpoint**, using the same responsive construct as other plugins.
+
+The section has no side padding of its own. Each row is as wide as the page grid, so the banners line up with the product cards above them.
+
+## Behaviour
+
+### Rows stack with the grid gap
+
+Rows follow each other top to bottom with the page grid's gap between them. Each row lays its banners out according to how many it holds and the viewport width, see [Banner Row](/plugins/banner-section/row#layout-per-breakpoint).
+
+### Backgrounds in layers
+
+The section's background sits behind everything. Every banner then draws its own background in front of it: a colour for Variant 1, a colour or an image for Variant 2. On phones (below M) a banner's background is confined to the top part of its card, see the variant pages.
+
+## Troubleshooting
+
+| Symptom | Likely cause |
+| --- | --- |
+| A fourth banner in a row is not on the page | A row renders its first three banners only. Move the extra banner into a new **Banner Row**. |
+| On a tablet, three banners show one below the other | By design: at M (740 to 1023px) three banners per row would be too tight, so each takes a full row, styled like a single banner. |
+| The banners look lower on the page than expected | Both the Products section and the Banner Section add spacing. Set the section's **Padding top** to **None**, or the Products section's bottom padding to **Reduced**. |

@@ -1,0 +1,31 @@
+---
+title: "Banner Row"
+description: "A row of up to three banners that sit side by side on desktop and stack on smaller screens."
+icon: "rows-3"
+---
+
+**Banner Row** is the only child of the [Banner Section](/plugins/banner-section). It has no settings of its own: it holds up to three banners and decides how they share the width at each breakpoint. A row can mix [Banner (Variant 1)](/plugins/banner-section/variant-1) and [Banner (Variant 2)](/plugins/banner-section/variant-2) freely.
+
+A row renders its **first three banners only**. A fourth banner stays in the structure board but is not on the page.
+
+## Layout per breakpoint
+
+How many banners the row holds decides the layout. The thresholds are the page breakpoints: M starts at 740px, L at 1024px.
+
+| Banners in the row | Below 740px (S and XS) | M (740 to 1023px) | L and XL (1024px and up) |
+| --- | --- | --- | --- |
+| One | A full-width card | Full width, image beside the content | Full width, image beside the content |
+| Two | Two cards, one below the other | Half the row each, image above the content | Half the row each, image beside the content |
+| Three | Three cards, one below the other | **One per row**, each styled like a single banner | A third of the row each, image above the content |
+
+Below M every banner is a card on its own row, in structure board order, so a row of three is simply three cards. At M a row of three is deliberately not split: three columns would be too tight, so each banner takes the full width and gets the single-banner treatment, including the larger heading.
+
+"Image beside the content" and "image above the content" describe Variant 1. Variant 2 always stacks its graphic above its CTA from M up; its cards behave the same as Variant 1 cards below that. See the variant pages for the details.
+
+## Height: the tallest banner wins
+
+From M up the banners in a row share one height, the height of the tallest of them, and the shorter ones stretch to match. Each banner's **Vertical alignment** setting (**Top**, **Center** or **Bottom**, default **Center**) decides where its content sits inside the stretched box. Below M the cards stack, so each is as tall as its own content.
+
+## Width of the images
+
+The width of a banner's image depends on this layout: a Variant 1 image is sized per layout and breakpoint, a Variant 2 graphic per breakpoint by its own setting. See [how Variant 1 images are sized](/plugins/banner-section/variant-1#how-the-image-is-sized) and [the Variant 2 foreground image](/plugins/banner-section/variant-2#the-foreground-image).
