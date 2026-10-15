@@ -4,7 +4,8 @@
       "group": "Products: V3 (WIP)",
       "pages": [
         "products-v3",
-        "products-v3/product-category"
+        "products-v3/product-category",
+        "products-v3/cart-abandon-category"
       ]
     }
   ]

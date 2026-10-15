@@ -1,0 +1,55 @@
+---
+title: "Product category for cart abandon"
+description: "The entity a Cart Abandon Overlay points at: the label, heading and description of the offer, what it costs and where the accept button leads."
+icon: "tag"
+---
+
+A **product category for cart abandon** is the entity a [Cart Abandon Overlay](/plugins/cart-abandon-overlay) points at. It is a [product category](/products-v3/product-category) cut down to what the overlay needs, plus the copy the overlay shows on top of the product detail: a label, a heading and an optional description. It is the first entity of the **Products: V3** admin section, listed as **CUSTOM: Product category for cart abandon**.
+
+## What the overlay takes from it
+
+| Part of the overlay | Where it comes from |
+| --- | --- |
+| Highlight label | **Offer label** |
+| Heading | **Offer name** |
+| Price line | The primary price written with the **Price expression**, with the full price struck through in front of it when there is one |
+| Description | **Offer description**, or the **Product description (overlay)** of the product detail when it is blank |
+| Accordions and the rest of the content | The **Single product view** content of the product detail |
+| Accept button | **Product URL** |
+
+The product detail is found through the copy tag, as for a product category: the one for the visitor's country, then the one whose country is **(Not set)**. Its product name, packshot and label settings are not used by the overlay.
+
+## Identity
+
+- **Name** is internal. It is what the **Product category for cart abandon** dropdown of the Cart Abandon Overlay and the admin lists show.
+- **Copy tag** connects the entity to its product details.
+
+## Copy
+
+- **Offer label** is the highlight label at the top of the overlay, shown in capitals as white text on black. It starts as **Exclusive offer**. Leave it blank for an overlay without a label.
+- **Offer name** is the heading of the overlay, used instead of the product name from the product detail. It accepts the responsive line breaks and non-breaking spaces used elsewhere in the CMS, and `[b]` and `[/b]` around the part to show in bold. For example `Get [b]Weekend Print + Premium Digital[/b] [br-m][br-l][br-xl]for the price of [br-xs][br-s][b]Premium Digital[/b]` breaks after "Premium Digital" on desktop and after "for the price of" on phones.
+- **Offer description** replaces the **Product description (overlay)** of the product detail when it is set. It is rich text: bold, italic, underline and links. When it is blank, the product detail's text is shown, minus a `#followup_price_sentence#` placeholder, since this entity has no follow-up price.
+
+## Pricing
+
+An entity has two price slots: the **Primary price** (required) and the **Full price**, struck through in front of the primary price when set. There is no follow-up price. Each slot names up to three sources, tried in the same order as on a [product category](/products-v3/product-category#price-sources): via Charge Group, via Offer API, then the price code. The **Price expression** writes the price line and carries the period, so `#price# for your first year` gives the struck-through full price, the primary price and then "for your first year". Period conversion and rounding work as described for a [product category](/products-v3/product-category#period-rounding-and-savings).
+
+The **Product Categories with inactive pricing** list in **Prices: Offer API** covers these entities too.
+
+## Product URL and tracking
+
+**Product URL** is the link behind the accept button. The overlay appends `countryCode=` with the visitor's country, then every query parameter of the page URL, so campaign parameters reach the checkout.
+
+The **Campaign codes and tracking** fieldset, collapsed by default, holds **Offer id**, the three **Default campaign code** fields and **Is trial**. The overlay uses **Offer id** as the tracking label of the accept button and does not read the other fields.
+
+## When the overlay can show
+
+The overlay fetches the entity for the visitor's country after the page renders. It can open only when a product detail exists for the copy tag, for the country or as the **(Not set)** fallback, and a primary price resolves for the country. Otherwise it never opens, and in edit mode the preview button reads **Cart abandon not available**, see [the Cart Abandon Overlay](/plugins/cart-abandon-overlay#in-edit-mode).
+
+## The admin list
+
+The list shows the name, copy tag, charge group, price code and Offer API price code of each entity, with the same filters, search and **Clone** link as the product categories. A clone shares the copy tag, so it shares the product details too.
+
+## Dependencies
+
+The rules of a [product category](/products-v3/product-category#dependencies) apply: a copy tag or price expression in use cannot be deleted, and deleting a charge group clears that field. Deleting a product category for cart abandon does not touch the Cart Abandon Overlays that pointed at it: their overlay never opens, and in edit mode the preview button reads **Cart abandon not available**.

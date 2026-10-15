@@ -1,0 +1,95 @@
+---
+title: "Cart Abandon Overlay"
+description: "An offer shown in a dialog over a V3 page when the visitor is about to leave: on exit intent, the back button or a return to the tab."
+icon: "shopping-cart"
+---
+
+The **Cart Abandon Overlay** puts one offer in front of a visitor who is about to leave the page. It does not live in the page content. A V3 page has a slot of its own for it, **Cart Abandon**, next to the content slot in the structure board. The slot takes nothing else, apart from a Segmentation Container around the plugin, see [Segmentation](#segmentation).
+
+The plugin holds no copy of its own apart from the button texts. It points at a [product category for cart abandon](/products-v3/cart-abandon-category) in the **Products: V3** admin, and the label, heading, price, description and accordions come from there when the page loads, for the visitor's country.
+
+## Adding a Cart Abandon Overlay
+
+<Steps>
+  <Step title="Add the plugin">
+    In structure mode, open the **Cart Abandon** slot and add **Cart Abandon Overlay** (module **Custom Widgets**).
+  </Step>
+  <Step title="Choose the offer">
+    **Product category for cart abandon** lists the entities of the **Products: V3** admin under **CUSTOM: Product category for cart abandon**. The link under the field opens that list.
+  </Step>
+  <Step title="Name the buttons">
+    **Accept offer button text** (default **Yes please**) is the button that leads to the offer's **Product URL**. **Dismiss offer button text** (default **No thanks**) closes the overlay.
+  </Step>
+  <Step title="Pick the triggers">
+    Every trigger is off to begin with. Without at least one, visitors never see the overlay; only the preview button in edit mode opens it. See [Triggers](#triggers).
+  </Step>
+  <Step title="Set the cool-off">
+    **Cool-off timeout** is how long the triggers are ignored after the visitor closes the overlay, in seconds. See [Cool-off](#cool-off).
+  </Step>
+</Steps>
+
+## Triggers
+
+The triggers come in two sets. Devices with a mouse or trackpad use **Triggers for mouse-equipped devices**; phones and tablets use **Triggers for touch-only devices**. The set is chosen once, when the page loads.
+
+| Trigger | Set | Opens the overlay when |
+| --- | --- | --- |
+| **Mouse-based exit intent detection** | Mouse-equipped only | The cursor leaves the page through the top edge of the window, towards the tabs or the address bar. Watched from 5 seconds after the page loads. |
+| **Back button detection** | Both, set separately | The visitor presses the browser's back button. The first press opens the overlay instead of leaving the page; further presses are not caught. Watched from about 3 seconds after the page loads, once per page view. |
+| **Tab return detection** | Both, set separately | The visitor switches to another tab or app and comes back to the page. |
+
+A trigger that fires while the offer is still loading is not lost: the overlay opens as soon as the offer has loaded. A trigger that fires while the overlay is open is ignored.
+
+## Cool-off
+
+Closing the overlay, by the dismiss button, the cross or the Escape key, starts the **Cool-off timeout**: for that many seconds the triggers are ignored. The default is 300 seconds (5 minutes), the maximum 10800 (3 hours). The cool-off belongs to the browser tab and to the plugin: a reload keeps it, closing the tab ends it, and another page with its own Cart Abandon Overlay has its own cool-off. The preview button in edit mode ignores it.
+
+## What visitors see
+
+The overlay loads its offer after the page has rendered and opens only once it has. If the offer is not available for the visitor's country, because the category has no product detail or no price for it, the overlay never opens and the visitor notices nothing.
+
+### Content
+
+From top to bottom:
+
+- the **Offer label**, unless the category leaves it blank;
+- the **Offer name** as the heading;
+- the price line: the full price struck through, then the primary price written with the category's price expression;
+- the description: the category's **Offer description**, or the product detail's **Product description (overlay)**;
+- the product detail's **Single product view** content, in the order of its plugins. **Features** and **Why Choose This Plan** render as accordions, collapsed every time the overlay opens; the other plugins render as they do in the single product view;
+- the accept and dismiss buttons.
+
+The accept button links to the category's **Product URL** with the visitor's country and the page's query parameters appended. The dismiss button, the cross at the top right and the Escape key close the overlay. Clicking outside the box does nothing. While the overlay is open, keyboard focus stays inside it and the page behind cannot be scrolled.
+
+The overlay opens over any state of the page, the single product view included.
+
+### Layout per breakpoint
+
+| Breakpoint | Layout |
+| --- | --- |
+| M, L and XL (740px and up) | A 648px wide box over a darkened page, centred vertically as it opens with its accordions collapsed. Expanding an accordion grows the box downwards and keeps the space above it; resizing the window recomputes that space from the collapsed size. When the box is taller than the window, the whole layer scrolls, with its scrollbar at the edge of the screen like the page's. |
+| S and XS (below 740px) | Full screen. The buttons stay at the bottom of the screen and the content scrolls underneath them. |
+
+## Segmentation
+
+The **Cart Abandon** slot takes a **Segmentation Container** with the same segments as the page content: **By Country**, **By Region (Country)**, **By Region (US State)** and **Fallback**. Each segment holds a Cart Abandon Overlay of its own, and the visitor gets the one of the segment that matches. One Segmentation Container per slot.
+
+A page uses one overlay only. If the slot holds more than one, at the root or in several segments that apply, the first in structure-board order is used and the others are ignored.
+
+## In edit mode
+
+A page open in the CMS editor reads the draft entities of the Products: V3 admin, so a new or changed offer shows there before it is published, see [Drafts and publishing](/products-v3#drafts-and-publishing).
+
+In edit mode a **Cart Abandon Preview** button sits at the bottom left of the page. Click it to open the overlay without waiting for a trigger; it ignores the cool-off. The triggers work in edit mode as well.
+
+When the offer cannot load, the button reads **Cart abandon not available** instead. Clicking it explains why: the product category for cart abandon, by its name, is configured with a price or copy (product detail) that could not be found for the current country, with the server's answer. Fix the category, or view the page as another country through the toolbar's **Country** menu, and reload the page.
+
+## Troubleshooting
+
+| Symptom | Likely cause |
+| --- | --- |
+| The overlay never opens for visitors | No trigger is ticked; or the visitor closed it within the cool-off; or the offer is not available for the country (check in edit mode: the preview button reads **Cart abandon not available**); or the category has not been published yet, see [Drafts and publishing](/products-v3#drafts-and-publishing). |
+| The overlay opens in edit mode but not on the live page | The category was created or changed in the draft and not published yet. |
+| The back button does not open the overlay | **Back button detection** is off for that device set; the press came within the first seconds after the page loaded; the overlay already opened once on this page view; or the cool-off is running. |
+| Two overlays in the slot, only one shows | By design: the first in structure-board order is used. |
+| The accordions are closed again after reopening | By design: the overlay opens with its accordions collapsed every time. |

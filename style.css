@@ -151,3 +151,18 @@ img.nav-logo {
 html[data-current-path="/login"] img.max-w-28 {
   max-width: 230px;
 } 
+
+/* Mermaid diagrams: a clickable entity keeps its normal text weight so the labels fit their boxes; only its bold title is underlined */
+svg[aria-roledescription] a {
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+svg[aria-roledescription] a strong {
+  text-decoration: underline;
+}
+
+/* Firefox renders bold labels wider than mermaid measured them; let a label overflow its measuring box */
+svg[aria-roledescription] foreignObject {
+  overflow: visible;
+}

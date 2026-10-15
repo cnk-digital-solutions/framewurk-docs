@@ -1,0 +1,118 @@
+---
+title: "Products: V3"
+description: "The product data behind the V3 Products plugin: the entities of the Products: V3 admin section, how they relate, and how drafts become live."
+sidebarTitle: "Overview"
+icon: "database"
+mode: "wide"
+---
+
+The **Products: V3** section of the admin holds the data that the [Products](/plugins/products) plugin renders: what each offer is called, what it costs, what it includes and what its overlay shows. A page never stores any of this. Each [Product](/plugins/products/product) plugin points at a **product category**, and everything else is looked up from there when the page loads, for the visitor's country. The same section holds the product category for cart abandon that a [Cart Abandon Overlay](/plugins/cart-abandon-overlay) points at.
+
+## Entities
+
+| Admin entity | What it holds | Page |
+| --- | --- | --- |
+| **Product categories** | The offer: type, copy tag, price codes and expressions, sign-up link | [Product category](/products-v3/product-category) |
+| **CUSTOM: Product category for cart abandon** | The offer behind the Cart Abandon Overlay: copy tag, label, heading, optional description, price codes, sign-up link | [Product category for cart abandon](/products-v3/cart-abandon-category) |
+| **Copy tags** | The name that ties a product category to its product details | _to follow_ |
+| **Product details** | The copy for one copy tag in one country: name, description, packshot, label, features and the **Single product view** content | _to follow_ |
+| **Product features** | A reusable feature line with up to five parameters, shown in the overlay and the comparison table | _to follow_ |
+| **Product feature groups** | Ordered sets of features that group the rows of the comparison table | _to follow_ |
+| **Price expressions** | How the primary price is written, for example `#price# per month`, and its billing period | _to follow_ |
+| **Followup product expressions** | How the follow-up price is written, typically the price after an introductory period | _to follow_ |
+| **Product category groups (for comparison page dropdowns)** | Named sets of product categories offered in the comparison dropdowns on top of the products on the page | _to follow_ |
+
+## How the entities relate
+
+Each box is one entity. Only the fields that link it to other entities are listed, not the entity's full set of fields. **Product categories** stands for both kinds of category, see [Product categories](#product-categories) below; the follow-up price expression belongs to the regular one only. The full price and follow-up price slots repeat the three price code fields. Solid arrows are required links, dotted arrows optional ones. Click an entity's name to open its page.
+
+```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}, "markdownAutoWrap": false}}%%
+flowchart TB
+    PS["`**Products plugin**
+Product category group`"]
+    PP["`**Product plugin**
+Product category`"]
+    CA["`**Cart Abandon Overlay plugin**
+Product category for cart abandon`"]
+    PC["`**Product categories**
+Copy tag
+Price expression
+Followup price expression
+Price code
+Price code via Offer API
+Price code via Charge Group`"]
+    CG["`**Product category group**
+Product categories`"]
+    PE["`**Price expression**`"]
+    FE["`**Followup price expression**`"]
+    CHG["`**Charge group**
+Charges 1 to 10`"]
+    OA["`**Offer API prices**`"]
+    LP["`**Print and digital price entries**`"]
+    CT["`**Copy tag**`"]
+    PD["`**Product detail**
+Copy tag
+Product features
+Single product view`"]
+    FL["`**Feature link**
+Product detail
+Product feature`"]
+    PF["`**Product feature**`"]
+    FG["`**Product feature group**
+Features`"]
+    OV["`**Single product view content**`"]
+
+    PP -- product category --> PC
+    CA -- product category for cart abandon --> PC
+    PS -. comparison dropdowns .-> CG
+    CG -- product categories --> PC
+    PC -- copy tag --> CT
+    PC -- price expression --> PE
+    PC -. followup price expression .-> FE
+    PC -. via Offer API .-> OA
+    PC -. via Charge Group .-> CHG
+    CHG -- charges --> OA
+    PC -. price code .-> LP
+    PD -- copy tag --> CT
+    PD -. product features .-> FL
+    FL -- product feature --> PF
+    FG -. features .-> PF
+    PD -- single product view --> OV
+
+    classDef plugin fill:#fff3b0,stroke:#b8960b
+    classDef price fill:#ffe0b2,stroke:#d9822b
+    classDef copy fill:#dbe9ff,stroke:#4a7bd0
+    class PS,PP,CA plugin
+    class PE,FE,CHG,OA,LP price
+    class CT,PD,FL,PF,FG,OV copy
+    click PS "/plugins/products" "Products plugin"
+    click PP "/plugins/products/product" "Product plugin"
+    click PC "#product-categories" "Product categories"
+    click CA "/plugins/cart-abandon-overlay" "Cart Abandon Overlay plugin"
+```
+
+<div style={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.75rem', margin: '0.25rem 0 1.5rem', fontSize: '0.9rem'}}>
+  <span><span style={{display: 'inline-block', width: '0.9rem', height: '0.9rem', background: '#fff3b0', border: '1px solid #b8960b', borderRadius: '2px', verticalAlign: '-0.1rem', marginRight: '0.4rem'}}></span>CMS plugin on the page</span>
+  <span><span style={{display: 'inline-block', width: '0.9rem', height: '0.9rem', background: '#ffe0b2', border: '1px solid #d9822b', borderRadius: '2px', verticalAlign: '-0.1rem', marginRight: '0.4rem'}}></span>Prices</span>
+  <span><span style={{display: 'inline-block', width: '0.9rem', height: '0.9rem', background: '#dbe9ff', border: '1px solid #4a7bd0', borderRadius: '2px', verticalAlign: '-0.1rem', marginRight: '0.4rem'}}></span>Copy</span>
+  <span><span style={{display: 'inline-block', width: '0.9rem', height: '0.9rem', background: '#ECECFF', border: '1px solid #9370DB', borderRadius: '2px', verticalAlign: '-0.1rem', marginRight: '0.4rem'}}></span>Product categories and their groups</span>
+</div>
+
+## Product categories
+
+The **Product categories** box of the diagram stands for two kinds of entity. Both connect to a copy tag and a price expression and carry the same price code fields; they differ in what they are for.
+
+| Entity | What it is for | Page |
+| --- | --- | --- |
+| **Product categories** | The offers of a [Products](/plugins/products) widget: each Product plugin points at one. It has a type, and it can carry a follow-up price. | [Product category](/products-v3/product-category) |
+| **CUSTOM: Product category for cart abandon** | The offer of a [Cart Abandon Overlay](/plugins/cart-abandon-overlay). It has no type and no follow-up price, and it carries the label, heading and description the overlay shows. | [Product category for cart abandon](/products-v3/cart-abandon-category) |
+
+## Drafts and publishing
+
+Every entity in this section exists in two forms: a **draft** and a **published** version.
+
+- The draft is the working copy and the only one you can add to, edit or delete. The switch at the top right of every Products admin page tells you which one you are looking at: **You are viewing draft repository** or **You are viewing published repository**. **Switch to draft** and **Switch to published** flip between them. The choice is remembered per browser and has no effect on visitors.
+- The published version is read-only. It shows every entity as it was when last published.
+- **Publish prices & products**, available in the draft view after a confirmation, makes the current drafts the published version, replacing what was published before. It publishes the whole product manager at once, prices and V1&V2 products included, not a single entity. The drafts stay as they are, ready for the next round of edits.
+- Live pages read the published version. A page open in the CMS editor reads the drafts instead, so you can check draft products on a page before publishing them. Publishing clears the site cache, so the change is live straight away.

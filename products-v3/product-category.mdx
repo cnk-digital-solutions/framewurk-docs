@@ -1,0 +1,73 @@
+---
+title: "Product category"
+description: "The entity a Product plugin points at: which copy it uses, what it costs and where Select leads."
+icon: "tag"
+---
+
+A **product category** is the entity a [Product](/plugins/products/product) plugin points at. It holds everything about an offer that is not copy: the copy tag that connects it to the product detail for each country, the price codes and the expressions that write the price, and the sign-up link behind **Select**.
+
+## Identity
+
+- **Name** is internal. It is what the **Product category** dropdown of the Product plugin and the admin lists show.
+- **Type** is **Digital Subscription**, **Print Subscription** or **Print + Digital Subscription**. The grouped Products plugin organises its comparison dropdowns by type, and the comparison table fills its columns in that order when no slot is pre-selected.
+- **Copy tag** connects the category to its product details. When the page loads, the plugin looks for the product detail with this copy tag for the visitor's country, then for the one whose country is **(Not set)**. If neither exists, the product is not shown.
+
+## Pricing
+
+A category has three price slots.
+
+| Slot | Required | What is it |
+| --- | --- | --- |
+| Primary | Yes | The price on the card, in the overlay and in the comparison table |
+| Full price | No | The undiscounted price, struck through in front of the primary price. Set it only when a discount is in place and it differs from the primary price |
+| Follow-up | No | The price after an introductory period, written with the follow-up expression |
+
+### Price sources
+
+Every slot can name up to three sources. They are tried in this order, and the first one that yields a price for the visitor's country wins:
+
+1. **via Charge Group**: a charge group from the **Prices: Offer API** admin section, a named list of up to ten Offer API price codes tried in order.
+2. **via Offer API**: a single Offer API price code chosen with the price picker. A code names an offer, a rate plan and one or more charges; the charges are added up.
+3. **Price code**: a legacy price code. The price comes from the print price entries for the visitor's country, or failing that from the digital price entries of the country's price group, both under the **Prices: Manual** admin section.
+
+At least one primary source is required. Saving without one fails with "Please provide the price code (regular or via the Offer API below)".
+
+### Period, rounding and savings
+
+The **Price expression** carries a **Period**: weekly, monthly, quarterly, six-monthly or annual. The lookup asks each source for the price of that period. When a source only has a price for a different term, the price is converted to the expression's period. In countries configured for it, the price is rounded up to a whole number.
+
+The saving that the discount label (`#saving#`) on the product detail shows comes with the price: the last part of an Offer API price code, or the savings column of a price entry.
+
+### Price expressions
+
+- **Price expression** (required) writes the primary price. `#price#` is replaced by the currency symbol and the price, with the full price struck through in front when there is one. Expressions are managed under **Price expressions**.
+- **Followup price expression** writes the follow-up price when there is one. `#price#` is the follow-up price and `#price_primary#` the primary price. Managed under **Followup product expressions**.
+- **Require followup price**, when ticked, hides a product that has no follow-up price for the visitor's country, the same as a product with no primary price. Leave it unticked when the follow-up price is optional information.
+
+## Product URL and tracking
+
+**Product URL** is the link behind **Select**, on the card and in the overlay. The plugin appends `countryCode=` with the visitor's country, then every query parameter of the page URL, so campaign parameters reach the checkout.
+
+The **Campaign codes and tracking** fieldset, collapsed by default, holds **Offer id**, the three **Default campaign code** fields and **Is trial**. They are sent to the page with the product data, but the V3 Products plugin does not currently read them.
+
+## When a product appears on a page
+
+The plugin fetches the category for the visitor's country after the page renders. The card is shown only when all of these hold:
+
+- a product detail exists for the copy tag, for the country or as the **(Not set)** fallback;
+- a primary price resolves for the country;
+- a follow-up price resolves too, if **Require followup price** is ticked.
+
+Otherwise the card is hidden and the other cards close up, see [What visitors see](/plugins/products#what-visitors-see).
+
+## The admin list
+
+The list shows the name, copy tag, charge group, price code and Offer API price code of each category. It can be filtered by price code, copy tag and charge group, and searched by name. Each row also has a **Clone** link.
+
+**Clone** creates a copy named "Copy of: ..." with the same settings and opens it for editing. Product details are not copied: the clone shares the copy tag, so it shares the product details too.
+
+## Dependencies
+
+- A copy tag or price expression that a product category uses cannot be deleted. Re-point or delete the categories first.
+- Deleting a charge group or a follow-up expression clears that field on the categories that used it.
+- Deleting a product category does not touch the Product plugins that pointed at it. Their cards are hidden on the page, and in the structure board they show as `--`.
