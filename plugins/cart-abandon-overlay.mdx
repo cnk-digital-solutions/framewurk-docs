@@ -72,9 +72,12 @@ The overlay opens over any state of the page, the single product view included.
 
 ## Segmentation
 
-The **Cart Abandon** slot takes a **Segmentation Container** with the same segments as the page content: **By Country**, **By Region (Country)**, **By Region (US State)** and **Fallback**. Each segment holds a Cart Abandon Overlay of its own, and the visitor gets the one of the segment that matches. One Segmentation Container per slot.
+The **Cart Abandon** slot takes a **Segmentation Container** with the same segment plugins, and the same first-match-wins evaluation, as the page content, see [Content targeting (segmentation)](/features/content-targeting). Two things are specific to this slot:
 
-A page uses one overlay only. If the slot holds more than one, at the root or in several segments that apply, the first in structure-board order is used and the others are ignored.
+- A segment holds Cart Abandon Overlays and nothing else, and the slot takes one Segmentation Container.
+- A page shows one overlay only. If the slot ends up with more than one, for example an overlay at the root next to the container, the first in structure-board order is used and the others are ignored.
+
+To check which overlay a visitor from another country gets, [preview the page as that country](/features/content-targeting#previewing-as-a-different-country-or-us-state).
 
 ## In edit mode
 
@@ -82,7 +85,7 @@ A page open in the CMS editor reads the draft entities of the Products: V3 admin
 
 In edit mode a **Cart Abandon Preview** button sits at the bottom left of the page. Click it to open the overlay without waiting for a trigger; it ignores the cool-off. The triggers work in edit mode as well.
 
-When the offer cannot load, the button reads **Cart abandon not available** instead. Clicking it explains why: the product category for cart abandon, by its name, is configured with a price or copy (product detail) that could not be found for the current country, with the server's answer. Fix the category, or view the page as another country through the toolbar's **Country** menu, and reload the page.
+When the offer cannot load, the button reads **Cart abandon not available** instead. Clicking it explains why: the product category for cart abandon, by its name, is configured with a price or copy (product detail) that could not be found for the current country, with the server's answer. Fix the category, or [preview the page as another country](/features/content-targeting#previewing-as-a-different-country-or-us-state), and reload the page.
 
 ## Troubleshooting
 
