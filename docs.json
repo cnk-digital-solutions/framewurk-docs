@@ -42,33 +42,6 @@
                     "group": "Custom Widgets",
                     "pages": [
                       {
-                        "group": "Hero Banner",
-                        "icon": "gallery-horizontal",
-                        "root": "plugins/hero-banner",
-                        "pages": [
-                          "plugins/hero-banner/slide",
-                          "plugins/hero-banner/slide-video"
-                        ]
-                      },
-                      {
-                        "group": "Teasers",
-                        "icon": "layout-grid",
-                        "root": "plugins/teasers",
-                        "pages": [
-                          "plugins/teasers/item",
-                          "plugins/teasers/item-api"
-                        ]
-                      },
-                      {
-                        "group": "Products",
-                        "icon": "shopping-bag",
-                        "root": "plugins/products",
-                        "pages": [
-                          "plugins/products/product",
-                          "plugins/products/product-group"
-                        ]
-                      },
-                      {
                         "group": "Banner Section",
                         "icon": "layout-panel-top",
                         "root": "plugins/banner-section",
@@ -84,7 +57,34 @@
                           }
                         ]
                       },
-                      "plugins/collapsible-content-container"
+                      "plugins/collapsible-content-container",
+                      {
+                        "group": "Hero Banner",
+                        "icon": "gallery-horizontal",
+                        "root": "plugins/hero-banner",
+                        "pages": [
+                          "plugins/hero-banner/slide",
+                          "plugins/hero-banner/slide-video"
+                        ]
+                      },
+                      {
+                        "group": "Products",
+                        "icon": "shopping-bag",
+                        "root": "plugins/products",
+                        "pages": [
+                          "plugins/products/product",
+                          "plugins/products/product-group"
+                        ]
+                      },
+                      {
+                        "group": "Teasers",
+                        "icon": "layout-grid",
+                        "root": "plugins/teasers",
+                        "pages": [
+                          "plugins/teasers/item",
+                          "plugins/teasers/item-api"
+                        ]
+                      }
                     ]
                   }
                 ]

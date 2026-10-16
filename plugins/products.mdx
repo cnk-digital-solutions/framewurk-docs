@@ -135,3 +135,31 @@ The section reacts to these query parameters on the page URL:
 | `show_product_overlay=<slug>` | Opens the overlay of the Product whose **Slug for activating overlay on page load** matches |
 
 Every other query parameter on the page URL is appended to the **Select** links of the products, so campaign parameters reach the checkout.
+
+## Controlling other plugins from the navigation
+
+Switching tab in the navigation bar is a page-wide event, not just a change inside the section. Content elsewhere on the page can fold away and come back with the tabs, and links elsewhere on the page can switch the tab.
+
+### Folding content on Compare or Why the FT
+
+Wrap the content in a [Collapsible Content Container](/plugins/collapsible-content-container). It has two settings, **Collapse when 'Compare' tab is activated** and **Collapse when 'Why the FT' tab is activated**.
+
+Every tab switch checks every container on the page, above or below the section: the containers ticked for the tab that opened fold to zero height with a short animation, and all of them unfold on **Subscribe**. The typical use is the hero above the Products section in a container ticked for **Why the FT**, so that the preset content starts right under the page header instead of below the hero.
+
+The containers follow the tab however it was opened: a click in the bar, a [URL parameter](#url-parameters) or an [in-page link](#switching-the-tab-from-elsewhere-on-the-page). A tab opened by URL parameter is applied once the products have loaded, so the content shows for a moment before it folds.
+
+### The mobile heading
+
+**Product heading (Mobile)** is a heading line for phones (below 740px). Placed inside **Products (No groups)**, it sits under the navigation bar and shows on **Subscribe** only: **Compare** and **Why the FT** hide it, with nothing to set. Placed at the root of the page, it stays whatever the tab. To make it fold with the hero, put it inside the hero's Collapsible Content Container, before or after the hero.
+
+### Switching the tab from elsewhere on the page
+
+Every V3 plugin with an **Action** on its link, for example a Hero Banner slide, a Banner, a Teasers item or a Button, offers three actions that target the Products section:
+
+| Action | What the click does |
+| --- | --- |
+| **Scroll to the first Product section's Subscribe tab** | Opens **Subscribe** and scrolls to the section |
+| **Scroll to the first Product section's Compare tab** | Opens **Compare** and scrolls to the section |
+| **Scroll to the first Product section's Why the FT tab** | Opens **Why the FT**; scrolls to the section only if the visitor has scrolled past its top |
+
+The link acts on the first Products section of the page and leaves the page URL unchanged. Collapsible Content Containers react as they do to a click in the bar. Use these actions only for tabs the section shows: **Compare** needs **Show Compare section** on and at least two plans, **Why the FT** needs the **Preset** mode. On a page without a Products section the link does nothing.

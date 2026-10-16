@@ -1,0 +1,55 @@
+---
+title: "Collapsible Content Container"
+description: "A root-level wrapper that folds its content away when the visitor opens the Compare or Why the FT tab of the Products section, and unfolds it on Subscribe."
+icon: "fold-vertical"
+---
+
+The **Collapsible Content Container** is a root-level widget for V3 pages. It has no look of its own: it wraps other root-level plugins and folds them away, with a short animation, when the visitor switches the navigation of the [Products](/plugins/products) section to **Compare** or **Why the FT**. On **Subscribe** the content unfolds again.
+
+Use it for content that sits above the Products section, typically the hero. The comparison table or the Why the FT content then starts right under the page header instead of below the hero, which otherwise pushes the content the visitor asked for down the page.
+
+The container takes these plugins as children:
+
+| Child plugin | Notes |
+| --- | --- |
+| **Hero Banner** | See [Hero Banner](/plugins/hero-banner) |
+| **Hero Banner (with video)** | |
+| **Banner Section** | See [Banner Section](/plugins/banner-section) |
+| **Section** | |
+| **Product heading (Mobile)** | The mobile heading shown above or below the hero. Put it inside the container, before or after the hero, so that it folds away with the hero. |
+
+Any number of children, in any order. A page can hold more than one container.
+
+## Adding a Collapsible Content Container
+
+<Steps>
+  <Step title="Add the parent">
+    In structure mode, add **Collapsible Content Container** (module **Custom Widgets**) at the root of the page content, where the content it will wrap belongs.
+  </Step>
+  <Step title="Choose when the content should fold">
+    Tick **Collapse when 'Compare' tab is activated**, **Collapse when 'Why the FT' tab is activated**, or both.
+  </Step>
+  <Step title="Add the content">
+    Add the plugins inside the container, or drag existing root-level plugins into it in the structure board. The container itself adds no spacing, background or heading.
+  </Step>
+</Steps>
+
+## Behaviour
+
+The Products section drives the container. Each time the visitor switches tab in the section's navigation bar, every Collapsible Content Container on the page is checked, wherever it sits, above or below the section:
+
+| Tab opened | Containers that fold |
+| --- | --- |
+| **Compare** | Those with **Collapse when 'Compare' tab is activated** ticked |
+| **Why the FT** | Those with **Collapse when 'Why the FT' tab is activated** ticked |
+| **Subscribe** | None: every container unfolds |
+
+The tab can be opened in three ways and the container reacts to all of them: a click in the navigation bar, a [URL parameter](/plugins/products#url-parameters) such as `show_wtft=true`, or an [in-page link](/plugins/products#controlling-other-plugins-from-the-navigation) elsewhere on the page. A tab opened by URL parameter is applied once the products have loaded, so the visitor may see the content for a moment before it folds.
+
+## Troubleshooting
+
+| Symptom | Likely cause |
+| --- | --- |
+| The mobile heading stays while the hero folds | The **Product heading (Mobile)** sits at the root next to the container. Move it inside, before or after the hero. |
+| The page opened with `show_wtft=true` shows the hero for a moment | By design: the tab, and with it the fold, is applied once the products have loaded. |
+| A container far below the Products section folds too | By design: every container on the page follows the navigation. Untick its boxes if it should stay. |
