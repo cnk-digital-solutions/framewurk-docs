@@ -67,17 +67,7 @@
                           "plugins/products/product",
                           "plugins/products/product-group"
                         ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "V3 Plugins - WIP",
-                "pages": [
-                  {
-                    "group": "Custom Widgets",
-                    "pages": [
+                      },
                       {
                         "group": "Banner Section",
                         "icon": "layout-panel-top",
@@ -94,6 +84,17 @@
                           }
                         ]
                       },
+                      "plugins/collapsible-content-container"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "V3 Plugins - WIP",
+                "pages": [
+                  {
+                    "group": "Custom Widgets",
+                    "pages": [
                       "plugins/cart-abandon-overlay"
                     ]
                   }
