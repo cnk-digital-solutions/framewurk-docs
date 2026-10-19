@@ -14,6 +14,7 @@ A **product category for cart abandon** is the entity a [Cart Abandon Overlay](/
 | Heading | **Offer name** |
 | Price line | The primary price written with the **Price expression**, with the full price struck through in front of it when there is one |
 | Description | **Offer description**, or the **Product description (overlay)** of the product detail when it is blank |
+| Follow-up sentence | The **Followup price expression** written with the follow-up price, at the description's `#followup_price_sentence#` placeholder or after the description |
 | Accordions and the rest of the content | The **Single product view** content of the product detail |
 | Accept button | **Product URL** |
 
@@ -28,11 +29,13 @@ The product detail is found through the copy tag, as for a product category: the
 
 - **Offer label** is the highlight label at the top of the overlay, shown in capitals as white text on black. It starts as **Exclusive offer**. Leave it blank for an overlay without a label.
 - **Offer name** is the heading of the overlay, used instead of the product name from the product detail. It accepts the responsive line breaks and non-breaking spaces used elsewhere in the CMS, and `[b]` and `[/b]` around the part to show in bold. For example `Get [b]Weekend Print + Premium Digital[/b] [br-m][br-l][br-xl]for the price of [br-xs][br-s][b]Premium Digital[/b]` breaks after "Premium Digital" on desktop and after "for the price of" on phones.
-- **Offer description** replaces the **Product description (overlay)** of the product detail when it is set. It is rich text: bold, italic, underline and links. When it is blank, the product detail's text is shown, minus a `#followup_price_sentence#` placeholder, since this entity has no follow-up price.
+- **Offer description** replaces the **Product description (overlay)** of the product detail when it is set. It is rich text: bold, italic, underline and links. When it is blank, the product detail's text is shown. Either text can place the follow-up sentence with a `#followup_price_sentence#` placeholder, see [Pricing](#pricing).
 
 ## Pricing
 
-An entity has two price slots: the **Primary price** (required) and the **Full price**, struck through in front of the primary price when set. There is no follow-up price. Each slot names up to three sources, tried in the same order as on a [product category](/products-v3/product-category#price-sources): via Charge Group, via Offer API, then the price code. The **Price expression** writes the price line and carries the period, so `#price# for your first year` gives the struck-through full price, the primary price and then "for your first year". Period conversion and rounding work as described for a [product category](/products-v3/product-category#period-rounding-and-savings).
+An entity has the three price slots of a [product category](/products-v3/product-category#pricing): the **Primary price** (required), the **Full price**, struck through in front of the primary price when set, and the **Followup price**. Each slot names up to three sources, tried in the same order as on a product category: via Charge Group, via Offer API, then the price code. The **Price expression** writes the price line and carries the period, so `#price# for your first year` gives the struck-through full price, the primary price and then "for your first year". Period conversion and rounding work as described for a [product category](/products-v3/product-category#period-rounding-and-savings).
+
+The **Followup price expression** writes the follow-up sentence when a follow-up price resolves for the visitor's country: `#price#` is the follow-up price and `#price_primary#` the primary price. The sentence replaces the `#followup_price_sentence#` placeholder in the description when there is one, and otherwise follows the description as a paragraph of its own. Without a follow-up price the placeholder is removed. **Require followup price**, when ticked, keeps the overlay from opening when no follow-up price resolves; leave it unticked when the follow-up price is optional information.
 
 The **Product Categories with inactive pricing** list in **Prices: Offer API** covers these entities too.
 
@@ -44,7 +47,7 @@ The **Campaign codes and tracking** fieldset, collapsed by default, holds **Offe
 
 ## When the overlay can show
 
-The overlay fetches the entity for the visitor's country after the page renders. It can open only when a product detail exists for the copy tag, for the country or as the **(Not set)** fallback, and a primary price resolves for the country. Otherwise it never opens, and in edit mode the preview button reads **Cart abandon not available**, see [the Cart Abandon Overlay](/plugins/cart-abandon-overlay#in-edit-mode).
+The overlay fetches the entity for the visitor's country after the page renders. It can open only when a product detail exists for the copy tag, for the country or as the **(Not set)** fallback, a primary price resolves for the country, and a follow-up price resolves too if **Require followup price** is ticked. Otherwise it never opens, and in edit mode the preview button reads **Cart abandon not available**, see [the Cart Abandon Overlay](/plugins/cart-abandon-overlay#in-edit-mode).
 
 ## The admin list
 
@@ -52,4 +55,4 @@ The list shows the name, copy tag, charge group, price code and Offer API price 
 
 ## Dependencies
 
-The rules of a [product category](/products-v3/product-category#dependencies) apply: a copy tag or price expression in use cannot be deleted, and deleting a charge group clears that field. Deleting a product category for cart abandon does not touch the Cart Abandon Overlays that pointed at it: their overlay never opens, and in edit mode the preview button reads **Cart abandon not available**.
+The rules of a [product category](/products-v3/product-category#dependencies) apply: a copy tag or price expression in use cannot be deleted, and deleting a charge group or a follow-up expression clears that field. Deleting a product category for cart abandon does not touch the Cart Abandon Overlays that pointed at it: their overlay never opens, and in edit mode the preview button reads **Cart abandon not available**.
