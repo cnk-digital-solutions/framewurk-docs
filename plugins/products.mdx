@@ -10,7 +10,7 @@ It is a root-level widget for V3 pages and comes in two variants that share the 
 
 | Variant | Children | Use it when |
 | --- | --- | --- |
-| **Products (No groups)** | [Product](/plugins/products/product) | All products belong together in one row |
+| **Products (Ungrouped)** | [Product](/plugins/products/product) | All products belong together in one row |
 | **Products (Grouped)** | [Product Group](/plugins/products/product-group), each holding Products | Products fall into named families (for example digital, print, professional) and visitors should be able to filter by family |
 
 Products are not authored on the page. Each **Product** child points at a **product category** managed in the Product Manager admin, and the name, price, packshot, intro text and overlay content come from there when the page loads, for the visitor's country.
@@ -19,10 +19,10 @@ Products are not authored on the page. Each **Product** child points at a **prod
 
 <Steps>
   <Step title="Add the parent">
-    In structure mode, add **Products (No groups)** or **Products (Grouped)** (module **Custom Widgets**) at the root of the page content.
+    In structure mode, add **Products (Ungrouped)** or **Products (Grouped)** (module **Custom Widgets**) at the root of the page content.
   </Step>
   <Step title="Add the children">
-    No groups: add one **Product** per offer, in the order the cards should appear.
+    Ungrouped: add one **Product** per offer, in the order the cards should appear.
 
     Grouped: add a **Product Group** per family, then the **Product** children inside each group.
   </Step>
@@ -102,9 +102,9 @@ With **Show navigation** off there is no bar and no tabs: the section shows the 
 
 ### Where the links appear
 
-| Link | No groups | Grouped |
+| Link | Ungrouped | Grouped |
 | --- | --- | --- |
-| Subscription check | Right-hand end of the navigation bar; below 600px a strip under the bar or a tile after the first product, per **Subscription check link mobile position** | Same as No groups |
+| Subscription check | Right-hand end of the navigation bar; below 600px a strip under the bar or a tile after the first product, per **Subscription check link mobile position** | Same as Ungrouped |
 | FT Professional (mobile) | Not shown | Right-hand end of the group dropdown row, mobile only |
 
 The group dropdown row is only rendered when at least two groups have available products, so a grouped section with a single visible group shows no FT Professional link.
@@ -150,7 +150,7 @@ The containers follow the tab however it was opened: a click in the bar, a [URL 
 
 ### The mobile heading
 
-**Product heading (Mobile)** is a heading line for phones (below 740px). Placed inside **Products (No groups)**, it sits under the navigation bar and shows on **Subscribe** only: **Compare** and **Why the FT** hide it, with nothing to set. Placed at the root of the page, it stays whatever the tab. To make it fold with the hero, put it inside the hero's Collapsible Content Container, before or after the hero.
+**Products Heading (Mobile)** is a heading line for phones (below 740px). Placed inside **Products (Ungrouped)**, it sits under the navigation bar and shows on **Subscribe** only: **Compare** and **Why the FT** hide it, with nothing to set. Placed at the root of the page, it stays whatever the tab. To make it fold with the hero, put it inside the hero's Collapsible Content Container, before or after the hero.
 
 ### Switching the tab from elsewhere on the page
 

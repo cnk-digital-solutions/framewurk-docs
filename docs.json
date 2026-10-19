@@ -42,7 +42,7 @@
                     "group": "Custom Widgets",
                     "pages": [
                       {
-                        "group": "Banner Section",
+                        "group": "Banners",
                         "icon": "layout-panel-top",
                         "root": "plugins/banner-section",
                         "pages": [
