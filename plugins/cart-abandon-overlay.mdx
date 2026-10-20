@@ -53,8 +53,8 @@ The overlay loads its offer after the page has rendered and opens only once it h
 From top to bottom:
 
 - the **Offer label**, unless the category leaves it blank;
-- the **Offer name** as the heading;
-- the price line: the full price struck through, then the primary price written with the category's price expression;
+- the **Offer name** as the heading, with its `#price#` replaced by the price as the price line shows it;
+- the price line: the full price struck through, then the primary price written with the category's price expression, unless the category ticks **Hide price line**;
 - the description: the category's **Offer description**, or the product detail's **Product description (overlay)**, with the follow-up sentence at its `#followup_price_sentence#` placeholder or after it when the category has a [follow-up price](/products-v3/cart-abandon-category#pricing);
 - the product detail's **Single product view** content, in the order of its plugins. **Features** and **Why Choose This Plan** render as accordions, collapsed every time the overlay opens; the other plugins render as they do in the single product view;
 - the accept and dismiss buttons.
