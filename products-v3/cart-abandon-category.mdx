@@ -13,7 +13,7 @@ A **product category for cart abandon** is the entity a [Cart Abandon Overlay](/
 | Highlight label | **Offer label** |
 | Heading | **Offer name**, with its `#price#` replaced by the price as the price line shows it |
 | Price line | The primary price written with the **Price expression**, with the full price struck through in front of it when there is one. Left out when **Hide price line** is ticked |
-| Description | **Offer description**, or the **Product description (overlay)** of the product detail when it is blank |
+| Description | **Offer description**, or the **Product description (overlay)** of the product detail when it is blank, with its `#price#` replaced by the price as the price line shows it |
 | Follow-up sentence | The **Followup price expression** written with the follow-up price, at the description's `#followup_price_sentence#` placeholder or after the description |
 | Accordions and the rest of the content | The **Single product view** content of the product detail |
 | Accept button | **Product URL** |
@@ -29,8 +29,8 @@ The product detail is found through the copy tag, as for a product category: the
 
 - **Offer label** is the highlight label at the top of the overlay, shown in capitals as white text on black. It starts as **Exclusive offer**. Leave it blank for an overlay without a label.
 - **Offer name** is the heading of the overlay, used instead of the product name from the product detail. `#price#` in it is replaced by the price as the price line shows it: the full price struck through, then the primary price. It accepts the responsive line breaks and non-breaking spaces used elsewhere in the CMS, and `[b]` and `[/b]` around the part to show in bold. For example `Get [b]Weekend Print + Premium Digital[/b] [br-m][br-l][br-xl]for the price of [br-xs][br-s][b]Premium Digital[/b]` breaks after "Premium Digital" on desktop and after "for the price of" on phones.
-- **Offer description** replaces the **Product description (overlay)** of the product detail when it is set. It is rich text: bold, italic, underline and links. When it is blank, the product detail's text is shown. Either text can place the follow-up sentence with a `#followup_price_sentence#` placeholder, see [Pricing](#pricing).
-- **Hide price line** leaves the price line out of the overlay: the heading is followed by the description. The price can still appear in the heading through `#price#`. The primary price is still required, since the overlay only opens when one resolves for the visitor's country.
+- **Offer description** replaces the **Product description (overlay)** of the product detail when it is set. It is rich text: bold, italic, underline and links. `#price#` in it is replaced by the price as the price line shows it, as in the heading. When it is blank, the product detail's text is shown. Either text can place the follow-up sentence with a `#followup_price_sentence#` placeholder, see [Pricing](#pricing).
+- **Hide price line** leaves the price line out of the overlay: the heading is followed by the description. The price can still appear in the heading or the description through `#price#`. The primary price is still required, since the overlay only opens when one resolves for the visitor's country.
 
 ## Pricing
 
