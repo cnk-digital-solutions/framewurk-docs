@@ -13,7 +13,7 @@ Use groups when the offers on a page fall into families that visitors would want
 - **Heading** is shown on the page above the group's cards.
 - **Dropdown label** is optional. It is used for the group's entry in the group dropdown; when empty, the heading is used there as well. Set it when the on-page heading is too long for a dropdown.
 - **Description** is a short rich-text lead under the heading. Bold, italic, underline and links are available, along with the responsive line-break and non-breaking-space tags used elsewhere. 
-- **Slug** is optional. Give the group a slug, then link to the page with `?show_group=<slug>` to open it with this group already chosen in the dropdown, see [opening a group from a link](#opening-a-group-from-a-link).
+- **Slug** is optional. Give the group a slug (lowercase letters, digits and hyphens, for example `print`), then link to the page with `?show_group=<slug>` to open it with this group already chosen in the dropdown, see [opening a group from a link](#opening-a-group-from-a-link).
 
 ## Behaviour
 
@@ -25,7 +25,9 @@ With only one group visible there is no dropdown row, and the section looks like
 
 ### Opening a group from a link
 
-A link can land on one group: give the group a **Slug** and link to the page with `?show_group=<slug>`. The dropdown starts on that group instead of **All plans**. A slug that matches no group, or a group with no available products, is ignored and the page opens on **All plans**.
+A link can land on one group: give the group a **Slug** and link to the page with `?show_group=<slug>`. With the slug `print` on the Print group, `/subscribe?show_group=print` opens the page with the dropdown on that group instead of **All plans**, showing its cards alone; visitors can still switch to another group or back to **All plans**.
+
+A slug that matches no group, or a group with no available products in the visitor's country, is ignored and the page opens on **All plans**. The parameter needs the dropdown, so it has no effect when only one group is visible. Every Products (Grouped) section on the page reacts to it, each one landing on its own group with that slug. The other [URL parameters](/plugins/products#url-parameters) of the section can be combined with it.
 
 ### Headings on small screens
 
