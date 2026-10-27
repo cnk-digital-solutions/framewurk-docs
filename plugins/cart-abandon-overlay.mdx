@@ -38,7 +38,7 @@ The triggers come in two sets. Devices with a mouse or trackpad use **Triggers f
 | **Back button detection** | Both, set separately | The visitor presses the browser's back button. The first press opens the overlay instead of leaving the page; further presses are not caught. Watched from about 3 seconds after the page loads, once per page view. |
 | **Tab return detection** | Both, set separately | The visitor switches to another tab or app and comes back to the page. |
 
-A trigger that fires while the offer is still loading is not lost: the overlay opens as soon as the offer has loaded. A trigger that fires while the overlay is open is ignored.
+A trigger that fires while the offer is still loading is not lost: the overlay opens as soon as the offer has loaded. A trigger that fires while the overlay is open is ignored, and so is any trigger in the first 15 seconds after the page loads.
 
 ## Cool-off
 
@@ -83,7 +83,7 @@ To check which overlay a visitor from another country gets, [preview the page as
 
 A page open in the CMS editor reads the draft entities of the Products: V3 admin, so a new or changed offer shows there before it is published, see [Drafts and publishing](/products-v3#drafts-and-publishing).
 
-In edit mode a **Cart Abandon Preview** button sits at the bottom left of the page. Click it to open the overlay without waiting for a trigger; it ignores the cool-off. The triggers work in edit mode as well.
+In edit mode a **Cart Abandon Preview** button sits at the bottom left of the page. Click it to open the overlay without waiting for a trigger; it ignores the cool-off and the first 15 seconds. The triggers work in edit mode as well.
 
 When the offer cannot load, the button reads **Cart abandon not available** instead. Clicking it explains why: the product category for cart abandon, by its name, is configured with a price or copy (product detail) that could not be found for the current country, with the server's answer; when the missing price is a required follow-up price, the message says so. Fix the category, or [preview the page as another country](/features/content-targeting#previewing-as-a-different-country-or-us-state), and reload the page.
 
@@ -91,8 +91,8 @@ When the offer cannot load, the button reads **Cart abandon not available** inst
 
 | Symptom | Likely cause |
 | --- | --- |
-| The overlay never opens for visitors | No trigger is ticked; or the visitor closed it within the cool-off; or the offer is not available for the country (check in edit mode: the preview button reads **Cart abandon not available**); or the category has not been published yet, see [Drafts and publishing](/products-v3#drafts-and-publishing). |
+| The overlay never opens for visitors | No trigger is ticked; or the trigger came in the first 15 seconds after the page loaded; or the visitor closed it within the cool-off; or the offer is not available for the country (check in edit mode: the preview button reads **Cart abandon not available**); or the category has not been published yet, see [Drafts and publishing](/products-v3#drafts-and-publishing). |
 | The overlay opens in edit mode but not on the live page | The category was created or changed in the draft and not published yet. |
-| The back button does not open the overlay | **Back button detection** is off for that device set; the press came within the first seconds after the page loaded; the overlay already opened once on this page view; or the cool-off is running. |
+| The back button does not open the overlay | **Back button detection** is off for that device set; the press came within the first 15 seconds after the page loaded; the overlay already opened once on this page view; or the cool-off is running. |
 | Two overlays in the slot, only one shows | By design: the first in structure-board order is used. |
 | The accordions are closed again after reopening | By design: the overlay opens with its accordions collapsed every time. |
