@@ -12,8 +12,8 @@ Use it when the message is text next to a graphic. When the message is the graph
 
 - **Image**: a JPG, PNG or SVG. The banner sizes it for you, see [how the image is sized](#how-the-image-is-sized).
 - **Heading** and an optional **Text** line. Both accept the usual text tags for line breaks and non-breaking spaces.
-- The **CTA**: its label and an **Action**, which can be a campaign page, an external destination, an email or phone trigger, an overlay, an anchor on the page, or a scroll to one of the tabs of the first Products section.
-- **Background colour**, per breakpoint, from the fixed palette (black, slate, white, paper, pink, and white 40% on paper). The XL colour is the default for the smaller breakpoints; tick a breakpoint to override it. There is no background image on this variant.
+- The **CTA**: its label, its **button style** (**Primary** or **Secondary**, for the button shown from M up) and an **Action**, which can be a campaign page, an external destination, an email or phone trigger, an overlay, an anchor on the page, or a scroll to one of the tabs of the first Products section.
+- **Background colour**, per breakpoint, from the fixed palette (black, slate, white, paper, pink, and white 40% on paper). There is no background image on this variant.
 - **Vertical alignment**, per breakpoint like the background colour: where the content sits when a taller banner in the same row stretches this one, see [the tallest banner wins](/plugins/banner-section/row#height-the-tallest-banner-wins).
 
 The image has no alt text of its own on this variant: the heading beside it carries the message. To give the image an alt text, set the **default alt text** on the file in the media library.
@@ -22,11 +22,11 @@ The image has no alt text of its own on this variant: the heading beside it carr
 
 | Breakpoint | Layout |
 | --- | --- |
-| Below 740px (S and XS) | A card: the image centred on the background colour in the top part, below it a bordered white body with the heading, text and the CTA as a **text link** |
+| Below 740px (S and XS) | A card: the image centred on the background colour in the top part, below it a body in a white tint over the section background, with the heading, text and the CTA as a **text link** |
 | M (740 to 1023px) | The background colour fills the banner. One banner in the row: image on the left, content on the right. Two in the row: image above the content. Three in the row: one per row, image on the left as in a single banner, the heading at its three-per-row size. A single banner in a section that also holds a row of three takes that heading size at M too |
 | L and XL (1024px and up) | One or two banners in the row: image on the left, content on the right. Three in the row: image above the content |
 
-From M up the CTA is an outlined button; below it is a text link. The heading is larger when the banner has the row to itself, except at M in a section that also holds a row of three (see above).
+From M up the CTA is a button in the chosen style; below M it is a text link. On a **black** or **slate** background the banner inverts from M up: the heading turns white, the text light and the button takes the inverse theme. This follows the background colour of each breakpoint, so a banner that is slate on XL and paper on M inverts on XL only. The heading is larger when the banner has the row to itself, except at M in a section that also holds a row of three (see above).
 
 ## How the image is sized
 
@@ -46,7 +46,7 @@ What this means for your file:
 
 - **The height is free.** A 600 x 378px upload becomes 260 x 164px in a single banner and 200 x 126px on a phone. Nothing is cropped.
 - **The image is never enlarged.** If your file is narrower than the width in the table, it is shown at its own size and the retina copy is smaller than intended. Upload at least **twice the largest width the image will be shown at**: 540px wide covers every layout.
-- In the side-by-side layout the image takes at most about half of the banner's width, so the text keeps its room. At the narrow end of L this makes the image narrower than the table says: with two banners in a row from 1024 to 1367px, with three from 1024 to 1085px.
+- At the narrow end of L the image is narrower than the table says. With two banners in a row (image beside the content) it takes at most about half of the banner's width, so the text keeps its room: from 1024 to 1367px. With three in a row (image above the content) the column itself, minus the banner's padding, is narrower than 250px: from 1024 to 1085px.
 
 Use a **PNG with a transparent background** when the graphic should sit directly on the background colour, as the packshots in the designs do. A JPG shows its own rectangle.
 

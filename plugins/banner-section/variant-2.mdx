@@ -13,6 +13,7 @@ Use it when the message is in the artwork. When the message is text next to a pa
 - **Foreground image**: a JPG, PNG or SVG, typically a text graphic with a transparent background. It is shown from M up, at the width you set, see [the foreground image](#the-foreground-image).
 - **Heading / alternative text**: shown instead of the graphic on phones (below M), and used as the graphic's alt text from M up. The usual text tags for line breaks and non-breaking spaces work for the phone heading and are dropped from the alt text.
 - The **CTA**: its label and an **Action**, which can be a campaign page, an external destination, an email or phone trigger, an overlay, an anchor on the page, or a scroll to one of the tabs of the first Products section.
+- **CTA button theme** (**Standard** or **Inverse**) and **CTA button style** (**Primary** or **Secondary**), per breakpoint, for the button shown from M up. Unlike Variant 1, the theme is your choice, not read from the background: pick **Inverse** on a photo or a dark colour.
 - **Background**, per breakpoint: a **Colour** from the fixed palette or an **Image** with its position, its size (**Contain** or **Cover**) and a colour behind it, exactly as on [Banners](/plugins/banner-section#background-and-padding).
 - **Vertical alignment**, per breakpoint like the background: where the graphic and the CTA sit when a taller banner in the same row stretches this one, see [the tallest banner wins](/plugins/banner-section/row#height-the-tallest-banner-wins).
 
@@ -20,18 +21,18 @@ Use it when the message is in the artwork. When the message is text next to a pa
 
 | Breakpoint | Layout |
 | --- | --- |
-| Below 740px (S and XS) | A card: a 132px tall strip showing the banner's background (the photo or colour), below it a bordered white body with the **heading** and the CTA as a **text link**. The foreground graphic is not shown |
+| Below 740px (S and XS) | A card: a 132px tall strip showing the banner's background (the photo or colour), below it a body in a white tint over the section background, with the **heading** and the CTA as a **text link**. The foreground graphic is not shown |
 | M, L and XL (M and up) | The background fills the banner. The graphic sits above the CTA, both aligned left, whatever the number of banners in the row |
 
-From M up the CTA is a solid button in the inverse colour scheme, which reads well on a photo or a dark colour. Below M it is a text link.
+From M up the CTA is a button in the theme and style set for the breakpoint. Below M it is a text link.
 
 On a phone, the strip at the top of the card shows the background only. If the banner has a background photo, choose a photo that works as a 132px tall band, or give the **S** or **XS** breakpoint a background of its own.
 
 ## The foreground image
 
-The graphic is shown at the width of the **Foreground image width** setting, which is **per breakpoint** like the background: the XL value (270px when the banner is created) is the default for every other breakpoint, and a ticked breakpoint can set its own width, from 1 to 1400px. The height follows the proportions of your file.
+The graphic is shown at the width of the **Foreground image width** setting, which is **per breakpoint** like the background, from 1 to 1400px. The height follows the proportions of your file.
 
-- A JPG or PNG is resized on the server to exactly that width, plus a copy at twice that width for retina screens. Upload at least **twice the largest width you set**: 540px wide for the default 270px.
+- A JPG or PNG is resized on the server to exactly that width, plus a copy at twice that width for retina screens. Upload at least **twice the largest width you set**: 540px wide for a 270px graphic.
 - The graphic never grows beyond its banner: in a narrow column the banner's width is the limit.
 
 Set a different width for a banner that has its row to itself: a lone banner has room for a larger graphic (the design uses 300px there) than one that shares its row (270px).
