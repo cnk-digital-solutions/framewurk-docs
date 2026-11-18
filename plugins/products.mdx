@@ -6,12 +6,13 @@ icon: "shopping-bag"
 
 The **Products** widget is the offers section of a V3 page. It shows a row of product cards, each with a packshot, name, price, intro text, a **Select** button and a **View details** button that opens a full-screen overlay. Above the cards sits a sticky navigation bar with **Subscribe**, **Compare** and **Why the FT** tabs, which can be switched off to show the cards alone.
 
-It is a root-level widget for V3 pages and comes in two variants that share the same settings:
+It is a root-level widget for V3 pages and comes in three variants that share most of their settings:
 
 | Variant | Children | Use it when |
 | --- | --- | --- |
 | **Products (Ungrouped)** | [Product](/plugins/products/product) | All products belong together in one row |
 | **Products (Grouped)** | [Product Group](/plugins/products/product-group), each holding Products | Products fall into named families (for example digital, print, professional) and visitors should be able to filter by family |
+| **Products (Mix)** | [Product Group](/plugins/products/product-group#under-products-mix), each holding Products | The section is built from rows of different sizes, for example one offer across the full width above a row of three. Each group is a row |
 
 Products are not authored on the page. Each **Product** child points at a **product category** managed in the Product Manager admin, and the name, price, packshot, intro text and overlay content come from there when the page loads, for the visitor's country.
 
@@ -19,12 +20,14 @@ Products are not authored on the page. Each **Product** child points at a **prod
 
 <Steps>
   <Step title="Add the parent">
-    In structure mode, add **Products (Ungrouped)** or **Products (Grouped)** (module **Custom Widgets**) at the root of the page content.
+    In structure mode, add **Products (Ungrouped)**, **Products (Grouped)** or **Products (Mix)** (module **Custom Widgets**) at the root of the page content.
   </Step>
   <Step title="Add the children">
     Ungrouped: add one **Product** per offer, in the order the cards should appear.
 
     Grouped: add a **Product Group** per family, then the **Product** children inside each group.
+
+    Mix: add a **Product Group** per row, then the **Product** children of that row.
   </Step>
   <Step title="Review the settings">
     Every setting has a default that works. The ones most often changed are the **Compare section** and the **Why the FT** tab, described below.
@@ -33,7 +36,7 @@ Products are not authored on the page. Each **Product** child points at a **prod
 
 ## Settings
 
-Both variants have the same form, arranged in the following groups, with one exception: the **FT Professional mobile link** fieldset exists only on **Products (Grouped)**, the only variant that renders that link.
+The variants share most of the form, arranged in the following groups. **Product Heading** and **Layout configuration** are on **Products (Ungrouped)** and **Products (Mix)** only, and **FT Professional mobile link configuration** is on **Products (Grouped)** only, the one variant that renders that link.
 
 ### General
 
@@ -43,8 +46,16 @@ Both variants have the same form, arranged in the following groups, with one exc
 ### Navigation configuration
 
 - **Show navigation** (on by default) controls the sticky bar with the **Subscribe**, **Compare** and **Why the FT** tabs. Untick it to show the product cards alone: the bar is not rendered, and the **Compare section** and **Why the FT** settings disappear from the form and are reset to their defaults when you save. The three subscription check fields disappear and reset as well, because that link lives in the bar.
-- **Subscription check text** and **Subscription check link** define the "Check if your organisation subscribes" link at the right-hand end of the navigation bar, in both variants. Both must be set for the link to appear.
+- **Subscription check text** and **Subscription check link** define the "Check if your organisation subscribes" link at the right-hand end of the navigation bar, in every variant. Both must be set for the link to appear.
 - **Subscription check link mobile position** places that link on narrow screens (below 600px), where the bar has no room for it: **Below navigation** (the default) is a full-width strip directly under the bar; **After the first product** is a tile among the product cards, right after the first one. With a single product the tile setting is ignored and the strip is used. See [where the links appear](#where-the-links-appear).
+
+### Product Heading
+
+On **Products (Ungrouped)** and **Products (Mix)**. The heading belongs to the **Subscribe** tab: **Compare** and **Why the FT** do not show it. For a heading on phones, add a **Products Heading (Mobile)**, see [the mobile heading](#the-mobile-heading).
+
+### Layout configuration
+
+On **Products (Ungrouped)** and **Products (Mix)**. See [Condensed and Expanded](#condensed-and-expanded) for when the two settings apply.
 
 ### Compare section
 
@@ -68,7 +79,7 @@ Only on **Products (Grouped)**. The three fields define the "Two or more readers
 | **Link out** | The tab is a link to **Why the FT? link**, opened in a new window |
 | **Preset** | The tab reveals a preset inside the Products section, as a third panel next to Subscribe and Compare |
 
-In **Preset** mode, choose the preset with the preset picker. Its content is fetched when the page loads and shown in place when the tab is clicked. A preset can be used only once per page: saving a second Products section (or a Dynamic Preset plugin) with the same preset fails with "This preset is already present on the page".
+In **Preset** mode, choose the preset with the preset picker. Its content is fetched when the page loads and shown in place when the tab is clicked. A preset shows once per page: when a Dynamic Preset plugin or an earlier Products section on the page already holds the same preset, this section has no **Why the FT** tab. The same preset can sit under several segments of a [Segmentation Container](/features/content-targeting), because a visitor gets only one of them.
 
 ## Behaviour
 
@@ -77,16 +88,58 @@ In **Preset** mode, choose the preset with the preset picker. Its content is fet
 The section fetches its products after the page has rendered and shows a skeleton placeholder in the meantime. Each product is fetched for the visitor's country:
 
 - A product that is not available in the visitor's country, or that has no price or product detail, is **hidden**. The remaining cards close up.
-- In the grouped variant, a group with no available products is hidden entirely, together with its heading and its entry in the group dropdown.
+- A group with no available products is hidden entirely: in **Products (Grouped)** together with its heading and its entry in the group dropdown, in **Products (Mix)** together with its divider.
 - If no product in the section is available, the section shows **No offers found**.
 
-### Cards per row
+### Layout by number of products
 
-| Breakpoint | Layout |
-| --- | --- |
-| L and XL (1024px and up) | Four cards per row, with packshot and intro text |
-| M (740 to 1023px) | Two cards per row, with packshot and intro text |
-| S and XS (below 740px) | One card per row, no packshot, no intro text. Below 600px the **Select** button is hidden: tapping the card or its three-dot button opens the overlay, where the **Select** button lives |
+The layout follows the number of products the visitor gets. A product that is hidden for the visitor's country does not count, so the same section can show one layout in one country and another elsewhere. Each variant counts differently.
+
+#### Products (Ungrouped)
+
+The count is of the products in the section.
+
+| Products shown | L and XL (1024px and up) | M (740 to 1023px) | S and XS (below 740px) |
+| --- | --- | --- | --- |
+| One | No card: the product's details sit in the page, see [a single product](#a-single-product) | As at L and XL, in one column | As at M |
+| Two | Two cards share the row 50:50, with a larger packshot, name and price | Two cards share the row 50:50 | One card per row |
+| Three | Three cards per row | Two cards per row, the third on a row of its own | One card per row |
+| Four or more | Four cards per row | Two cards per row | One card per row |
+
+#### Products (Mix)
+
+From M up (740px and up) every **Product Group** is a row of its own, laid out by the number of products in that group, with a dotted divider between the rows. Below 740px there are no rows and no dividers: all the products of the section form one column of cards.
+
+| Products shown in the group | L and XL (1024px and up) | M (740 to 1023px) | S and XS (below 740px) |
+| --- | --- | --- | --- |
+| One | The product across the row, see [a single product](#a-single-product) | As at L and XL, in one column | A card like the others. The only product of a section keeps the form it has at M |
+| Two | Two cards share the row 50:50, at the standard size | Two cards share the row 50:50 | One card per row |
+| Three | Three cards per row | Two cards per row, the third on a row of its own | One card per row |
+| Four or more | Four cards per row | Two cards per row | One card per row |
+
+#### Products (Grouped)
+
+The number of products makes no difference: every group is laid out the same way.
+
+| Products shown in the group | L and XL (1024px and up) | M (740 to 1023px) | S and XS (below 740px) |
+| --- | --- | --- | --- |
+| Any number | Four cards per row | Two cards per row | One card per row |
+
+#### What a card shows
+
+From M up a card shows the packshot, name, price and intro text with the **Select** and **View details** buttons. Below 740px a card has no packshot and no intro text. Below 600px the **Select** button is hidden as well: tapping the card or its three-dot button opens the overlay, where the **Select** button lives.
+
+#### Condensed and Expanded
+
+Below 600px, a **Products (Ungrouped)** or **Products (Mix)** section with exactly two or exactly three products in all follows the **2-product mobile layout** or the **3-product mobile layout** of its [Layout configuration](#layout-configuration). The count is of the products the visitor gets, so the setting in force can differ from one country to the next.
+
+#### A single product
+
+A **Products (Ungrouped)** section with one product shows no card. What the overlay would show sits in the page instead, under the navigation bar: the packshot, name, price and description, then the product's **Single product view** content. There is no **View details** button, because there is nothing left to open.
+
+At L and XL the price and the **Select** button form a column on the right that stays in view while the content scrolls. Below 1024px the **Select** button is docked to the bottom of the screen for as long as the product is in view, and scrolls away with the end of the section.
+
+In **Products (Mix)**, a row of one product shows the same label, packshot, name, price and description across the row, with **Select** and **View details** side by side, and leaves the **Single product view** content to the overlay. At L and XL the price and the two buttons form a column on the right; at M the buttons follow the description. Below 740px the product is a card like the others, unless it is the only product of the section: then it keeps this form at every width.
 
 ### The navigation bar
 
@@ -102,18 +155,20 @@ With **Show navigation** off there is no bar and no tabs: the section shows the 
 
 ### Where the links appear
 
-| Link | Ungrouped | Grouped |
+| Link | Ungrouped and Mix | Grouped |
 | --- | --- | --- |
-| Subscription check | Right-hand end of the navigation bar; below 600px a strip under the bar or a tile after the first product, per **Subscription check link mobile position** | Same as Ungrouped |
+| Subscription check | Right-hand end of the navigation bar; below 600px a strip under the bar or a tile after the first product, per **Subscription check link mobile position** | Same |
 | FT Professional (mobile) | Not shown | Right-hand end of the group dropdown row, mobile only |
 
 The group dropdown row is only rendered when at least two groups have available products, so a grouped section with a single visible group shows no FT Professional link.
 
-Switching **Show navigation** off removes the subscription check link in both variants; its fields are hidden and reset.
+Switching **Show navigation** off removes the subscription check link in every variant; its fields are hidden and reset.
 
 ### The product overlay
 
-**View details** opens a full-screen overlay. It shows the product's packshot, name, price and intro text, a **Select** button, and the content configured for the product in the Product Manager (the *Single product view* plugins). A scrollable menu across the top lists every available product in the section, across all groups, so visitors can move between plans without closing the overlay.
+**View details** opens a full-screen overlay. It shows the product's packshot, name, price and description, a **Select** button, and the content configured for the product in the Product Manager (the *Single product view* plugins). A scrollable menu across the top lists every available product in the section, across all groups, so visitors can move between plans without closing the overlay.
+
+A **Products (Ungrouped)** section with one product has no overlay: it shows the same content in the page, see [a single product](#a-single-product).
 
 ### The comparison table
 
@@ -151,7 +206,7 @@ The containers follow the tab however it was opened: a click in the bar, a [URL 
 
 ### The mobile heading
 
-**Products Heading (Mobile)** is a heading line for phones (below 740px). Placed inside **Products (Ungrouped)**, it sits under the navigation bar and shows on **Subscribe** only: **Compare** and **Why the FT** hide it, with nothing to set. Placed at the root of the page, it stays whatever the tab. To make it fold with the hero, put it inside the hero's Collapsible Content Container, before or after the hero.
+**Products Heading (Mobile)** is a heading line for phones (below 740px). Placed inside **Products (Ungrouped)** or **Products (Mix)**, it sits under the navigation bar and shows on **Subscribe** only: **Compare** and **Why the FT** hide it, with nothing to set. Placed at the root of the page, it stays whatever the tab. To make it fold with the hero, put it inside the hero's Collapsible Content Container, before or after the hero.
 
 ### Switching the tab from elsewhere on the page
 
