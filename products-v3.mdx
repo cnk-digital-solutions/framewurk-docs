@@ -14,8 +14,8 @@ The **Products: V3** section of the admin holds the data that the [Products](/pl
 | --- | --- | --- |
 | **Product categories** | The offer: type, copy tag, price codes and expressions, sign-up link | [Product category](/products-v3/product-category) |
 | **CUSTOM: Product category for cart abandon** | The offer behind the Cart Abandon Overlay: copy tag, label, heading, optional description, price codes, sign-up link | [Product category for cart abandon](/products-v3/cart-abandon-category) |
-| **Copy tags** | The name that ties a product category to its product details | _to follow_ |
-| **Product details** | The copy for one copy tag in one country: name, description, packshot, label, features and the **Single product view** content | _to follow_ |
+| **Copy tags** | The name that ties a product category to its product details | [Copy tag](/products-v3/copy-tag) |
+| **Product details** | The copy for one copy tag in one country: name, description, packshot, label, features and the **Single product view** content | [Product detail](/products-v3/product-detail) |
 | **Product features** | A reusable feature line with up to five parameters, shown in the overlay and the comparison table | _to follow_ |
 | **Product feature groups** | Ordered sets of features that group the rows of the comparison table | _to follow_ |
 | **Price expressions** | How the primary price is written, for example `#price# per month`, and its billing period | _to follow_ |
@@ -90,6 +90,9 @@ Features`"]
     click PP "/plugins/products/product" "Product plugin"
     click PC "#product-categories" "Product categories"
     click CA "/plugins/cart-abandon-overlay" "Cart Abandon Overlay plugin"
+    click CT "/products-v3/copy-tag" "Copy tag"
+    click PD "/products-v3/product-detail" "Product detail"
+    click OV "/products-v3/product-detail#single-product-view" "Single product view content"
 ```
 
 <div style={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.75rem', margin: '0.25rem 0 1.5rem', fontSize: '0.9rem'}}>
@@ -116,3 +119,17 @@ Every entity in this section exists in two forms: a **draft** and a **published*
 - The published version is read-only. It shows every entity as it was when last published.
 - **Publish prices & products**, available in the draft view after a confirmation, makes the current drafts the published version, replacing what was published before. It publishes the whole product manager at once, prices and V1&V2 products included, not a single entity. The drafts stay as they are, ready for the next round of edits.
 - Live pages read the published version. A page open in the CMS editor reads the drafts instead, so you can check draft products on a page before publishing them. Publishing clears the site cache, so the change is live straight away.
+- The [previews](#previews) are offered in the draft view and show the drafts, so you can check a change before publishing it.
+
+## Previews
+
+Three entities can be previewed without a page. The links sit next to **Clone** on each row of the entity's list and next to **History** on the entity's own page, and each opens in a new tab.
+
+| Entity | Link | What it shows |
+| --- | --- | --- |
+| **Product details** | **Preview Subscribe** | The product detail as a card of the **Subscribe** tab, in rows of four, three, two and one products, with placeholder prices, see [Preview Subscribe](/products-v3/product-detail#preview-subscribe). |
+| **Product details** | **Preview Compare** | The comparison table with the product detail in the first column, with placeholder prices, see [Preview Compare](/products-v3/product-detail#preview-compare). |
+| **Product categories** | **Preview** | The same rows of cards with the category's own prices for a country, see [Preview](/products-v3/product-category#preview). |
+| **CUSTOM: Product category for cart abandon** | **Preview** | The overlay, open, with the entity's own prices for a country, see [Preview](/products-v3/cart-abandon-category#preview). |
+
+Every preview has the **Breakpoint** buttons and the **Open in a new tab** links described for the [product category](/products-v3/product-category#preview).

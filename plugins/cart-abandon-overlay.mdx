@@ -6,7 +6,7 @@ icon: "shopping-cart"
 
 The **Cart Abandon Overlay** puts one offer in front of a visitor who is about to leave the page. It does not live in the page content. A V3 page has a slot of its own for it, **Cart Abandon**, next to the content slot in the structure board. The slot takes nothing else, apart from a Segmentation Container around the plugin, see [Segmentation](#segmentation).
 
-The plugin holds no copy of its own apart from the button texts. It points at a [product category for cart abandon](/products-v3/cart-abandon-category) in the **Products: V3** admin, and the label, heading, price, description and accordions come from there when the page loads, for the visitor's country.
+The plugin holds no copy of its own apart from the button texts. It points at a [product category for cart abandon](/products-v3/cart-abandon-category) in the **Products: V3** admin, and the label, heading, price and description come from there when the page loads, for the visitor's country. The content below them is the **Single product view** content of the offer's [product detail](/products-v3/product-detail#in-the-cart-abandon-overlay).
 
 ## Adding a Cart Abandon Overlay
 
@@ -55,8 +55,8 @@ From top to bottom:
 - the **Offer label**, unless the category leaves it blank;
 - the **Offer name** as the heading, with its `#price#` replaced by the price as the price line shows it;
 - the price line: the full price struck through, then the primary price written with the category's price expression, unless the category ticks **Hide price line**;
-- the description: the category's **Offer description**, or the product detail's **Product description (overlay)**, with its `#price#` replaced by the price as the price line shows it, and the follow-up sentence at its `#followup_price_sentence#` placeholder or after it when the category has a [follow-up price](/products-v3/cart-abandon-category#pricing);
-- the product detail's **Single product view** content, in the order of its plugins. **Features** and **Why Choose This Plan** render as accordions, collapsed every time the overlay opens; the other plugins render as they do in the single product view;
+- the description: the category's **Offer description**, or the product detail's **Product description (single product)**, with its `#price#` replaced by the price as the price line shows it, and the follow-up sentence at its `#followup_price_sentence#` placeholder or after it when the category has a [follow-up price](/products-v3/cart-abandon-category#pricing);
+- the **Single product view** content of the product detail, see [in the Cart Abandon Overlay](/products-v3/product-detail#in-the-cart-abandon-overlay) for how each plugin shows here;
 - the accept and dismiss buttons.
 
 The accept button links to the category's **Product URL** with the visitor's country and the page's query parameters appended. The dismiss button, the cross at the top right and the Escape key close the overlay. Clicking outside the box does nothing. While the overlay is open, keyboard focus stays inside it and the page behind cannot be scrolled.
@@ -86,6 +86,8 @@ A page open in the CMS editor reads the draft entities of the Products: V3 admin
 In edit mode a **Cart Abandon Preview** button sits at the bottom left of the page. Click it to open the overlay without waiting for a trigger; it ignores the cool-off and the first 15 seconds. The triggers work in edit mode as well.
 
 When the offer cannot load, the button reads **Cart abandon not available** instead. Clicking it explains why: the product category for cart abandon, by its name, is configured with a price or copy (product detail) that could not be found for the current country, with the server's answer; when the missing price is a required follow-up price, the message says so. Fix the category, or [preview the page as another country](/features/content-targeting#previewing-as-a-different-country-or-us-state), and reload the page.
+
+To see an offer's overlay without a page, open the [preview](/products-v3/cart-abandon-category#preview) of its product category for cart abandon in the **Products: V3** admin.
 
 ## Troubleshooting
 

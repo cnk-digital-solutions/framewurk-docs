@@ -13,12 +13,12 @@ A **product category for cart abandon** is the entity a [Cart Abandon Overlay](/
 | Highlight label | **Offer label** |
 | Heading | **Offer name**, with its `#price#` replaced by the price as the price line shows it |
 | Price line | The primary price written with the **Price expression**, with the full price struck through in front of it when there is one. Left out when **Hide price line** is ticked |
-| Description | **Offer description**, or the **Product description (overlay)** of the product detail when it is blank, with its `#price#` replaced by the price as the price line shows it |
+| Description | **Offer description**, or the **Product description (single product)** of the product detail when it is blank, with its `#price#` replaced by the price as the price line shows it |
 | Follow-up sentence | The **Followup price expression** written with the follow-up price, at the description's `#followup_price_sentence#` placeholder or after the description |
-| Accordions and the rest of the content | The **Single product view** content of the product detail |
+| The content under the description | The **Single product view** content of the product detail, see [in the Cart Abandon Overlay](/products-v3/product-detail#in-the-cart-abandon-overlay) |
 | Accept button | **Product URL** |
 
-The product detail is found through the copy tag, as for a product category: the one for the visitor's country, then the one whose country is **(Not set)**. Its product name, packshot and label settings are not used by the overlay.
+The [product detail](/products-v3/product-detail) is found through the copy tag, as for a [product category](/products-v3/product-category).
 
 ## Identity
 
@@ -28,23 +28,25 @@ The product detail is found through the copy tag, as for a product category: the
 ## Copy
 
 - **Offer label** is the highlight label at the top of the overlay, shown in capitals as white text on black. It starts as **Exclusive offer**. Leave it blank for an overlay without a label.
-- **Offer name** is the heading of the overlay, used instead of the product name from the product detail. `#price#` in it is replaced by the price as the price line shows it: the full price struck through, then the primary price. It accepts the responsive line breaks and non-breaking spaces used elsewhere in the CMS, and `[b]` and `[/b]` around the part to show in bold. For example `Get [b]Weekend Print + Premium Digital[/b] [br-m][br-l][br-xl]for the price of [br-xs][br-s][b]Premium Digital[/b]` breaks after "Premium Digital" on desktop and after "for the price of" on phones.
-- **Offer description** replaces the **Product description (overlay)** of the product detail when it is set. It is rich text: bold, italic, underline and links. `#price#` in it is replaced by the price as the price line shows it, as in the heading. When it is blank, the product detail's text is shown. Either text can place the follow-up sentence with a `#followup_price_sentence#` placeholder, see [Pricing](#pricing).
+- **Offer name** is the heading of the overlay, used instead of the product name from the product detail. `#price#` in it is replaced by the price as the price line shows it: the full price struck through, then the primary price.
+- **Offer description** replaces the **Product description (single product)** of the product detail when it is set. `#price#` in it is replaced by the price as the price line shows it, as in the heading. When it is blank, the product detail's text is shown. Either text can place the follow-up sentence with a `#followup_price_sentence#` placeholder, see [Pricing](#pricing).
 - **Hide price line** leaves the price line out of the overlay: the heading is followed by the description. The price can still appear in the heading or the description through `#price#`. The primary price is still required, since the overlay only opens when one resolves for the visitor's country.
 
 ## Pricing
 
-An entity has the three price slots of a [product category](/products-v3/product-category#pricing): the **Primary price** (required), the **Full price**, struck through in front of the primary price when set, and the **Followup price**. Each slot names up to three sources, tried in the same order as on a product category: via Charge Group, via Offer API, then the price code. The **Price expression** writes the price line and carries the period, so `#price# for your first year` gives the struck-through full price, the primary price and then "for your first year". Period conversion and rounding work as described for a [product category](/products-v3/product-category#period-rounding-and-savings).
+Pricing works as on a [product category](/products-v3/product-category#pricing): the same three price slots, price sources, period, rounding and expressions. The differences are in where the prices show:
 
-The **Followup price expression** writes the follow-up sentence when a follow-up price resolves for the visitor's country: `#price#` is the follow-up price and `#price_primary#` the primary price. The sentence replaces the `#followup_price_sentence#` placeholder in the description when there is one, and otherwise follows the description as a paragraph of its own. Without a follow-up price the placeholder is removed. A follow-up price resolves only when a **Followup price expression** is set: follow-up sources without one yield no follow-up price. **Require followup price**, when ticked, keeps the overlay from opening when no follow-up price resolves; leave it unticked when the follow-up price is optional information.
-
-The **Product Categories with inactive pricing** list in **Prices: Offer API** covers these entities too.
+- The primary price, with the full price struck through in front of it, is the price line of the overlay and the `#price#` of the heading and the description.
+- The follow-up price is written as a sentence by the **Followup price expression**. The sentence replaces the `#followup_price_sentence#` placeholder in the description when there is one, and otherwise follows the description as a paragraph of its own. Without a follow-up price the placeholder is removed.
+- **Require followup price**, when ticked, keeps the overlay from opening when no follow-up price resolves.
 
 ## Product URL and tracking
 
-**Product URL** is the link behind the accept button. The overlay appends `countryCode=` with the visitor's country, then every query parameter of the page URL, so campaign parameters reach the checkout.
+**Product URL** and the **Campaign codes and tracking** fields work as on a [product category](/products-v3/product-category#product-url-and-tracking), with these differences:
 
-The **Campaign codes and tracking** fieldset, collapsed by default, holds **Offer id**, the three **Default campaign code** fields and **Is trial**. The overlay uses **Offer id** as the tracking label of the accept button and does not read the other fields.
+- **Product URL** is the link behind the accept button.
+- **Offer id** is the tracking label of the accept button, and no plugin setting overrides it.
+- **Is trial** is not read.
 
 ## When the overlay can show
 
@@ -52,7 +54,17 @@ The overlay fetches the entity for the visitor's country after the page renders.
 
 ## The admin list
 
-The list shows the name, copy tag, charge group, price code and Offer API price code of each entity, with the same filters, search and **Clone** link as the product categories. A clone shares the copy tag, so it shares the product details too.
+The list shows the name, copy tag, charge group, price code and Offer API price code of each entity, with the same filters, search and **Clone** link as the product categories. A clone shares the copy tag, so it shares the product details too. Each row also has a **Preview** link, see [Preview](#preview).
+
+## Preview
+
+**Preview** shows the overlay of this entity without a page and without a trigger. It is a link next to **Clone** on each row of the list and a button next to **History** on the entity's own page.
+
+The page has one frame with the overlay open in it. The overlay stays open: the cross, the dismiss button and the Escape key do nothing there. The accept button opens the **Product URL** in a new tab. The button texts are **Yes please** and **No thanks**, because the texts of a page's overlay are set on the [Cart Abandon Overlay](/plugins/cart-abandon-overlay), not on this entity.
+
+The **Breakpoint** buttons and the **Country** select work as in the [product category preview](/products-v3/product-category#preview). The overlay fills the screen it is on, so the height of the frame is part of what you see: drag the handle under the frame to change it.
+
+When the overlay would not open in the chosen country, the frame says **Not available in** that country and gives the reason, one of the conditions of [When the overlay can show](#when-the-overlay-can-show).
 
 ## Dependencies
 

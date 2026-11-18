@@ -1,0 +1,29 @@
+---
+title: "Copy tag"
+description: "The name that ties a product category to its product details."
+icon: "link"
+---
+
+A **copy tag** is a name and nothing else. It ties together the two halves of an offer: the [product category](/products-v3/product-category), which holds the price and the sign-up link, and the [product details](/products-v3/product-detail), which hold the copy. A [product category for cart abandon](/products-v3/cart-abandon-category) finds its product details the same way.
+
+## How it connects
+
+- A product category names one copy tag.
+- A product detail names one copy tag and one country.
+
+When a page loads, a product takes the product detail that has its category's copy tag and the visitor's country, or failing that the one whose country is **(Not set)**.
+
+A copy tag may therefore have several product details, one per country that needs its own copy plus the **(Not set)** fallback, and it can serve several product categories at once.
+
+## When to share a copy tag
+
+Give two product categories the same copy tag when they differ only in price, for example a full price and a discounted rate for the same product: they then show the same name, description, packshot, features and single product view. Give them different copy tags as soon as any of that copy has to differ.
+
+## Name
+
+**Name** is internal: it is what the **Copy tag** dropdowns and the admin lists show. It takes letters, digits, hyphens and underscores, without spaces, for example `premium-digital`.
+
+## Dependencies
+
+- A copy tag that a product category or a product category for cart abandon uses cannot be deleted. Re-point or delete those first.
+- Deleting a copy tag deletes its product details with it.

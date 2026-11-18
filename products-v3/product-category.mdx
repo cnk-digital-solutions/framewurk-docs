@@ -4,13 +4,13 @@ description: "The entity a Product plugin points at: which copy it uses, what it
 icon: "tag"
 ---
 
-A **product category** is the entity a [Product](/plugins/products/product) plugin points at. It holds everything about an offer that is not copy: the copy tag that connects it to the product detail for each country, the price codes and the expressions that write the price, and the sign-up link behind **Select**.
+A **product category** is the entity a [Product](/plugins/products/product) plugin points at. It holds everything about an offer that is not copy: the [copy tag](/products-v3/copy-tag) that connects it to the product detail for each country, the price codes and the expressions that write the price, and the sign-up link behind **Select**.
 
 ## Identity
 
 - **Name** is internal. It is what the **Product category** dropdown of the Product plugin and the admin lists show.
 - **Type** is **Digital Subscription**, **Print Subscription** or **Print + Digital Subscription**. The grouped Products plugin organises its comparison dropdowns by type, and the comparison table fills its columns in that order when no slot is pre-selected.
-- **Copy tag** connects the category to its product details. When the page loads, the plugin looks for the product detail with this copy tag for the visitor's country, then for the one whose country is **(Not set)**. If neither exists, the product is not shown.
+- **Copy tag** connects the category to its [product details](/products-v3/product-detail). When the page loads, the plugin looks for the product detail with this copy tag for the visitor's country, then for the one whose country is **(Not set)**. If neither exists, the product is not shown.
 
 ## Pricing
 
@@ -48,7 +48,7 @@ The saving that the discount label (`#saving#`) on the product detail shows come
 
 **Product URL** is the link behind **Select**, on the card and in the overlay. The plugin appends `countryCode=` with the visitor's country, then every query parameter of the page URL, so campaign parameters reach the checkout.
 
-The **Campaign codes and tracking** fieldset, collapsed by default, holds **Offer id**, the three **Default campaign code** fields and **Is trial**. They are sent to the page with the product data, but the V3 Products plugin does not currently read them.
+**Offer id** is the tracking label of **Select**, on the card and in the overlay, unless the Product plugin sets a [data-trackable override](/plugins/products/product#analytics). It also goes to analytics with a click on **Select**, together with **Is trial**; a product that shows a follow-up price counts as a trial whether **Is trial** is ticked or not. The three **Default campaign code** fields are not read by the V3 Products plugin.
 
 ## When a product appears on a page
 
@@ -62,9 +62,25 @@ Otherwise the card is hidden and the other cards close up, see [What visitors se
 
 ## The admin list
 
-The list shows the name, copy tag, charge group, price code and Offer API price code of each category. It can be filtered by price code, copy tag and charge group, and searched by name. Each row also has a **Clone** link.
+The list shows the name, copy tag, charge group, price code and Offer API price code of each category. It can be filtered by price code, copy tag and charge group, and searched by name. Each row also has a **Clone** link and a **Preview** link.
 
 **Clone** creates a copy named "Copy of: ..." with the same settings and opens it for editing. Product details are not copied: the clone shares the copy tag, so it shares the product details too.
+
+## Preview
+
+**Preview** shows the product cards of the **Subscribe** tab for this category without a page. It is a link next to **Clone** on each row of the list and a button next to **History** on the category's own page, and it opens in a new tab.
+
+The page has four frames, one per row size: a row of four, three, two and one products. Every card of a row is this category, repeated, so you see the same product in each layout of the [Products](/plugins/products) widget. The cards carry the category's own prices for the chosen country, with its full price, follow-up price and discount label.
+
+| Control | What it does |
+| --- | --- |
+| **Breakpoint** | **XS**, **S**, **M**, **L** and **XL** set every frame to the width that breakpoint starts at: 320px, 490px, 740px, 1024px and 1440px. **Responsive** makes the frames as wide as the window allows. A breakpoint wider than your window is greyed out. |
+| **Country** | The country the cards are fetched for. It starts on the country you are browsing from. With the USA chosen, a **State** select appears next to it. |
+| **Use expanded mobile layouts** | Shows the rows of two and three products in the **Expanded** mobile layout instead of **Condensed**. The two differ below 600px. |
+
+A frame is as tall as its content, up to 800px, and scrolls beyond that. **Open in a new tab**, above the top right corner of a frame, opens that frame on its own.
+
+When the category would show no card in the chosen country, each frame says **Not available in** that country and gives the reason: the copy tag has no product detail for the country and no **(Not set)** one, none of the primary price sources has a price for the country, or the category requires a follow-up price and has no follow-up expression or no follow-up price for the country. These are the conditions of [When a product appears on a page](#when-a-product-appears-on-a-page).
 
 ## Dependencies
 

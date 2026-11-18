@@ -1,0 +1,106 @@
+---
+title: "Product detail"
+description: "The copy of an offer for one copy tag and one country: name, descriptions, packshot, label, features and the Single product view content."
+icon: "file-text"
+---
+
+A **product detail** is everything a visitor reads about an offer. A [product category](/products-v3/product-category) holds the price and the sign-up link; the product detail holds the name, the descriptions, the packshot, the label, the features and the content of the single product view. The two meet through the [copy tag](/products-v3/copy-tag).
+
+## Copy tag and country
+
+- **Copy tag** connects the product detail to every product category with the same tag.
+- **Country**, in the **Targeting** group, is the country the copy is for. **(Not set)** makes it the fallback for every country without a product detail of its own.
+
+There is one product detail per copy tag and country.
+
+When a page loads, a product looks for the product detail with its copy tag for the visitor's country, then for the **(Not set)** one. With neither, the product is not shown.
+
+## Where the copy shows
+
+| Part | Product card | Single product view | Comparison table |
+| --- | --- | --- | --- |
+| **Product name** | Yes | Yes | Yes |
+| **Product image** | From M up (740px and up) | Yes | Yes |
+| **Product description** | The intro text of the card | Only when **Product description (single product)** is blank | No |
+| **Product description (single product)** | No | Yes | No |
+| [Label](#label) | Per its settings | Per its settings | Per its settings |
+| [Product features](#product-features) | No | In the **Features** plugin | The rows of the table |
+| [Single product view content](#single-product-view) | No | Yes | No |
+
+When both a raster and a vector **Product image** are set, the vector file is used.
+
+## Label
+
+A **Discount** label shows only when the price comes with a saving. The saving, the `#saving#` of the label, comes with the price, see [Period, rounding and savings](/products-v3/product-category#period-rounding-and-savings).
+
+## Product features
+
+The **Product Features** of a product detail appear in two places: in the **Features** plugin of the [single product view](#single-product-view), and as the rows of the comparison table.
+
+**Customise**, next to a chosen feature, sets what is specific to this product: the values that replace `#param1#` to `#param5#` in the feature's texts, and whether the feature shows in the overlay.
+
+## Single product view
+
+The single product view is the full presentation of one product. Visitors meet it in three places:
+
+- as the overlay that **View details** opens on a [Products](/plugins/products#the-product-overlay) section;
+- in the page itself, when a Products (Ungrouped) section shows [a single product](/plugins/products#a-single-product);
+- inside the [Cart Abandon Overlay](/plugins/cart-abandon-overlay), which shows its content.
+
+The top of the view comes from the fields above: the label, the packshot and the name, the price, then **Product description (single product)**, or **Product description** when that is blank. Everything below is the **Single product view content**, which you build from plugins.
+
+### Editing the content
+
+**Manage**, in the **Single product view** group of the form, opens the content in a structure board of its own, in a new tab. **Edit single product**, next to **History**, opens the same editor.
+
+The content takes these plugins, at its root and in any order: **Heading**, **Paragraph**, **Divider**, **Blockquote**, **Features** and **Why Choose This Plan** from the module **Single product view**, and **Image** and **Video** from the module **Components**.
+
+- **Features** shows the [product features](#product-features) that are set to show in the overlay. The content takes one.
+- **Why Choose This Plan** holds **Reason** children. The content takes one.
+- **Image** and **Video** are the plugins you know from a page. On a page they have to sit inside a column or a container. Here they go at the root like the other plugins, and a copied **Image** or **Video** can be pasted at the root as well.
+
+### How the content behaves
+
+- At L and XL (1024px and up), **Why Choose This Plan** leaves the content and shows as a panel in the right-hand column, under the price and the **Select** button.
+- Below 1024px, a short menu under the description links to the headings of **Features** and **Why Choose This Plan**.
+- A **Video** belongs to the open view. It stops and is taken down when the visitor closes the view or moves to another product, and it is set up again the next time the view opens.
+
+### In the Cart Abandon Overlay
+
+The [Cart Abandon Overlay](/plugins/cart-abandon-overlay) shows the same content in the same order, with two differences:
+
+- **Features** and **Why Choose This Plan** are accordions, collapsed every time the overlay opens.
+- A **Video** is set up when the overlay opens and taken down when it closes.
+
+The other plugins look as they do in the single product view. From the fields of the product detail, the overlay uses only the descriptions, and only when its [product category for cart abandon](/products-v3/cart-abandon-category#copy) has no **Offer description**. The name, packshot and label of the product detail are not used there.
+
+## Previews
+
+Two previews show the product detail without a page. They are links next to **Clone** on each row of the list and buttons next to **History** on the product detail's own page, and they open in a new tab. Both have the **Breakpoint** buttons and the **Open in a new tab** links described for the [product category preview](/products-v3/product-category#preview).
+
+### Preview Subscribe
+
+**Preview Subscribe** shows the product detail as a card of the **Subscribe** tab, in four frames: a row of four, three, two and one products, each card being this product detail. The row of one is the single product view in the page.
+
+A product detail has no price of its own, so the prices are placeholders: **XX** for the price, with **YY** struck through in front of it as the full price.
+
+| Control | What it does |
+| --- | --- |
+| **Follow-up price** | Adds a follow-up price, **ZZ**, to every card |
+| **Discount** | Sets the saving, from 0 to 100, that a discount [label](#label) shows. At 0 a discount label does not show |
+| **Use expanded mobile layouts** | Shows the rows of two and three products in the **Expanded** mobile layout, see [Condensed and Expanded](/plugins/products#condensed-and-expanded) |
+
+### Preview Compare
+
+**Preview Compare** shows the comparison table with this product detail in the first column. The dropdowns offer every product detail, each named with its copy tag and country, so you can put any two or three side by side. The prices are placeholders, and a discount label shows **XX%** as its saving. **Select** opens the product detail's admin page in a new tab.
+
+Drag the handle under the frame to change its height.
+
+## Clone
+
+**Clone**, on each row of the list, creates a copy for the copy tag and country you choose, with the same fields, the same features with their parameter values, and the same Single product view content.
+
+## Dependencies
+
+- Deleting a product detail leaves its product categories in place. Their products fall back to the **(Not set)** product detail in that country, or are hidden when there is none.
+- Deleting a copy tag deletes its product details with it. A copy tag that a product category uses cannot be deleted.
