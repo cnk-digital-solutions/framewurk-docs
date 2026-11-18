@@ -16,4 +16,4 @@ PY
 docker rm -f mint-preview >/dev/null 2>&1 || true
 exec docker run --rm --name mint-preview --network host \
   -v "$PWD":/docs -v "$PWD/.preview/docs.json":/docs/docs.json:ro -w /docs -e HOME=/tmp \
-  node:22 npx --yes mint@latest dev --port 3333
+  node:22 npx --yes mint@latest dev --port 3333 --host
