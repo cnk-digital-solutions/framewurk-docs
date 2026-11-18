@@ -1,0 +1,78 @@
+---
+title: "Journalists (Video)"
+description: "A carousel of portrait video tiles on a black background, one per journalist. The tile in the middle plays its Vimeo video and can show a card about the journalist."
+icon: "clapperboard"
+---
+
+**Journalists (Video)** is a root-level widget for V3 pages. It shows a row of portrait tiles, one per journalist, on a black background. The tile in the middle is the active one: it plays the journalist's Vimeo video inside the tile, and it can show an information card with the journalist's name, job title, a text and a link.
+
+| Child plugin | What it holds | Details |
+| --- | --- | --- |
+| **Journalist** | One tile: the poster image, the Vimeo video and the content of the information card | [Journalist](/plugins/journalists-video/journalist) |
+
+It is a separate widget from **Journalists**, which shows round portraits with each journalist's latest articles. Use **Journalists (Video)** when you have a video per journalist. Nothing is fetched for it: the link on a card is one you set.
+
+## Adding a Journalists (Video)
+
+<Steps>
+  <Step title="Add the parent">
+    In structure mode, add **Journalists (Video)** (module **Custom Widgets**) at the root of the page content.
+  </Step>
+  <Step title="Choose the padding">
+    Choose the space above and below the tiles, per breakpoint. See [Padding](#padding).
+  </Step>
+  <Step title="Add the journalists">
+    Add one **Journalist** per tile, in the order the tiles should appear. The first one starts in the middle. Add four or more for a row that loops, see [The carousel](#the-carousel).
+  </Step>
+</Steps>
+
+## The carousel
+
+The active tile sits in the middle at full strength and the other tiles are dimmed. Visitors bring another tile to the middle with the arrows, by clicking a dimmed tile, or with a swipe on a touch screen.
+
+| Journalists | What the row does |
+| --- | --- |
+| Four or more | The row loops: after the last tile comes the first again, in both directions |
+| Two or three | The row stops at its first and last tile |
+| One | A single tile, without arrows |
+
+### Tile size
+
+| Breakpoint | Tile |
+| --- | --- |
+| M, L and XL (740px and up) | 248px wide and 457px high |
+| S and XS (below 740px) | As wide as the screen minus 112px, up to 281px wide and 517px high. The 56px left on each side hold the arrows |
+
+The widget is as high as a tile, plus its padding.
+
+## Padding
+
+**Padding top** and **Padding bottom** are **per breakpoint**, using the same responsive construct as other plugins. The padding is part of the black background of the carousel, not of the page around it, and the arrows stay level with the middle of the tiles.
+
+## Playing a video
+
+The play button sits at the bottom left of the active tile.
+
+- **Play** replaces the poster with the video, which plays inside the tile with sound. While it plays, a sound button shows whether the sound is on. Safari can start a video muted: one press on the sound button turns the sound on. The visitor's choice of sound carries over to the next tiles.
+- **Pause** keeps the picture where it stopped, and **Play** carries on from there.
+- Moving to another tile pauses the video and brings the poster back. When the visitor returns to the tile, **Play** resumes the video where it stopped.
+- At the end of the video the poster comes back.
+- Only the active tile plays, and opening an overlay on the page pauses it.
+
+The videos are not loaded with the page. The first player loads once the page has loaded and the carousel is within a screen of what the visitor sees, and each further player loads when its tile reaches the middle. In a **Why the FT** tab of a [Products](/plugins/products) section, the first player loads when the tab is shown.
+
+## The information card
+
+The plus button at the bottom right of the active tile pauses the video and covers the tile with a card: the journalist's name, job title and text, and the link when one is set. The same button closes the card, and so do **Play** and a move to another tile.
+
+The card never makes the tile taller. A text that does not fit scrolls inside the card.
+
+## Troubleshooting
+
+| Symptom | Likely cause |
+| --- | --- |
+| The row stops at its ends instead of looping | Fewer than four **Journalist** children |
+| No name or job title on a tile | They are part of the poster image, see [Poster image](/plugins/journalists-video/journalist#poster-image) |
+| Black bands above and below a video | The video is landscape, see [Video](/plugins/journalists-video/journalist#video) |
+| The poster stays and the video never starts | Embedding is not allowed for the video on Vimeo, or the ID is wrong |
+| A video starts without sound | Safari started it muted: the sound button shows it, and one press turns the sound on |

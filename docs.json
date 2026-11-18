@@ -57,6 +57,7 @@
                           }
                         ]
                       },
+                      "plugins/cart-abandon-overlay",
                       "plugins/collapsible-content-container",
                       {
                         "group": "Hero Banner",
@@ -95,7 +96,14 @@
                   {
                     "group": "Custom Widgets",
                     "pages": [
-                      "plugins/cart-abandon-overlay"
+                      {
+                        "group": "Journalists (Video)",
+                        "icon": "clapperboard",
+                        "root": "plugins/journalists-video",
+                        "pages": [
+                          "plugins/journalists-video/journalist"
+                        ]
+                      }
                     ]
                   }
                 ]
