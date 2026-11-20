@@ -11,10 +11,10 @@ It is a root-level widget for V3 pages and comes in three variants that share mo
 | Variant | Children | Use it when |
 | --- | --- | --- |
 | **Products (Ungrouped)** | [Product](/plugins/products/product) | All products belong together in one row |
-| **Products (Grouped)** | [Product Group](/plugins/products/product-group), each holding Products | Products fall into named families (for example digital, print, professional) and visitors should be able to filter by family |
+| **Products (Grouped)** | [Product Group](/plugins/products/product-group), each holding Products | Products fall into named families (for example digital, print, professional) and visitors are able to filter by family |
 | **Products (Mix)** | [Product Group](/plugins/products/product-group#under-products-mix), each holding Products | The section is built from rows of different sizes, for example one offer across the full width above a row of three. Each group is a row |
 
-Products are not authored on the page. Each **Product** child points at a **product category** managed in the Product Manager admin, and the name, price, packshot, intro text and overlay content come from there when the page loads, for the visitor's country.
+Each [Product](/plugins/products/product) child points at a [product category](/products-v3/product-category) managed in the Product Manager admin, and the name, price, packshot, intro text and overlay content come from there when the page loads, for the visitor's country.
 
 ## Adding a Products widget
 
@@ -30,7 +30,7 @@ Products are not authored on the page. Each **Product** child points at a **prod
     Mix: add a **Product Group** per row, then the **Product** children of that row.
   </Step>
   <Step title="Review the settings">
-    Every setting has a default that works. The ones most often changed are the **Compare section** and the **Why the FT** tab, described below.
+    Every setting has a default that works, and can be further customised.
   </Step>
 </Steps>
 
@@ -41,11 +41,11 @@ The variants share most of the form, arranged in the following groups. **Product
 ### General
 
 - **Product overlay trigger CTA text** is the label of the secondary button on every card (default **View details**, up to 15 characters). It also serves as the analytics label of that button.
-- **Product tab bottom padding** is **Default** or **Reduced** and applies at M, L and XL. Use **Reduced** when a banner follows the Products section directly.
+- **Product tab bottom padding** is **Default (96px)** or **Reduced (64px)** and applies at M, L and XL. Use **Reduced** when a banner follows the Products section directly.
 
 ### Navigation configuration
 
-- **Show navigation** (on by default) controls the sticky bar with the **Subscribe**, **Compare** and **Why the FT** tabs. Untick it to show the product cards alone: the bar is not rendered, and the **Compare section** and **Why the FT** settings disappear from the form and are reset to their defaults when you save. The three subscription check fields disappear and reset as well, because that link lives in the bar.
+- **Show navigation** (on by default) controls the sticky bar with the **Subscribe**, **Compare** and **Why the FT** tabs. Untick it to show the product cards alone: the bar is not rendered, and the **Compare section** and **Why the FT** settings disappear from the form. The three subscription check fields disappear and reset as well, because that link lives in the bar.
 - **Subscription check text** and **Subscription check link** define the "Check if your organisation subscribes" link at the right-hand end of the navigation bar, in every variant. Both must be set for the link to appear.
 - **Subscription check link mobile position** places that link on narrow screens (below 600px), where the bar has no room for it: **Below navigation** (the default) is a full-width strip directly under the bar; **After the first product** is a tile among the product cards, right after the first one. With a single product the tile setting is ignored and the strip is used. See [where the links appear](#where-the-links-appear).
 
@@ -79,7 +79,7 @@ Only on **Products (Grouped)**. The three fields define the "Two or more readers
 | **Link out** | The tab is a link to **Why the FT? link**, opened in a new window |
 | **Preset** | The tab reveals a preset inside the Products section, as a third panel next to Subscribe and Compare |
 
-In **Preset** mode, choose the preset with the preset picker. Its content is fetched when the page loads and shown in place when the tab is clicked. A preset shows once per page: when a Dynamic Preset plugin or an earlier Products section on the page already holds the same preset, this section has no **Why the FT** tab. The same preset can sit under several segments of a [Segmentation Container](/features/content-targeting), because a visitor gets only one of them.
+In **Preset** mode, choose the preset with the preset picker. Its content is fetched when the page loads and shown in place when the tab is clicked. A preset shows once per page: when a Dynamic Preset plugin or an earlier Products section on the page already holds the same preset, this section has no **Why the FT** tab.
 
 ## Behaviour
 
@@ -131,7 +131,14 @@ From M up a card shows the packshot, name, price and intro text with the **Selec
 
 #### Condensed and Expanded
 
-Below 600px, a **Products (Ungrouped)** or **Products (Mix)** section with exactly two or exactly three products in all follows the **2-product mobile layout** or the **3-product mobile layout** of its [Layout configuration](#layout-configuration). The count is of the products the visitor gets, so the setting in force can differ from one country to the next.
+Below 600px, a **Products (Ungrouped)** or **Products (Mix)** section with exactly two or exactly three products in all follows the **2-product mobile layout** or the **3-product mobile layout** of its [Layout configuration](#layout-configuration):
+
+| Setting | Condensed | Expanded |
+| --- | --- | --- |
+| **2-product mobile layout** | The card as it is below 600px: no intro text and no **Select** button | The card also shows the intro text and a full-width **Select** button |
+| **3-product mobile layout** | The card as it is below 600px: no intro text and no **Select** button | The card also shows a full-width **Select** button, still without the intro text |
+
+The count is of the products the visitor gets, so the setting in force can differ from one country to the next.
 
 #### A single product
 
