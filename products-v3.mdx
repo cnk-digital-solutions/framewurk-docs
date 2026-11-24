@@ -18,9 +18,9 @@ The **Products: V3** section of the admin holds the data that the [Products](/pl
 | **Product details** | The copy for one copy tag in one country: name, description, packshot, label, features and the **Single product view** content | [Product detail](/products-v3/product-detail) |
 | **Product features** | A reusable feature line with up to five parameters, shown in the overlay and the comparison table | _to follow_ |
 | **Product feature groups** | Ordered sets of features that group the rows of the comparison table | _to follow_ |
-| **Price expressions** | How the primary price is written, for example `#price# per month`, and its billing period | _to follow_ |
-| **Followup product expressions** | How the follow-up price is written, typically the price after an introductory period | _to follow_ |
-| **Product category groups (for comparison page dropdowns)** | Named sets of product categories offered in the comparison dropdowns on top of the products on the page | _to follow_ |
+| **Price expressions** | How the primary price is written, for example `#price# per month`, and its billing period | [Price expression](/products-v3/price-expression) |
+| **Followup product expressions** | How the follow-up price is written, typically the price after an introductory period | [Followup price expression](/products-v3/followup-price-expression) |
+| **Product category groups (for comparison page dropdowns)** | Named sets of product categories offered in the comparison dropdowns on top of the products on the page | [Product category group](/products-v3/product-category-group) |
 
 ## How the entities relate
 
@@ -91,6 +91,9 @@ Features`"]
     click PC "#product-categories" "Product categories"
     click CA "/plugins/cart-abandon-overlay" "Cart Abandon Overlay plugin"
     click CT "/products-v3/copy-tag" "Copy tag"
+    click PE "/products-v3/price-expression" "Price expression"
+    click FE "/products-v3/followup-price-expression" "Followup price expression"
+    click CG "/products-v3/product-category-group" "Product category group"
     click PD "/products-v3/product-detail" "Product detail"
     click OV "/products-v3/product-detail#single-product-view" "Single product view content"
 ```

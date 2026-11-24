@@ -7,7 +7,10 @@
         "products-v3/product-category",
         "products-v3/cart-abandon-category",
         "products-v3/product-detail",
-        "products-v3/copy-tag"
+        "products-v3/copy-tag",
+        "products-v3/price-expression",
+        "products-v3/followup-price-expression",
+        "products-v3/product-category-group"
       ]
     }
   ]

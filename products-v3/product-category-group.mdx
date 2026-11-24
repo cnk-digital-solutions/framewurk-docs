@@ -1,0 +1,31 @@
+---
+title: "Product category group"
+description: "A named set of product categories that a Products widget adds to the dropdowns of its comparison table."
+icon: "columns-3"
+---
+
+A **product category group** is a named set of [product categories](/products-v3/product-category). It has one use: a [Products](/plugins/products#compare-section) widget that names it in **Product category group** offers the group's categories in the dropdowns of its [comparison table](/plugins/products#the-comparison-table), next to the products of the section itself. They are managed under **Product category groups (for comparison page dropdowns)**.
+
+Use a group to let visitors compare plans the page does not sell as cards, for example the full range on a page that promotes two offers. A group never adds a card to the **Subscribe** tab, and it is not the [Product Group](/plugins/products/product-group) plugin, which arranges the cards of **Products (Grouped)** under headings.
+
+## What the dropdowns offer
+
+The candidates are the section's own products and the categories of the group, each once: a category that is in both is listed a single time.
+
+- A category of the group is offered only when it would show as a card in the visitor's country, by the rules of [When a product appears on a page](/products-v3/product-category#when-a-product-appears-on-a-page). The dropdowns can therefore differ from country to country.
+- An entry reads as the **Product name** of its product detail, not as the category's name. Two categories that share a [copy tag](/products-v3/copy-tag) appear as two entries with the same name.
+- The **Compare** tab needs at least two candidates. A group can provide them: a section with a single product gets its **Compare** tab once the group adds a second plan.
+
+## Order
+
+| Variant | Order of the dropdown entries |
+| --- | --- |
+| **Products (Ungrouped)**, **Products (Mix)** | The section's products in page order, then the categories of the group by category name |
+| **Products (Grouped)** | Under the product type of each category, by product name, the section's products and the group's categories mixed |
+
+The order matters beyond the dropdowns, because the columns that no product [pre-selects](/plugins/products/product#pre-selecting-in-the-comparison-table) are pre-filled from the top of the list. Only a Product plugin can pre-select, so a category that comes from the group alone cannot claim a slot.
+
+## Dependencies
+
+- A group that is deleted is not removed from the Products widgets that named it. Their comparison tables fall back to the products of the section.
+- Deleting a product category takes it out of its groups.

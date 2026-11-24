@@ -1,0 +1,36 @@
+---
+title: "Followup price expression"
+description: "The sentence that tells the visitor what an offer costs after its introductory period."
+icon: "calendar-clock"
+---
+
+A **followup price expression** writes the follow-up sentence of an offer: what the visitor pays once the introductory price ends, for example `Then #price# per month.` They are managed under **Followup product expressions**. A [product category](/products-v3/product-category#pricing) or a [product category for cart abandon](/products-v3/cart-abandon-category#pricing) can name one, and one expression can serve any number of them.
+
+The sentence needs both halves: the expression and a follow-up price for the visitor's country. A category with follow-up price sources and no expression shows no sentence, and so does a category with an expression whose sources have no price for the country.
+
+## How the sentence is written
+
+`#price#` becomes the follow-up price and `#price_primary#` the primary price, each with its currency symbol. An expression can use both, for example `#price_primary# for the first three months, then #price# per month.` Use each once: only the first one is replaced.
+
+## Period
+
+The **Period** is the term the follow-up price is looked up for. It is independent of the period of the category's [price expression](/products-v3/price-expression#period), so an offer can read `#price# for your first year` with an annual primary price and `Then #price# per month.` with a monthly follow-up price. As there, nothing checks the period against the wording.
+
+`#price_primary#` is the primary price as the price line shows it, for the period of the price expression.
+
+## Where the sentence shows
+
+| Place | Where the sentence goes |
+| --- | --- |
+| Product card, from M up (740px and up) | In the card's description: at the `#followup_price_sentence#` placeholder of the product detail's **Product description**, or after the description when it has no placeholder |
+| Product card, 600px to 739px | After the price, in the price line, because the card has no description at this width |
+| Product card, below 600px | Only where the card shows its description, see [Condensed and Expanded](/plugins/products#condensed-and-expanded) |
+| **Single product view** | A paragraph of its own under the price line |
+| Comparison table | Not shown |
+| Cart Abandon Overlay | In or after the description, see [Pricing](/products-v3/cart-abandon-category#pricing) |
+
+Without a follow-up sentence the `#followup_price_sentence#` placeholder leaves nothing behind.
+
+## Dependencies
+
+Deleting a followup price expression clears the field on the categories that used it. They lose their follow-up sentence, and a category that ticks **Require followup price** is no longer shown at all, see [When a product appears on a page](/products-v3/product-category#when-a-product-appears-on-a-page).

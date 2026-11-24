@@ -1,0 +1,34 @@
+---
+title: "Price expression"
+description: "The wording around the primary price of an offer, and the billing period the price is looked up for."
+icon: "banknote"
+---
+
+A **price expression** writes the primary price of an offer: the words around the amount, for example `#price# per month`, and the period that amount is for. A [product category](/products-v3/product-category#pricing) and a [product category for cart abandon](/products-v3/cart-abandon-category#pricing) each name one, and one expression can serve any number of them. Changing an expression changes every offer that uses it.
+
+## Where it shows
+
+The expression is the price line of the offer, wherever the price is shown:
+
+- on the product card;
+- at the top of the **Single product view**;
+- at the head of the offer's column in the comparison table;
+- in the [Cart Abandon Overlay](/products-v3/cart-abandon-category#pricing), unless its category hides the price line.
+
+## How the price is written
+
+`#price#` becomes the currency symbol and the amount for the visitor's country, for example `£59`. When the category has a full price, it is struck through in front of the amount. Use `#price#` once: only the first one is replaced.
+
+An expression without `#price#` is shown as it is written, which suits an offer that names no amount. The category still needs a primary price for the visitor's country, or the product is not shown.
+
+## Period
+
+The **Period** is the term the price is looked up for, not a label: nothing checks it against the wording. An expression that reads `#price# per month` with the period **Annual** shows the annual price and calls it monthly, so set the two together.
+
+The full price is looked up for the same period, so the struck-through amount and the price next to it always compare like with like. The follow-up price has a period of its own, on the [followup price expression](/products-v3/followup-price-expression#period).
+
+When a price source holds the price for a different term, the price is converted, see [Period, rounding and savings](/products-v3/product-category#period-rounding-and-savings).
+
+## Dependencies
+
+A price expression that a product category or a product category for cart abandon uses cannot be deleted. Re-point or delete those first.
